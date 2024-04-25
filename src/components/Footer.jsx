@@ -10,7 +10,7 @@ import linkedinIcon from "../assets/icons/Icon-Linkedin.svg";
 export const Footer = () => {
   return (
     <div className=" relative col-span-full row-start-3 row-end-4 flex h-[100%] w-[100%] justify-center gap-2 text-[#FAFAFA] before:absolute before:z-[-1] before:h-[100%] before:w-[100vw] before:bg-black before:content-[''] ">
-      <div className="mb-[60px] mt-[80px] flex w-[100%] justify-between">
+      <div className="mb-[124px] mt-[80px] flex w-[100%] justify-between">
         <div className=" ">
           <ul className="mb-4 flex flex-col gap-6">
             <li className="font-Inter text-2xl/6 font-bold">Exclusive</li>
@@ -95,6 +95,9 @@ export const Footer = () => {
             </li>
           </ul>
         </div>
+      </div>
+      <div className="absolute bottom-0 w-[100vw] border-t-[2px] border-slate-900 pb-6 pt-4 text-center text-gray-600">
+        <p> &copy; Copyright Ahmed Seleem 2024. All right reserved</p>
       </div>
     </div>
   );
