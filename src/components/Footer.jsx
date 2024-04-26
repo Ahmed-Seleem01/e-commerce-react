@@ -97,7 +97,10 @@ export const Footer = () => {
         </div>
       </div>
       <div className="absolute bottom-0 w-[100vw] border-t-[2px] border-slate-900 pb-6 pt-4 text-center text-gray-600">
-        <p> &copy; Copyright Ahmed Seleem 2024. All right reserved</p>
+        <p className="flex items-center justify-center gap-[6px]">
+          <span className="text-2xl">&copy;</span> Copyright Ahmed Seleem 2024.
+          All right reserved
+        </p>
       </div>
     </div>
   );
