@@ -3,7 +3,7 @@ import googleIcon from "../assets/icons/Icon-Google.svg";
 
 export const SignUP = () => {
   return (
-    <div className="flex w-[100%] items-center justify-between">
+    <div className="mb-[140px] mt-[60px] flex w-[100%] items-center justify-between">
       <img
         className="ml-[-100px] w-auto max-w-[800px]"
         src={sideImage}
