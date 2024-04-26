@@ -39,7 +39,7 @@ export const SignUP = () => {
             placeholder="Password"
           />
           <div className="mb-8 flex flex-col gap-4">
-            <button className=" rounded-[4px] bg-[#DB4444] py-4 text-[16px]/6 font-semibold text-[#FAFAFA]">
+            <button className=" rounded-[4px] bg-[#DB4444] py-4 text-[16px]/6 font-medium text-[#FAFAFA]">
               Create Account
             </button>
             <button className="flex items-center justify-center gap-4 rounded-[4px] border-[1px] py-4 text-[16px]/6 font-normal">
