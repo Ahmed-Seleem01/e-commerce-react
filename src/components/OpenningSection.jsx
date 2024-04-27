@@ -24,7 +24,7 @@ export const OpenningSection = () => {
           <li>Health & Beauty</li>
         </ul>
       </nav>
-      <div className="mt-10 flex flex-col items-center  bg-black pl-16 pr-10 pt-10 text-[#FAFAFA] ">
+      <div className="mt-10 flex flex-col items-center bg-black py-4 pl-16 pr-10  text-[#FAFAFA] ">
         <div className="flex items-center">
           <div className="flex max-w-[300px] flex-col gap-5">
             <div className="flex items-center gap-6">
@@ -45,7 +45,7 @@ export const OpenningSection = () => {
           </div>
           <img src={heroPhone} alt="hero openning image" />
         </div>
-        <div className="mb-3 flex gap-3">
+        <div className="ml-[-150px] mt-[-20px] flex gap-3">
           <span className="inline-block size-3 rounded-full bg-gray-500 "></span>
           <span className="inline-block size-3 rounded-full bg-gray-500 "></span>
           <span className="inline-block size-3 rounded-full bg-gray-500 "></span>
