@@ -1,7 +1,7 @@
 import arrowIcon from "../assets/icons/arrow.svg";
 
 export const GeneralHeader = (props) => {
-  const { additional, label, heading, toggle } = props;
+  const { additional, label, heading, toggle, viewButton } = props;
   return (
     <div className="flex w-[100%] justify-between">
       <div className=" flex gap-[87px]">
@@ -17,7 +17,7 @@ export const GeneralHeader = (props) => {
         <div className=" self-end">{additional}</div>
       </div>
 
-      {toggle && (
+      {(toggle && (
         <div className="flex gap-2 self-end ">
           <img
             className=" size-12 rotate-180 rounded-full bg-gray-900 p-3 invert"
@@ -30,7 +30,12 @@ export const GeneralHeader = (props) => {
             alt="arrow right icon"
           />
         </div>
-      )}
+      )) ||
+        (viewButton && (
+          <button className="self-end rounded bg-[#DB4444] px-12 py-4 text-base font-medium text-[#FAFAFA]">
+            View All
+          </button>
+        ))}
     </div>
   );
 };
