@@ -1,11 +1,12 @@
 import arrowIcon from "../assets/icons/arrow.svg";
+import { DateCounter } from "./DateCounter";
 
 export const GeneralHeader = (props) => {
-  const { additional, label, heading, toggle, viewButton } = props;
+  const { dateCounter, label, heading, toggle, viewButton } = props;
   return (
     <div className="flex w-[100%] justify-between">
-      <div className=" flex gap-[87px]">
-        <div className="">
+      <div className="flex gap-[87px]">
+        <div>
           <div className="flex items-center gap-[10px]">
             <span className=" inline-block h-10 w-5 rounded bg-[#DB4444]"></span>
             <label className="font-semibold  text-[#DB4444]">{label}</label>
@@ -14,7 +15,14 @@ export const GeneralHeader = (props) => {
             {heading}
           </h3>
         </div>
-        <div className=" self-end">{additional}</div>
+        {dateCounter && (
+          <div className=" mb-1 flex items-end gap-4 text-3xl text-[#E07575]">
+            <DateCounter label="Days" value={3} /> :
+            <DateCounter label="Hours" value={23} /> :
+            <DateCounter label="Minutes" value={19} /> :
+            <DateCounter label="Seconds" value={56} />
+          </div>
+        )}
       </div>
 
       {(toggle && (
