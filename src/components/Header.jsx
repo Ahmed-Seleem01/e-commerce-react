@@ -43,13 +43,13 @@ export const Header = () => {
           <div className="flex gap-4">
             <img src={heart} alt="heart icon" />
             <img src={cart} alt="cart icon" />
-            <div className="relative">
+            <div className="group relative">
               <img
                 className="rounded-full p-1 invert hover:bg-[#DB4444] hover:invert-0"
                 src={userIcon}
                 alt="account icon"
               />
-              {/* <ul className=" absolute right-0 top-10 flex w-[224px] flex-col justify-between gap-3 rounded-[4px] bg-gray-500 px-5 py-[18px]">
+              <ul className="absolute right-0 top-10 hidden w-[224px] flex-col justify-between gap-3 rounded-[4px] bg-gray-500 px-5 py-[18px] blur-[0.4px] group-hover:flex">
                 <li className="flex gap-4 text-[14px]/[21px] text-white">
                   <img src={userIcon} alt="user account" /> Manage My Account
                 </li>
@@ -68,7 +68,7 @@ export const Header = () => {
                 <li className="flex gap-4 text-[14px]/[21px] text-white">
                   <img src={logoutIcon} alt="logout icon" /> Logout
                 </li>
-              </ul> */}
+              </ul>
             </div>
           </div>
         </div>
