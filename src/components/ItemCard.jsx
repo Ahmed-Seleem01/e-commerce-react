@@ -1,5 +1,6 @@
 import heart2 from "../assets/icons/heart2.svg";
 import eye from "../assets/icons/eye.svg";
+import deleteIcon from "../assets/icons/delete.svg";
 
 export const ItemCard = (props) => {
   const {
@@ -11,6 +12,8 @@ export const ItemCard = (props) => {
     discount,
     newItem,
     colors,
+    deleteItem,
+    viewItem,
   } = props;
   return (
     <div className="bg-white">
@@ -27,12 +30,25 @@ export const ItemCard = (props) => {
             </label>
           ))}
         <div className="absolute right-3 top-3 flex flex-col gap-2">
-          <button className="size-[34px] rounded-full bg-white p-2">
-            <img src={heart2} alt="love item" />
-          </button>
-          <button className=" size-[34px] rounded-full bg-white p-[6px]">
-            <img src={eye} alt="love item" />
-          </button>
+          {(deleteItem && (
+            <button className="size-[34px] rounded-full bg-white p-2">
+              <img src={deleteIcon} alt="love item" />
+            </button>
+          )) ||
+            (viewItem && (
+              <button className="size-[34px] rounded-full bg-white p-2">
+                <img src={eye} alt="love item" />
+              </button>
+            )) || (
+              <>
+                <button className="size-[34px] rounded-full bg-white p-2">
+                  <img src={heart2} alt="love item" />
+                </button>
+                <button className=" size-[34px] rounded-full bg-white p-[6px]">
+                  <img src={eye} alt="love item" />
+                </button>
+              </>
+            )}
         </div>
         <button className=" absolute bottom-0 z-[-1] w-full translate-y-10 overflow-hidden bg-black  py-1 text-base font-medium text-white transition-transform group-hover:z-10 group-hover:translate-y-0">
           <a href="#">Add to cart</a>
@@ -40,23 +56,27 @@ export const ItemCard = (props) => {
       </div>
       <div className="relative z-20 flex flex-col gap-2 bg-white pt-4 text-base font-medium ">
         <h4>{heading}</h4>
-        <div className="flex w-[75%] flex-wrap items-center gap-3">
-          <span className="text-[#DB4444]">${currentPrice}</span>
-          {oldPrice && (
-            <span className=" text-gray-500 line-through">${oldPrice}</span>
-          )}
-          <div className=" flex items-center text-gray-400">
-            <span className="flex gap-1">
-              <span className=" text-xl text-gray-400">&#9733;</span>
-              <span className=" text-xl text-gray-400">&#9733;</span>
-              <span className=" text-xl text-gray-400">&#9733;</span>
-              <span className=" text-xl text-gray-400">&#9733;</span>
-              <span className=" text-xl text-gray-400">&#9733;</span>
-            </span>
-            <label className="ml-2 font-semibold">
-              ({rating ? rating : 0})
-            </label>
+        <div className="flex w-[80%] flex-wrap items-center gap-3">
+          <div className="flex items-center gap-3">
+            <span className="text-[#DB4444]">${currentPrice}</span>
+            {oldPrice && (
+              <span className=" text-gray-500 line-through">${oldPrice}</span>
+            )}
           </div>
+          {rating && (
+            <div className=" flex items-center text-gray-400">
+              <span className="flex gap-1">
+                <span className=" text-xl text-gray-400">&#9733;</span>
+                <span className=" text-xl text-gray-400">&#9733;</span>
+                <span className=" text-xl text-gray-400">&#9733;</span>
+                <span className=" text-xl text-gray-400">&#9733;</span>
+                <span className=" text-xl text-gray-400">&#9733;</span>
+              </span>
+              <label className="ml-2 font-semibold">
+                ({rating ? rating : 0})
+              </label>
+            </div>
+          )}
         </div>
         {colors && (
           <div className="flex gap-2">
