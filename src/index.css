@@ -12,4 +12,7 @@
   .bg-radial-gradient {
     background-image: radial-gradient(circle, #444, #fff);
   }
+  .primary-button {
+    @apply rounded bg-[#DB4444] px-12 py-4 text-base font-semibold text-white;
+  }
 }
