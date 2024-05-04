@@ -9,7 +9,7 @@ import linkedinIcon from "../assets/icons/Icon-Linkedin.svg";
 
 export const Footer = () => {
   return (
-    <div className=" relative col-span-full row-start-3 row-end-4 flex h-[100%] w-[100%] justify-center gap-2 text-[#FAFAFA] before:absolute before:z-[-1] before:h-[100%] before:w-[100vw] before:bg-black before:content-[''] ">
+    <footer className=" relative col-span-full row-start-3 row-end-4 flex h-[100%] w-[100%] justify-center gap-2 text-[#FAFAFA] before:absolute before:z-[-1] before:h-[100%] before:w-[100vw] before:bg-black before:content-[''] ">
       <div className="mb-[124px] mt-[80px] flex w-[100%] justify-between">
         <div className=" ">
           <ul className="mb-4 flex flex-col gap-6">
@@ -19,7 +19,7 @@ export const Footer = () => {
           </ul>
           <div className="flex h-12 w-[100%] max-w-[217px] gap-8 rounded-[4px] border-[1.5px] px-4 py-3">
             <input
-              className="w-[100%] bg-transparent py-3"
+              className="w-[100%] bg-transparent py-3 focus:outline-none"
               type="email"
               name="mail"
               placeholder="Enter your email"
@@ -102,6 +102,6 @@ export const Footer = () => {
           All right reserved
         </p>
       </div>
-    </div>
+    </footer>
   );
 };
