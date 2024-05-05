@@ -1,9 +1,32 @@
-export const Cart = (props) => {
-  const { products } = props;
+import { useLoaderData } from "react-router-dom";
+import lcd from "../assets/images/items/lcd.png";
+import gamepad from "../assets/images/items/gamepad.png";
+
+export async function load() {
+  const products = [
+    {
+      image: lcd,
+      heading: "LCD Monitor",
+      price: "650",
+    },
+    {
+      image: gamepad,
+      heading: "H1Gamepad",
+      price: "550",
+    },
+  ];
+  return { products };
+}
+
+export const Cart = () => {
+  const { products } = useLoaderData();
   return (
     <div className="mt-[80px] w-full">
-      <div>
-        <ul className="grid w-full grid-cols-4 items-center justify-items-center border px-10 py-6 shadow-sm">
+      <div className="flex flex-col gap-10">
+        <ul
+          style={{ boxShadow: "0px 0px 10px 1px #eee" }}
+          className="grid w-full grid-cols-4 items-center justify-items-center bg-white px-10 py-6 drop-shadow-sm filter "
+        >
           <li className=" justify-self-start">Product</li>
           <li>Price</li>
           <li>Quantity</li>
@@ -12,7 +35,8 @@ export const Cart = (props) => {
         {products.map((product, i) => (
           <ul
             key={i}
-            className="grid w-full grid-cols-4 items-center justify-items-center border px-10 py-6 shadow-sm "
+            style={{ boxShadow: "0px 0px 10px 1px #eee" }}
+            className="grid w-full grid-cols-4 items-center justify-items-center bg-white px-10 py-6 drop-shadow-sm filter "
           >
             <li className="flex items-center gap-5  justify-self-start">
               <img
@@ -36,7 +60,8 @@ export const Cart = (props) => {
             </li>
           </ul>
         ))}
-        <div className="mt-6 flex justify-between">
+
+        <div className="mt-[-16px] flex justify-between">
           <button className="rounded border px-12 py-4  font-medium">
             Return To Shop
           </button>
@@ -55,7 +80,7 @@ export const Cart = (props) => {
           />
           <button className=" primary-button">Apply coupon</button>
         </div>
-        <div className="px-6 py-8">
+        <div className="w-[470px] rounded border-[1.5px] border-black px-6 py-8">
           <h5 className=" text-xl font-medium">Cart Total</h5>
           <div className="flex flex-col py-6">
             <ul className="flex flex-col  gap-4 ">
@@ -69,7 +94,9 @@ export const Cart = (props) => {
                 <span>Total</span> ${1170}
               </li>
             </ul>
-            <button className="primary-button">Process to checkout</button>
+            <button className="primary-button self-center">
+              Process to checkout
+            </button>
           </div>
         </div>
       </div>
