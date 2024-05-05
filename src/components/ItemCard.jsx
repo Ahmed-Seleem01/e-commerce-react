@@ -1,6 +1,7 @@
 import heart2 from "../assets/icons/heart2.svg";
 import eye from "../assets/icons/eye.svg";
 import deleteIcon from "../assets/icons/delete.svg";
+import { Link } from "react-router-dom";
 
 export const ItemCard = (props) => {
   const {
@@ -36,17 +37,21 @@ export const ItemCard = (props) => {
             </button>
           )) ||
             (viewItem && (
-              <button className="size-[34px] rounded-full bg-white p-2">
-                <img src={eye} alt="love item" />
-              </button>
+              <Link to="product/1">
+                <button className="size-[34px] rounded-full bg-white p-2">
+                  <img src={eye} alt="love item" />
+                </button>
+              </Link>
             )) || (
               <>
                 <button className="size-[34px] rounded-full bg-white p-2">
                   <img src={heart2} alt="love item" />
                 </button>
-                <button className=" size-[34px] rounded-full bg-white p-[6px]">
-                  <img src={eye} alt="love item" />
-                </button>
+                <Link to="product/1">
+                  <button className=" size-[34px] rounded-full bg-white p-[6px]">
+                    <img src={eye} alt="love item" />
+                  </button>
+                </Link>
               </>
             )}
         </div>
