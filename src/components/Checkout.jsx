@@ -3,10 +3,30 @@ import visa from "../assets/icons/visa.png";
 import masterCard from "../assets/icons/master-card.png";
 import pay from "../assets/icons/pay.png";
 
-export const Checkout = (props) => {
-  const { products } = props;
+import lcd from "../assets/images/items/lcd.png";
+import gamepad from "../assets/images/items/gamepad.png";
+import { useLoaderData } from "react-router-dom";
+
+export async function load() {
+  const products = [
+    {
+      image: lcd,
+      heading: "LCD Monitor",
+      price: "650",
+    },
+    {
+      image: gamepad,
+      heading: "H1Gamepad",
+      price: "550",
+    },
+  ];
+  return { products };
+}
+
+export const Checkout = () => {
+  const { products } = useLoaderData();
   return (
-    <div className="mb-[140px] flex w-full items-center justify-between">
+    <div className="flex w-full items-center justify-between">
       <div>
         {" "}
         <h2 className=" font-Inter text-4xl/[30px]">Billing Details</h2>
