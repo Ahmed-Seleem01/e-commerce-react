@@ -3,11 +3,13 @@ import "./index.css";
 import { LayoutPage } from "./pages";
 
 import { load as loadCart } from "./components/Cart";
+import { load as loadCheckout } from "./components/Checkout";
 
 import {
   About,
   Account,
   Cart,
+  Checkout,
   Contact,
   Error,
   Home,
@@ -49,6 +51,11 @@ const router = createBrowserRouter([
       {
         path: "account",
         element: <Account />,
+      },
+      {
+        path: "checkout",
+        element: <Checkout />,
+        loader: loadCheckout,
       },
     ],
   },

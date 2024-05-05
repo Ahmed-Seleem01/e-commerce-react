@@ -94,11 +94,15 @@ export const Header = () => {
                 alt="account icon"
               />
               <ul className="absolute right-0 top-10 hidden w-[224px] flex-col justify-between gap-3 rounded-[4px] bg-gray-500 px-5 py-[18px] blur-[0.4px] group-hover:flex">
-                <li className="flex gap-4 text-[14px]/[21px] text-white">
-                  <img src={userIcon} alt="user account" /> Manage My Account
+                <li className=" text-[14px]/[21px] text-white">
+                  <NavLink className="flex gap-4" to="account">
+                    <img src={userIcon} alt="user account" /> Manage My Account
+                  </NavLink>
                 </li>
                 <li className="flex gap-4 text-[14px]/[21px] text-white">
-                  <img src={bagIcon} alt="orders icon" /> My Order
+                  <NavLink className="flex gap-4" to="checkout">
+                    <img src={bagIcon} alt="orders icon" /> My Order
+                  </NavLink>
                 </li>
 
                 <li className="flex gap-4 text-[14px]/[21px] text-white">
