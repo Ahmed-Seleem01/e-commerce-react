@@ -13,9 +13,11 @@ import {
   Contact,
   Error,
   Home,
+  SignIn,
   SignUP,
   Wishlist,
 } from "./components";
+import { ProductDetails } from "./components/ProductDetail";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <About />,
+      },
+      {
+        path: "login",
+        element: <SignIn />,
       },
       {
         path: "sign-up",
@@ -56,6 +62,14 @@ const router = createBrowserRouter([
         path: "checkout",
         element: <Checkout />,
         loader: loadCheckout,
+      },
+      {
+        path: "/:path/product/:id",
+        element: <ProductDetails />,
+      },
+      {
+        path: "product/:id",
+        element: <ProductDetails />,
       },
     ],
   },
