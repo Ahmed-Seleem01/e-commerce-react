@@ -6,6 +6,7 @@ import bagIcon from "../assets/icons/icon-mallbag.svg";
 import cancelIcon from "../assets/icons/icon-cancel.svg";
 import starIcon from "../assets/icons/Icon-Reviews.svg";
 import logoutIcon from "../assets/icons/Icon-logout.svg";
+import { Link, NavLink } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -21,13 +22,52 @@ export const Header = () => {
       </div>
       <div className="mb-4 mt-10 flex h-[38px] items-center justify-between">
         <div className=" flex w-[60%] max-w-[675px] items-center justify-between text-black">
-          <h1 className=" font-Inter text-2xl/6 font-bold">Exclusive</h1>
+          <h1 className=" font-Inter text-2xl/6 font-bold">
+            {" "}
+            <NavLink to="">Exclusive</NavLink>
+          </h1>
           <nav>
             <ul className="flex items-center justify-between gap-12 text-[16px]/6">
-              <li>Home</li>
-              <li>Contact</li>
-              <li>About</li>
-              <li>Sign Up</li>
+              <li>
+                <NavLink
+                  to=""
+                  className={({ isActive }) =>
+                    isActive ? "border-b border-black" : ""
+                  }
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="contact"
+                  className={({ isActive }) =>
+                    isActive ? "border-b border-black" : ""
+                  }
+                >
+                  Contact
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="about"
+                  className={({ isActive }) =>
+                    isActive ? "border-b border-black" : ""
+                  }
+                >
+                  About
+                </NavLink>{" "}
+              </li>
+              <li>
+                <NavLink
+                  to="sign-up"
+                  className={({ isActive }) =>
+                    isActive ? "border-b border-black" : ""
+                  }
+                >
+                  Sign Up
+                </NavLink>{" "}
+              </li>
             </ul>
           </nav>
         </div>
@@ -40,9 +80,13 @@ export const Header = () => {
             />
             <img className="ml-[-25px] size-4" src={search} alt="search icon" />
           </form>
-          <div className="flex gap-4">
-            <img src={heart} alt="heart icon" />
-            <img src={cart} alt="cart icon" />
+          <div className="flex items-center gap-4">
+            <Link to="wishlist">
+              <img src={heart} alt="heart icon" />
+            </Link>
+            <Link to="cart">
+              <img src={cart} alt="cart icon" />
+            </Link>
             <div className="group relative">
               <img
                 className="rounded-full p-1 invert hover:bg-[#DB4444] hover:invert-0"
