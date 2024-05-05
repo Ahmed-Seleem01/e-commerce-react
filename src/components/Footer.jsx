@@ -6,6 +6,7 @@ import facebookIcon from "../assets/icons/Icon-Facebook.svg";
 import twitterIcon from "../assets/icons/Icon-Twitter.svg";
 import instagramIcon from "../assets/icons/icon-instagram.svg";
 import linkedinIcon from "../assets/icons/Icon-Linkedin.svg";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -38,11 +39,21 @@ export const Footer = () => {
         <div className="flex flex-col gap-6">
           <h2 className=" text-xl font-medium">Account</h2>
           <ul className="flex flex-col gap-4">
-            <li>My Account</li>
-            <li>Login / Register</li>
-            <li>Cart</li>
-            <li>Wishlist</li>
-            <li>Shop</li>
+            <li>
+              <Link to="account">My Account</Link>
+            </li>
+            <li>
+              <Link to="login">Login / Register</Link>
+            </li>
+            <li>
+              <Link to="cart">Cart</Link>
+            </li>
+            <li>
+              <Link to="wishlist">Wishlist</Link>
+            </li>
+            <li>
+              <Link to="">Shop</Link>
+            </li>
           </ul>
         </div>
         <div className="flex flex-col gap-6">
@@ -51,7 +62,12 @@ export const Footer = () => {
             <li>Privacy Policy</li>
             <li>Terms Of Use</li>
             <li>FAQ</li>
-            <li>Contact</li>
+            <li>
+              <Link to="contact">Contact</Link>
+            </li>
+            <li>
+              <Link to="about">About</Link>
+            </li>
           </ul>
         </div>
         <div className="flex flex-col gap-6">
