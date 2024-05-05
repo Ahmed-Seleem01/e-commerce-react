@@ -1,4 +1,3 @@
-import { GeneralHeader } from "./GeneralHeader";
 import { ItemCard } from "./ItemCard";
 import bag from "../assets/images/items/bag.png";
 import speakers from "../assets/images/items/speaker.png";
@@ -9,13 +8,12 @@ import lcd from "../assets/images/items/lcd.png";
 import gampadRed from "../assets/images/items/gamepad.png";
 import keyboard from "../assets/images/items/wired-keyboard.png";
 
-export const Wishlist = (props) => {
-  const { listLength } = props;
+export const Wishlist = () => {
   return (
     <div className="my-[80px] flex w-full flex-col gap-[80px]">
       <div className="flex flex-col gap-[60px] ">
         <div className="flex items-center justify-between">
-          <label className=" text-xl/[26px]">Wishlist ({listLength})</label>
+          <label className=" text-xl/[26px]">Wishlist (4)</label>
           <button className="rounded border border-gray-400 px-12 py-4">
             Move All To Bag
           </button>
