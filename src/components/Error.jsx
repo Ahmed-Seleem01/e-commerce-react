@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Error = () => {
   return (
     <div className="flex flex-col items-center justify-center">
@@ -8,7 +10,11 @@ export const Error = () => {
         Your visited page not found. You may go home page.
       </p>
 
-      <button className=" primary-button font-medium">Back to home page</button>
+      <Link to="">
+        <button className=" primary-button font-medium">
+          Back to home page
+        </button>
+      </Link>
     </div>
   );
 };
