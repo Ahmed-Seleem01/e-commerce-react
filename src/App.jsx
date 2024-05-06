@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import { LayoutPage } from "./pages";
-
 import { load as loadCart } from "./components/Cart";
 import { load as loadCheckout } from "./components/Checkout";
 
@@ -21,7 +20,7 @@ import { ProductDetails } from "./components/ProductDetail";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "",
     element: <LayoutPage />,
     errorElement: <Error />,
     children: [
