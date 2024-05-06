@@ -43,7 +43,7 @@ export const Footer = () => {
               <Link to="account">My Account</Link>
             </li>
             <li>
-              <Link to="login">Login / Register</Link>
+              <a href="login">Login / Register</a>
             </li>
             <li>
               <Link to="cart">Cart</Link>
