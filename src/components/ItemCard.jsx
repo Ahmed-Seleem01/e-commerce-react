@@ -19,7 +19,7 @@ export const ItemCard = (props) => {
   return (
     <div className="bg-white">
       <div className=" group relative flex h-[250px] w-[270px] cursor-pointer items-center justify-center rounded bg-[#F5F5F5] p-[50px]">
-        <img src={cardImage} alt="gamepad card" />
+        <img src={cardImage} alt={heading} />
         {(discount && (
           <label className="absolute left-3 top-3 rounded bg-[#DB4444] px-3 py-1 text-xs/[18px] text-white">
             -{discount}%
