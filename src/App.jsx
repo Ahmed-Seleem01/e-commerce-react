@@ -3,6 +3,7 @@ import "./index.css";
 import { LayoutPage } from "./pages";
 import { load as loadCart } from "./components/Cart";
 import { load as loadCheckout } from "./components/Checkout";
+import { load as loadFlash } from "./components/Home";
 
 import {
   About,
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+        loader: loadFlash,
       },
       {
         path: "contact",
