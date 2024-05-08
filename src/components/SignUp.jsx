@@ -19,18 +19,19 @@ export const SignUP = () => {
     window.location.href = "/";
   };
 
-  const signUpWithGoogleHandler = () => {
+  const signUpWithGoogleHandler = (e) => {
+    e.preventDefault();
     signUpAndSignInWithGoogle();
     redirectToHomePage();
   };
 
   const signUpWithEmailAndPasswordHandler = (e) => {
     e.preventDefault();
-    signUpWithEmailAndPassword(
-      nameRef.current.value,
-      mailRef.current.value,
-      passwordRef.current.value,
-    )
+    console.log(nameRef.current.value);
+    console.log(mailRef.current.value);
+    console.log(passwordRef.current.value);
+
+    signUpWithEmailAndPassword(mailRef.current.value, passwordRef.current.value)
       .then((userCredential) => {
         // status.success = "successful sign up";
         const user = userCredential.user;
@@ -51,7 +52,7 @@ export const SignUP = () => {
       .catch((error) => {
         // An error occurred
         setMessage(`Sign-up error: ${error.message}`);
-        console.error("Sign-up error:", error.code, error.message);
+        console.error("Sign-up error:", error.code, { error });
       });
   };
 
