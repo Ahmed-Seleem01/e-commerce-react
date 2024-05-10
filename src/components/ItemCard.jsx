@@ -2,6 +2,11 @@ import heart2 from "../assets/icons/heart2.svg";
 import eye from "../assets/icons/eye.svg";
 import deleteIcon from "../assets/icons/delete.svg";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { addToUserDB, auth } from "../firebase.config";
+import { v4 as uuidv4 } from "uuid";
+import { doc } from "firebase/firestore";
 
 export const ItemCard = (props) => {
   const {
@@ -16,6 +21,34 @@ export const ItemCard = (props) => {
     deleteItem,
     viewItem,
   } = props;
+
+  // const [user, setUser] = useState(null);
+
+  const user = auth.currentUser;
+  // console.log(user);
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (user) => {
+  //     console.log(user);
+  //     setUser(user);
+  //   });
+  // }, []);
+
+  const addToCartHandler = () => {
+    console.log("added cart");
+    addToUserDB(user.uid, "cart", {
+      // id: uuidv4(),
+      cardImage,
+      heading,
+      currentPrice,
+    });
+  };
+
+  const addToWishlistHandler = () => {
+    console.log("added wish");
+    console.log(props);
+    addToUserDB(user.uid, "wishlist", props);
+  };
+
   return (
     <div className="bg-white">
       <div className=" group relative flex h-[250px] w-[270px] cursor-pointer items-center justify-center rounded bg-[#F5F5F5] p-[50px]">
@@ -37,17 +70,20 @@ export const ItemCard = (props) => {
             </button>
           )) ||
             (viewItem && (
-              <Link to="product/1">
+              <Link to={`../product/${props.heading}`}>
                 <button className="size-[34px] rounded-full bg-white p-2">
                   <img src={eye} alt="love item" />
                 </button>
               </Link>
             )) || (
               <>
-                <button className="size-[34px] rounded-full bg-white p-2">
+                <button
+                  onClick={addToWishlistHandler}
+                  className="size-[34px] rounded-full bg-white p-2 active:bg-red-300"
+                >
                   <img src={heart2} alt="love item" />
                 </button>
-                <Link to="product/1">
+                <Link to={`../product/${props.heading}`}>
                   <button className=" size-[34px] rounded-full bg-white p-[6px]">
                     <img src={eye} alt="love item" />
                   </button>
@@ -55,8 +91,11 @@ export const ItemCard = (props) => {
               </>
             )}
         </div>
-        <button className=" absolute bottom-0 z-[-1] w-full translate-y-10 overflow-hidden bg-black  py-1 text-base font-medium text-white transition-transform group-hover:z-10 group-hover:translate-y-0">
-          <a href="#">Add to cart</a>
+        <button
+          onClick={addToCartHandler}
+          className=" absolute bottom-0 z-[-1] w-full translate-y-10 overflow-hidden bg-black  py-1 text-base font-medium text-white transition-transform group-hover:z-10 group-hover:translate-y-0"
+        >
+          Add to cart
         </button>
       </div>
       <div className="relative z-20 flex flex-col gap-2 bg-white pt-4 text-base font-medium ">
