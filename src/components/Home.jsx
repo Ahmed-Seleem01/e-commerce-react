@@ -1,3 +1,5 @@
+import { useLoaderData } from "react-router-dom";
+import { getCardItems } from "../firebase.config";
 import { Ad } from "./Ad";
 import { BestSelling } from "./BestSelling";
 import { Category } from "./Category";
@@ -6,39 +8,26 @@ import { FlashSales } from "./FlashSales";
 import { NewArrival } from "./NewArrival";
 import { OpenningSection } from "./OpenningSection";
 
-// import { SignIn } from "./SignIn";
-// import { SignUP } from "./SignUp";
-// const products = [
-//   {
-//     image: lcd,
-//     heading: "LCD Monitor",
-//     price: "650",
-//   },
-//   {
-//     image: gamepad,
-//     heading: "H1Gamepad",
-//     price: "550",
-//   },
-// ];
+export async function load() {
+  const flashSales = await getCardItems("home", "flashSales");
+  const bestSelling = await getCardItems("home", "bestSelling");
+  const exploreProducts = await getCardItems("home", "exploreProducts");
+
+  return { flashSales, bestSelling, exploreProducts };
+}
 
 export const Home = () => {
+  const { flashSales, bestSelling, exploreProducts } = useLoaderData();
+
   return (
     <div className="flex w-[100%] flex-col gap-[140px] ">
       <OpenningSection />
-      <FlashSales />
+      <FlashSales cards={flashSales.cards} />
       <Category />
-      <BestSelling />
+      <BestSelling cards={bestSelling.cards} />
       <Ad />
-      <ExploreProducts />
+      <ExploreProducts cards={exploreProducts.cards} />
       <NewArrival />
     </div>
-
-    // {/* <Wishlist listLength="4" /> */}
-    // {/* <Cart products={products} /> */}
-    // {/* <Checkout products={products} /> */}
-    // {/* <About /> */}
-    // {/* <Contact /> */}
-    // {/* <Error /> */}
-    // {/* <Account /> */}
   );
 };
