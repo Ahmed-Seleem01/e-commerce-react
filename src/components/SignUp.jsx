@@ -27,10 +27,6 @@ export const SignUP = () => {
 
   const signUpWithEmailAndPasswordHandler = (e) => {
     e.preventDefault();
-    console.log(nameRef.current.value);
-    console.log(mailRef.current.value);
-    console.log(passwordRef.current.value);
-
     signUpWithEmailAndPassword(mailRef.current.value, passwordRef.current.value)
       .then((userCredential) => {
         // status.success = "successful sign up";
