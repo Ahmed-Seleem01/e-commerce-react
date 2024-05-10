@@ -27,8 +27,8 @@ export const ExploreProducts = ({ cards }) => {
             heading={card.heading}
             currentPrice={card.currentPrice}
             rating={card.rating}
-            newItem={card.new}
-            colors={card.cardColors}
+            newItem={card.new ? true : false}
+            colors={card.cardColors ? card.cardColors : ""}
           />
         ))}
       </div>
