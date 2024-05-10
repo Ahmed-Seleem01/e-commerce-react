@@ -6,25 +6,32 @@ import pay from "../assets/icons/pay.png";
 import lcd from "../assets/images/items/lcd.png";
 import gamepad from "../assets/images/items/gamepad.png";
 import { useLoaderData } from "react-router-dom";
+import { auth, getUserCartItems } from "../firebase.config";
 
 export async function load() {
-  const products = [
-    {
-      image: lcd,
-      heading: "LCD Monitor",
-      price: "650",
-    },
-    {
-      image: gamepad,
-      heading: "H1Gamepad",
-      price: "550",
-    },
-  ];
-  return { products };
+  const user = auth.currentUser;
+  console.log(user);
+  // const products = [
+  //   {
+  //     image: lcd,
+  //     heading: "LCD Monitor",
+  //     price: "650",
+  //   },
+  //   {
+  //     image: gamepad,
+  //     heading: "H1Gamepad",
+  //     price: "550",
+  //   },
+  // ];
+  const productsItems = await getUserCartItems(user.uid);
+  // console.log(products);
+  return { productsItems };
 }
 
 export const Checkout = () => {
-  const { products } = useLoaderData();
+  const { productsItems } = useLoaderData();
+  const { productItems: products } = productsItems;
+  console.log(products);
   return (
     <div className="flex w-full items-center justify-between">
       <div>
@@ -128,13 +135,13 @@ export const Checkout = () => {
               <li className="flex items-center gap-5 ">
                 <img
                   className="size-[54px] object-contain"
-                  src={product.image}
+                  src={product.cardImage}
                   alt={product.heading}
                 />
                 {product.heading}
               </li>
 
-              <li>${product.price * 1}</li>
+              <li>${product.currentPrice * 1}</li>
             </ul>
           ))}
         </div>
