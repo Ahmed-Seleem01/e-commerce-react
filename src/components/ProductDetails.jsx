@@ -14,14 +14,51 @@ import heart2 from "../assets/icons/heart2.svg";
 
 import carBlack from "../assets/icons/icon-delivery-car-black.svg";
 import returnIcon from "../assets/icons/Icon-return.svg";
+import { useLoaderData } from "react-router-dom";
+import { getProduct } from "../firebase.config";
+import { useState } from "react";
+
+export async function load({ params }) {
+  const product = await getProduct(params.productName);
+  return { product };
+}
 
 export const ProductDetails = () => {
+  const { product } = useLoaderData();
+  console.log(product);
+  const {
+    subImages,
+    mainImage,
+    heading,
+    colors,
+    sizes,
+    currentPrice,
+    description,
+    rating,
+  } = product;
+
+  const [count, setCount] = useState(1);
+
+  const increment = () => {
+    setCount((pre) => Number(pre) + 1);
+  };
+  const decrement = () => {
+    if (count > 1) setCount((pre) => pre - 1);
+  };
   return (
     <div className="mb-[140px] flex w-full  flex-col justify-between gap-[140px]">
       <div className="flex justify-between">
         <div className="flex gap-[30px]">
           <span className="flex flex-col gap-4">
-            <img
+            {subImages.map((subImage, i) => (
+              <img
+                key={i}
+                className="h-[138px] w-[170px] rounded bg-[#F5F5F5] px-6 py-3"
+                src={subImage}
+                alt="side image"
+              />
+            ))}
+            {/* <img
               className="h-[138px] w-[170px] rounded bg-[#F5F5F5] px-6 py-3"
               src={sideImg1}
               alt="side image"
@@ -40,19 +77,17 @@ export const ProductDetails = () => {
               className="h-[138px] w-[170px] rounded bg-[#F5F5F5] px-6 py-3"
               src={sideImg4}
               alt="side image"
-            />
+            /> */}
           </span>
-          <span className="flex h-[600px] w-[500px] items-center justify-center rounded bg-[#F5F5F5]">
-            <img src={mainImg} alt="main image" />
+          <span className="flex h-[600px] w-[500px] items-center justify-center rounded bg-[rgb(245,245,245)]">
+            <img src={mainImage} alt="main image" />
           </span>
         </div>
 
         <div className="flex flex-col justify-between  ">
           <div className="flex flex-col gap-6 border-b border-gray-400 pb-6">
             <div className="flex flex-col gap-4">
-              <h4 className="font-Inter text-2xl/6 font-semibold">
-                Havic HV G-92 Gamepad
-              </h4>
+              <h4 className="font-Inter text-2xl/6 font-semibold">{heading}</h4>
 
               <div className="flex  items-center gap-3">
                 <div className=" flex items-center gap-4 text-gray-400">
@@ -64,7 +99,7 @@ export const ProductDetails = () => {
                       <span className=" text-xl text-gray-400">&#9733;</span>
                       <span className=" text-xl text-gray-400">&#9733;</span>
                     </span>
-                    <span>(150 Reviews)</span>
+                    <span>({rating} Reviews)</span>
                   </span>
 
                   <span>|</span>
@@ -73,33 +108,39 @@ export const ProductDetails = () => {
               </div>
 
               <div className=" flex items-center gap-3 font-Inter text-2xl/6">
-                <span>$192.00</span>
+                <span>${currentPrice}</span>
               </div>
             </div>
 
-            <p className="max-w-[373px] text-sm font-normal">
-              PlayStation 5 Controller Skin High quality vinyl with air channel
-              adhesive for easy bubble free install & mess free removal Pressure
-              sensitive.
-            </p>
+            <p className="max-w-[373px] text-sm font-normal">{description}</p>
           </div>
 
           <div className=" flex flex-col gap-6 font-Inter text-xl/5">
             <div className="flex gap-6">
               <span>Colors:</span>
               <span className="flex gap-2">
-                <span className="size-5 rounded-full bg-red-600 hover:border-2 hover:border-white hover:outline"></span>
-                <span className="size-5 rounded-full bg-red-600 hover:border-2 hover:border-white hover:outline"></span>
+                {colors.map((undefined, i) => (
+                  <span
+                    key={i}
+                    className="size-5 rounded-full bg-red-600 hover:border-2 hover:border-white hover:outline"
+                  ></span>
+                ))}
               </span>
             </div>
 
             <div className="flex items-center gap-6">
               <span>Size:</span>
               <span className="flex gap-4 text-sm  font-medium">
-                <span className="flex size-8 items-center justify-center rounded border">
-                  XS
-                </span>
-                <span className="flex size-8 items-center justify-center rounded border">
+                {sizes.map((size, i) => (
+                  <span
+                    key={i}
+                    className="flex size-8 items-center justify-center rounded border"
+                  >
+                    {size}
+                  </span>
+                ))}
+
+                {/* <span className="flex size-8 items-center justify-center rounded border">
                   S
                 </span>
                 <span className="flex size-8 items-center justify-center rounded border">
@@ -110,17 +151,23 @@ export const ProductDetails = () => {
                 </span>
                 <span className="flex size-8 items-center justify-center rounded border">
                   XL
-                </span>
+                </span> */}
               </span>
             </div>
 
             <div className="flex h-11 items-center gap-4">
               <span className="flex h-[100%] w-[160px] items-center justify-between rounded border  border-black">
-                <button className="flex h-full w-10 items-center justify-center border-r border-r-black">
+                <button
+                  onClick={decrement}
+                  className="flex h-full w-10 items-center justify-center border-r border-r-black"
+                >
                   -
                 </button>
-                <span>2</span>
-                <button className="flex h-full w-10 items-center justify-center border-l border-l-black">
+                <span>{count}</span>
+                <button
+                  onClick={increment}
+                  className="flex h-full w-10 items-center justify-center border-l border-l-black"
+                >
                   +
                 </button>
               </span>
