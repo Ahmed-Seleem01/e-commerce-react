@@ -1,44 +1,38 @@
 import { ItemCard } from "./ItemCard";
-import bag from "../assets/images/items/bag.png";
-import speakers from "../assets/images/items/speaker.png";
-import gamepad from "../assets/images/items/GP11_PRD3.png";
-import jacket from "../assets/images/items/satin-jacket.png";
-import laptop from "../assets/images/items/ideapad-gaming.png";
-import lcd from "../assets/images/items/lcd.png";
-import gampadRed from "../assets/images/items/gamepad.png";
-import keyboard from "../assets/images/items/wired-keyboard.png";
-import {
-  addToUserDB,
-  auth,
-  getUserWishlistItems,
-  removeFromUserDB,
-} from "../firebase.config";
-import { useLoaderData } from "react-router-dom";
+import { auth, getProduct, getUserWishlistItems } from "../firebase.config";
+import { Form, useLoaderData } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { onAuthStateChanged } from "firebase/auth";
 
 export async function load() {
-  const user = auth.currentUser;
-  // console.log(user);
-  const productsItems = await getUserWishlistItems(user.uid);
-  // console.log(productsItems);
-  return { productsItems };
+  console.log(auth);
+  let user = auth.currentUser.uid;
+  console.log(user);
+  const productsItems = await getUserWishlistItems(user);
+  const laptopProduct = await getProduct("ASUS FHD Gaming Laptop");
+  const lcdProduct = await getProduct("IPS LCD Gaming Monitor");
+  const gamepadProduct = await getProduct("HAVIT HV-G92 Gamepad");
+  const keyboardProduct = await getProduct("AK-900 Wired Keyboard");
+
+  return {
+    productsItems,
+    laptopProduct,
+    lcdProduct,
+    gamepadProduct,
+    keyboardProduct,
+  };
 }
 
 export const Wishlist = () => {
-  const { productsItems } = useLoaderData();
+  const {
+    productsItems,
+    laptopProduct,
+    lcdProduct,
+    gamepadProduct,
+    keyboardProduct,
+  } = useLoaderData();
   const { productItems: products } = productsItems;
-  console.log(products);
 
-  const removeAllItemsFromWishlist = () => {
-    products.forEach((product) => {
-      addToUserDB(auth.currentUser.uid, "cart", product);
-      removeFromUserDB(auth.currentUser.uid, "wishlist", product);
-    });
-
-    console.log("removed");
-    // products.forEach((product) => {
-    // });
-  };
   return (
     <div className="my-[80px] flex w-full flex-col gap-[80px]">
       <div className="flex flex-col gap-[60px] ">
@@ -46,12 +40,22 @@ export const Wishlist = () => {
           <label className=" text-xl/[26px]">
             Wishlist ({products.length})
           </label>
-          <button
-            onClick={removeAllItemsFromWishlist}
-            className="rounded border border-gray-400 px-12 py-4"
+          <Form
+            action={`Move All To Bag/destroy`}
+            method="post"
+            onSubmit={(event) => {
+              if (!confirm("Please confirm you want to move them to cart.")) {
+                event.preventDefault();
+              }
+            }}
           >
-            Move All To Bag
-          </button>
+            <button
+              type="submit"
+              className="rounded border border-gray-400 px-12 py-4"
+            >
+              Move All To Bag
+            </button>
+          </Form>
         </div>
         <div className="flex flex-wrap justify-between">
           {products.map((product) => {
@@ -59,44 +63,20 @@ export const Wishlist = () => {
             const { cardImage, heading, currentPrice, oldPrice, productId } =
               product;
             return (
-              <ItemCard
-                key={productId}
-                cardImage={cardImage}
-                heading={heading}
-                currentPrice={currentPrice}
-                oldPrice={oldPrice}
-                deleteItem
-              />
+              <div key={productId}>
+                <ItemCard
+                  cardImage={cardImage}
+                  heading={heading}
+                  currentPrice={currentPrice}
+                  oldPrice={oldPrice}
+                  deleteItem
+                />
+              </div>
             );
           })}
-          {/* <ItemCard
-            cardImage={bag}
-            heading="Gucci duffle bag"
-            currentPrice="960"
-            oldPrice="1160"
-            deleteItem
-          />
-          <ItemCard
-            cardImage={speakers}
-            heading="RGB liquid CPU Cooler"
-            currentPrice="160"
-            oldPrice="170"
-            deleteItem
-          />
-          <ItemCard
-            cardImage={gamepad}
-            heading="Explore Our Products"
-            currentPrice="660"
-            deleteItem
-          />
-          <ItemCard
-            cardImage={jacket}
-            heading="Explore Our Products"
-            currentPrice="660"
-            deleteItem
-          /> */}
         </div>
       </div>
+
       <div className="flex flex-col gap-[60px] ">
         <div className="flex justify-between">
           <div className="flex items-center gap-4">
@@ -109,7 +89,7 @@ export const Wishlist = () => {
         </div>
         <div className="flex justify-between">
           <ItemCard
-            cardImage={laptop}
+            cardImage={laptopProduct.mainImage}
             heading="ASUS FHD Gaming Laptop"
             currentPrice="960"
             oldPrice="1160"
@@ -118,14 +98,14 @@ export const Wishlist = () => {
             viewItem
           />
           <ItemCard
-            cardImage={lcd}
+            cardImage={lcdProduct.mainImage}
             heading="IPS LCD Gaming Monitor"
             currentPrice="1160"
             rating="65"
             viewItem
           />
           <ItemCard
-            cardImage={gampadRed}
+            cardImage={gamepadProduct.mainImage}
             heading="HAVIT HV-G92 Gamepad"
             currentPrice="560"
             rating="65"
@@ -133,7 +113,7 @@ export const Wishlist = () => {
             viewItem
           />
           <ItemCard
-            cardImage={keyboard}
+            cardImage={keyboardProduct.mainImage}
             heading="AK-900 Wired Keyboard"
             currentPrice="200"
             rating="65"
