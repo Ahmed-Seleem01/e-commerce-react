@@ -15,7 +15,7 @@ export async function load({ request }) {
   const exploreProducts = await getCardItems("home", "exploreProducts");
   const url = new URL(request.url);
   const q = url.searchParams.get("q");
-  const searchProducts = await getProduct(q);
+  const searchProducts = q ? await getProduct(q) : [];
 
   return { flashSales, bestSelling, exploreProducts, searchProducts, q };
 }
