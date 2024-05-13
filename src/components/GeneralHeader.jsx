@@ -1,3 +1,4 @@
+import Countdown from "react-countdown";
 import arrowIcon from "../assets/icons/arrow.svg";
 import { DateCounter } from "./DateCounter";
 
@@ -16,12 +17,29 @@ export const GeneralHeader = (props) => {
           </h3>
         </div>
         {dateCounter && (
-          <div className=" mb-1 flex items-end gap-4 text-3xl text-[#E07575]">
-            <DateCounter label="Days" value={3} /> :
-            <DateCounter label="Hours" value={23} /> :
-            <DateCounter label="Minutes" value={19} /> :
-            <DateCounter label="Seconds" value={56} />
-          </div>
+          <Countdown
+            date={Date.now() + 1000 * 60 * 60 * 24 * 4} // 10 seconds from now
+            renderer={({ days, hours, minutes, seconds, completed }) => {
+              if (completed) {
+                return <span>Expired</span>;
+              } else {
+                return (
+                  <span>
+                    <div className=" mb-1 flex items-end gap-4 text-3xl text-[#E07575]">
+                      <DateCounter label="Days" value={days} /> :
+                      <DateCounter label="Hours" value={hours} /> :
+                      <DateCounter label="Minutes" value={minutes} /> :
+                      <DateCounter label="Seconds" value={seconds} />
+                    </div>
+                    {/* {days < 10 ? "0" + days : days}:{" "}
+                    {hours < 10 ? "0" + hours : hours}:
+                    {minutes < 10 ? "0" + minutes : minutes}:
+                    {seconds < 10 ? "0" + seconds : seconds} */}
+                  </span>
+                );
+              }
+            }}
+          />
         )}
       </div>
 

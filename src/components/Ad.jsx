@@ -1,3 +1,4 @@
+import Countdown from "react-countdown";
 import heroSpeaker from "../assets/images/boom-box-hero.png";
 import { DateCounterRadial } from "./DateCounterRadial";
 
@@ -11,12 +12,26 @@ export const Ad = () => {
         <h2 className=" font-Inter text-5xl/[60px] font-semibold">
           Enhance Your Music Experience
         </h2>
-        <div className="flex gap-6">
-          <DateCounterRadial label="Hours" value="23" />
-          <DateCounterRadial label="Days" value="5" />
-          <DateCounterRadial label="Minutes" value="59" />
-          <DateCounterRadial label="Seconds" value="35" />
-        </div>
+        <Countdown
+          date={Date.now() + 1000 * 60 * 60 * 24 * 6}
+          renderer={({ days, hours, minutes, seconds, completed }) => {
+            if (completed) {
+              return <span>Expired</span>;
+            } else {
+              return (
+                <span>
+                  <div className="flex gap-6">
+                    <DateCounterRadial label="Hours" value={hours} />
+                    <DateCounterRadial label="Days" value={days} />
+                    <DateCounterRadial label="Minutes" value={minutes} />
+                    <DateCounterRadial label="Seconds" value={seconds} />
+                  </div>
+                </span>
+              );
+            }
+          }}
+        />
+
         <button className="mt-2 max-w-[175px] rounded bg-[#00FF66] px-12 py-4 text-base font-medium text-white">
           Buy Now!
         </button>
