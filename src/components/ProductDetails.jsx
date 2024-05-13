@@ -1,30 +1,42 @@
-import sideImg1 from "../assets/images/product/side-image1.png";
-import sideImg2 from "../assets/images/product/side-image2.png";
-import sideImg3 from "../assets/images/product/side-image3.png";
-import sideImg4 from "../assets/images/product/side-image4.png";
-import mainImg from "../assets/images/product/main-img.png";
+// import sideImg1 from "../assets/images/product/side-image1.png";
+// import sideImg2 from "../assets/images/product/side-image2.png";
+// import sideImg3 from "../assets/images/product/side-image3.png";
+// import sideImg4 from "../assets/images/product/side-image4.png";
+// import mainImg from "../assets/images/product/main-img.png";
 import { ItemCard } from "./ItemCard";
-
-import speakers from "../assets/images/items/speaker.png";
-import lcd from "../assets/images/items/lcd.png";
-import gampadRed from "../assets/images/items/gamepad.png";
-import keyboard from "../assets/images/items/wired-keyboard.png";
 import { GeneralHeader } from "./GeneralHeader";
 import heart2 from "../assets/icons/heart2.svg";
 
 import carBlack from "../assets/icons/icon-delivery-car-black.svg";
 import returnIcon from "../assets/icons/Icon-return.svg";
 import { useLoaderData } from "react-router-dom";
-import { getProduct } from "../firebase.config";
+import { addToUserDB, auth, getProduct } from "../firebase.config";
 import { useState } from "react";
 
 export async function load({ params }) {
   const product = await getProduct(params.productName);
-  return { product };
+  const coolerProduct = await getProduct("RGB liquid CPU Cooler");
+  const lcdProduct = await getProduct("IPS LCD Gaming Monitor");
+  const gamepadProduct = await getProduct("HAVIT HV-G92 Gamepad");
+  const keyboardProduct = await getProduct("AK-900 Wired Keyboard");
+
+  return {
+    product,
+    coolerProduct,
+    lcdProduct,
+    gamepadProduct,
+    keyboardProduct,
+  };
 }
 
 export const ProductDetails = () => {
-  const { product } = useLoaderData();
+  const {
+    product,
+    coolerProduct,
+    lcdProduct,
+    gamepadProduct,
+    keyboardProduct,
+  } = useLoaderData();
   console.log(product);
   const {
     subImages,
@@ -35,9 +47,27 @@ export const ProductDetails = () => {
     currentPrice,
     description,
     rating,
-  } = product;
+    oldPrice,
+  } = product[0];
 
   const [count, setCount] = useState(1);
+
+  const addToCartHandler = () => {
+    addToUserDB(auth.currentUser.uid, "cart", {
+      cardImage: mainImage,
+      heading,
+      currentPrice,
+    });
+  };
+
+  const addToWishlistHandler = () => {
+    addToUserDB(auth.currentUser.uid, "wishlist", {
+      cardImage: mainImage,
+      heading,
+      currentPrice,
+      oldPrice,
+    });
+  };
 
   const increment = () => {
     setCount((pre) => Number(pre) + 1);
@@ -58,26 +88,6 @@ export const ProductDetails = () => {
                 alt="side image"
               />
             ))}
-            {/* <img
-              className="h-[138px] w-[170px] rounded bg-[#F5F5F5] px-6 py-3"
-              src={sideImg1}
-              alt="side image"
-            />
-            <img
-              className="h-[138px] w-[170px] rounded bg-[#F5F5F5] px-6 py-3"
-              src={sideImg2}
-              alt="side image"
-            />
-            <img
-              className="h-[138px] w-[170px] rounded bg-[#F5F5F5] px-6 py-3"
-              src={sideImg3}
-              alt="side image"
-            />
-            <img
-              className="h-[138px] w-[170px] rounded bg-[#F5F5F5] px-6 py-3"
-              src={sideImg4}
-              alt="side image"
-            /> */}
           </span>
           <span className="flex h-[600px] w-[500px] items-center justify-center rounded bg-[rgb(245,245,245)]">
             <img src={mainImage} alt="main image" />
@@ -119,7 +129,7 @@ export const ProductDetails = () => {
             <div className="flex gap-6">
               <span>Colors:</span>
               <span className="flex gap-2">
-                {colors.map((undefined, i) => (
+                {colors.map((_, i) => (
                   <span
                     key={i}
                     className="size-5 rounded-full bg-red-600 hover:border-2 hover:border-white hover:outline"
@@ -139,19 +149,6 @@ export const ProductDetails = () => {
                     {size}
                   </span>
                 ))}
-
-                {/* <span className="flex size-8 items-center justify-center rounded border">
-                  S
-                </span>
-                <span className="flex size-8 items-center justify-center rounded border">
-                  M
-                </span>
-                <span className="flex size-8 items-center justify-center rounded border">
-                  L
-                </span>
-                <span className="flex size-8 items-center justify-center rounded border">
-                  XL
-                </span> */}
               </span>
             </div>
 
@@ -172,8 +169,16 @@ export const ProductDetails = () => {
                 </button>
               </span>
 
-              <button className="primary-button h-[100%]  py-0">Buy Now</button>
-              <button className="size-10 rounded border bg-white p-2">
+              <button
+                onClick={addToCartHandler}
+                className="primary-button h-[100%]  py-0 active:invert"
+              >
+                Buy Now
+              </button>
+              <button
+                onClick={addToWishlistHandler}
+                className="size-10 rounded border bg-white p-2 active:bg-[#b44]"
+              >
                 <img src={heart2} alt="love item" />
               </button>
             </div>
@@ -214,7 +219,7 @@ export const ProductDetails = () => {
         <GeneralHeader label="Related Item" />
         <div className="flex justify-between">
           <ItemCard
-            cardImage={gampadRed}
+            cardImage={gamepadProduct[0].mainImage}
             heading="HAVIT HV-G92 Gamepad"
             currentPrice="120"
             oldPrice="160"
@@ -222,7 +227,7 @@ export const ProductDetails = () => {
             rating="88"
           />
           <ItemCard
-            cardImage={keyboard}
+            cardImage={keyboardProduct[0].mainImage}
             heading="AK-900 Wired Keyboard"
             currentPrice="960"
             oldPrice="1160"
@@ -230,7 +235,7 @@ export const ProductDetails = () => {
             rating="75"
           />
           <ItemCard
-            cardImage={lcd}
+            cardImage={lcdProduct[0].mainImage}
             heading="IPS LCD Gaming Monitor"
             currentPrice="370"
             oldPrice="400"
@@ -238,7 +243,7 @@ export const ProductDetails = () => {
             rating="99"
           />
           <ItemCard
-            cardImage={speakers}
+            cardImage={coolerProduct[0].mainImage}
             heading="RGB liquid CPU Cooler"
             currentPrice="160"
             oldPrice="170"
