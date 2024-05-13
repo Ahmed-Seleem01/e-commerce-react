@@ -6,21 +6,21 @@ import bagIcon from "../assets/icons/icon-mallbag.svg";
 import cancelIcon from "../assets/icons/icon-cancel.svg";
 import starIcon from "../assets/icons/Icon-Reviews.svg";
 import logoutIcon from "../assets/icons/Icon-logout.svg";
-import { Link, NavLink } from "react-router-dom";
+import { Form, Link, NavLink } from "react-router-dom";
 import { auth } from "../firebase.config";
 import { logout } from "../authServices";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 
-export const Header = () => {
+export const Header = ({ q }) => {
   const [user, setUser] = useState(null);
 
-  // const user = auth.currentUser;
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
-  }, []);
+    document.getElementById("q").value = q;
+  }, [q]);
 
   // Function to redirect to the home page
   const redirectToHomePage = () => {
@@ -86,13 +86,10 @@ export const Header = () => {
                 <li>
                   <a
                     href="sign-up"
-                    // className={({ isActive }) =>
-                    //   isActive ? "border-b border-black" : ""
-                    // }
                     className={`${window.location.pathname === "/sign-up" && "underline"} `}
                   >
                     Sign Up
-                  </a>{" "}
+                  </a>
                 </li>
               )}
             </ul>
@@ -100,14 +97,17 @@ export const Header = () => {
         </div>
 
         <div className="flex items-center justify-between gap-6">
-          <form className="flex h-[38px] max-w-[243px] items-center rounded-[4px]  bg-[#F5F5F5] p-0">
+          <Form className="flex h-[38px] max-w-[243px] items-center rounded-[4px]  bg-[#F5F5F5] p-0">
             <input
               className={`h-6 w-[100%] rounded-[4px] bg-[#F5F5F5] pl-2 pr-8 text-[12px]/[18px] outline-0`}
               type="text"
               placeholder="What are you looking for?"
+              name="q"
+              id="q"
+              defaultValue={q}
             />
             <img className="ml-[-25px] size-4" src={search} alt="search icon" />
-          </form>
+          </Form>
 
           {window.location.pathname !== "/login" &&
             window.location.pathname !== "/sign-up" && (
