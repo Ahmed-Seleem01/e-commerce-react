@@ -21,6 +21,7 @@ export const FlashSales = (props) => {
             oldPrice={card.oldPrice}
             discount={card.discount}
             rating={card.rating}
+            ratingValue={card.ratingValue}
           />
         ))}
       </div>

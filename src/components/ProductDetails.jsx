@@ -12,6 +12,7 @@ import returnIcon from "../assets/icons/Icon-return.svg";
 import { useLoaderData } from "react-router-dom";
 import { addToUserDB, auth, getProduct } from "../firebase.config";
 import { useState } from "react";
+import StarRating from "./StarRating";
 
 export async function load({ params }) {
   const product = await getProduct(params.productName);
@@ -47,6 +48,7 @@ export const ProductDetails = () => {
     currentPrice,
     description,
     rating,
+    ratingValue,
     oldPrice,
   } = product[0];
 
@@ -102,13 +104,10 @@ export const ProductDetails = () => {
               <div className="flex  items-center gap-3">
                 <div className=" flex items-center gap-4 text-gray-400">
                   <span className="flex items-center gap-2">
-                    <span className="flex gap-1">
-                      <span className=" text-xl text-gray-400">&#9733;</span>
-                      <span className=" text-xl text-gray-400">&#9733;</span>
-                      <span className=" text-xl text-gray-400">&#9733;</span>
-                      <span className=" text-xl text-gray-400">&#9733;</span>
-                      <span className=" text-xl text-gray-400">&#9733;</span>
-                    </span>
+                    <StarRating
+                      totalStars={5}
+                      ratingValue={ratingValue ? ratingValue : 0}
+                    />
                     <span>({rating} Reviews)</span>
                   </span>
 
@@ -225,6 +224,7 @@ export const ProductDetails = () => {
             oldPrice="160"
             discount="40"
             rating="88"
+            ratingValue={gamepadProduct[0].ratingValue}
           />
           <ItemCard
             cardImage={keyboardProduct[0].mainImage}
@@ -233,6 +233,7 @@ export const ProductDetails = () => {
             oldPrice="1160"
             discount="35"
             rating="75"
+            ratingValue={5}
           />
           <ItemCard
             cardImage={lcdProduct[0].mainImage}
@@ -241,6 +242,7 @@ export const ProductDetails = () => {
             oldPrice="400"
             discount="30"
             rating="99"
+            ratingValue={5}
           />
           <ItemCard
             cardImage={coolerProduct[0].mainImage}
@@ -248,6 +250,7 @@ export const ProductDetails = () => {
             currentPrice="160"
             oldPrice="170"
             rating="65"
+            ratingValue={5}
           />
         </div>
       </div>

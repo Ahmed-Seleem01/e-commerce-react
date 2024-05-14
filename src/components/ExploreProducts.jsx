@@ -29,6 +29,7 @@ export const ExploreProducts = ({ cards }) => {
             rating={card.rating}
             newItem={card.new ? true : false}
             colors={card.cardColors ? card.cardColors : ""}
+            ratingValue={card.ratingValue}
           />
         ))}
       </div>

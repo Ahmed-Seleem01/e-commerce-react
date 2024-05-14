@@ -2,7 +2,6 @@ import { ItemCard } from "./ItemCard";
 import { auth, getProduct, getUserWishlistItems } from "../firebase.config";
 import { Form, useLoaderData } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { onAuthStateChanged } from "firebase/auth";
 
 export async function load() {
   console.log(auth);
@@ -89,35 +88,39 @@ export const Wishlist = () => {
         </div>
         <div className="flex justify-between">
           <ItemCard
-            cardImage={laptopProduct.mainImage}
-            heading="ASUS FHD Gaming Laptop"
-            currentPrice="960"
-            oldPrice="1160"
-            discount="35"
-            rating="65"
+            cardImage={laptopProduct[0].mainImage}
+            heading={laptopProduct[0].heading}
+            currentPrice={laptopProduct[0].currentPrice}
+            oldPrice={1160}
+            discount={laptopProduct[0].discount}
+            rating={laptopProduct[0].rating}
             viewItem
+            ratingValue={laptopProduct[0].ratingValue}
           />
           <ItemCard
-            cardImage={lcdProduct.mainImage}
-            heading="IPS LCD Gaming Monitor"
-            currentPrice="1160"
-            rating="65"
+            cardImage={lcdProduct[0].mainImage}
+            heading={lcdProduct[0].heading}
+            currentPrice={lcdProduct[0].currentPrice}
+            rating={lcdProduct[0].rating}
             viewItem
+            ratingValue={lcdProduct[0].ratingValue}
           />
           <ItemCard
-            cardImage={gamepadProduct.mainImage}
-            heading="HAVIT HV-G92 Gamepad"
-            currentPrice="560"
-            rating="65"
+            cardImage={gamepadProduct[0].mainImage}
+            heading={gamepadProduct[0].heading}
+            currentPrice={gamepadProduct[0].currentPrice}
+            rating={gamepadProduct[0].rating}
             newItem
             viewItem
+            ratingValue={gamepadProduct[0].ratingValue}
           />
           <ItemCard
-            cardImage={keyboardProduct.mainImage}
-            heading="AK-900 Wired Keyboard"
-            currentPrice="200"
-            rating="65"
+            cardImage={keyboardProduct[0].mainImage}
+            heading={keyboardProduct[0].heading}
+            currentPrice={keyboardProduct[0].currentPrice}
+            rating={keyboardProduct[0].rating}
             viewItem
+            ratingValue={keyboardProduct[0].ratingValue}
           />
         </div>
       </div>

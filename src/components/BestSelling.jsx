@@ -19,6 +19,7 @@ export const BestSelling = ({ cards }) => {
               currentPrice={card.currentPrice}
               oldPrice={card.oldPrice}
               rating={card.rating}
+              ratingValue={card.ratingValue}
             />
           ))}
         </div>
