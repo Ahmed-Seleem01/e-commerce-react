@@ -8,6 +8,7 @@ import { FlashSales } from "./FlashSales";
 import { NewArrival } from "./NewArrival";
 import { OpenningSection } from "./OpenningSection";
 import { ItemCard } from "./ItemCard";
+import arrowUp from "../assets/icons/icons_arrow-up.svg";
 
 export async function load({ request }) {
   const flashSales = await getCardItems("home", "flashSales");
@@ -21,6 +22,12 @@ export async function load({ request }) {
 }
 
 export const Home = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   const { flashSales, bestSelling, exploreProducts, searchProducts, q } =
     useLoaderData();
 
@@ -33,6 +40,12 @@ export const Home = () => {
       <Ad />
       <ExploreProducts cards={exploreProducts.cards} />
       <NewArrival />
+      <button
+        onClick={scrollToTop}
+        className=" mr-[-23px] size-[46px] self-end rounded-full bg-[#F5F5F5] p-3"
+      >
+        <img src={arrowUp} alt="go to the top of the bag " />
+      </button>
     </div>
   ) : searchProducts.length ? (
     <div className="flex min-h-[100vh] items-center gap-5">
