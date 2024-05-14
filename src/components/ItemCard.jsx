@@ -19,6 +19,11 @@ export const ItemCard = (props) => {
     viewItem,
     ratingValue,
   } = props;
+
+  // const color1 = colors ? `bg-${colors[0]}-600` : "bg-yellow-400";
+  // const color2 = colors ? `bg-${colors[1]}-600` : "bg-red-400";
+  // console.log(colors);
+  // console.log(color1);
   console.log(ratingValue);
   const addToCartHandler = () => {
     addToUserDB(auth.currentUser.uid, "cart", {
@@ -103,11 +108,13 @@ export const ItemCard = (props) => {
       </div>
       <div className="relative z-20 flex flex-col gap-2 bg-white pt-4 text-base font-medium ">
         <h4>{heading}</h4>
-        <div className="flex w-[80%] flex-wrap items-center gap-3">
+        <div className="flex w-[85%] flex-wrap items-center gap-3">
           <div className="flex items-center gap-3">
             <span className="text-[#DB4444]">${currentPrice}</span>
-            {oldPrice && (
+            {oldPrice ? (
               <span className=" text-gray-500 line-through">${oldPrice}</span>
+            ) : (
+              ""
             )}
           </div>
           {rating && (
@@ -124,8 +131,14 @@ export const ItemCard = (props) => {
         </div>
         {colors && (
           <div className="flex gap-2">
-            <span className="size-5 rounded-full bg-red-600 hover:border-2 hover:border-white hover:outline"></span>
-            <span className="size-5 rounded-full bg-red-600 hover:border-2 hover:border-white hover:outline"></span>
+            <span
+              className="size-5 rounded-full hover:border-2 hover:border-white hover:outline"
+              style={{ backgroundColor: colors[0] }}
+            ></span>
+            <span
+              className="size-5 rounded-full hover:border-2 hover:border-white hover:outline"
+              style={{ backgroundColor: colors[1] }}
+            ></span>
           </div>
         )}
       </div>

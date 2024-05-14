@@ -131,7 +131,8 @@ export const ProductDetails = () => {
                 {colors.map((_, i) => (
                   <span
                     key={i}
-                    className="size-5 rounded-full bg-red-600 hover:border-2 hover:border-white hover:outline"
+                    className="size-5 rounded-full hover:border-2 hover:border-white hover:outline"
+                    style={{ backgroundColor: colors[i] }}
                   ></span>
                 ))}
               </span>
