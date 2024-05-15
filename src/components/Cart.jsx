@@ -1,27 +1,43 @@
-import { useLoaderData } from "react-router-dom";
-import lcd from "../assets/images/items/lcd.png";
-import gamepad from "../assets/images/items/gamepad.png";
+import { Link, useLoaderData } from "react-router-dom";
+// import lcd from "../assets/images/items/lcd.png";
+// import gamepad from "../assets/images/items/gamepad.png";
+import { auth, getUserCartItems, removeFromUserDB } from "../firebase.config";
+import { ItemsCounter } from "./ItemsCounter";
+import { useEffect, useRef, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { PathDisplay } from "./PathDisplay";
 
 export async function load() {
-  const products = [
-    {
-      image: lcd,
-      heading: "LCD Monitor",
-      price: "650",
-    },
-    {
-      image: gamepad,
-      heading: "H1Gamepad",
-      price: "550",
-    },
-  ];
-  return { products };
+  const user = auth.currentUser;
+  const productsItems = await getUserCartItems(user.uid);
+  return { productsItems };
 }
 
 export const Cart = () => {
-  const { products } = useLoaderData();
+  const [subTotal, setSubTotal] = useState(0);
+  console.log(subTotal);
+  const shipping = 1;
+  const subTotalRef = useRef(0);
+
+  const { productsItems } = useLoaderData();
+  const { productItems: products } = productsItems;
+  console.log(products);
+
+  const updateCart = () => {
+    removeFromUserDB(auth.currentUser.uid, "cart");
+    setSubTotal(12);
+  };
+
+  useEffect(() => {
+    // setSubTotal(subTotalRef.current);
+    subTotalRef.current = 0;
+  }, []);
+
+  // console.log(subTotal.current);
   return (
-    <div className="mt-[80px] w-full">
+    <div className="w-full">
+      <PathDisplay path={window.location.pathname} />
+
       <div className="flex flex-col gap-10">
         <ul
           style={{ boxShadow: "0px 0px 10px 1px #eee" }}
@@ -32,40 +48,49 @@ export const Cart = () => {
           <li>Quantity</li>
           <li className="justify-self-end">Subtotal</li>
         </ul>
-        {products.map((product, i) => (
-          <ul
-            key={i}
-            style={{ boxShadow: "0px 0px 10px 1px #eee" }}
-            className="grid w-full grid-cols-4 items-center justify-items-center bg-white px-10 py-6 drop-shadow-sm filter "
-          >
-            <li className="flex items-center gap-5  justify-self-start">
-              <img
-                className="size-[54px] object-contain"
-                src={product.image}
-                alt={product.heading}
+        {products.map((product) => {
+          product.productId = uuidv4();
+          const {
+            cardImage: image,
+            currentPrice: price,
+            heading,
+            productId,
+          } = product;
+
+          return (
+            <ul
+              key={productId}
+              style={{ boxShadow: "0px 0px 10px 1px #eee" }}
+              className="grid w-full grid-cols-4 items-center justify-items-center bg-white px-10 py-6 drop-shadow-sm filter "
+            >
+              <li className="flex items-center gap-5  justify-self-start">
+                <img
+                  className="size-[54px] object-contain"
+                  src={image}
+                  alt={heading}
+                />
+                {heading}
+              </li>
+              <li className="justify-self-center">${price}</li>
+              <ItemsCounter
+                price={price}
+                subTotalRef={subTotalRef}
+                setSubTotal={setSubTotal}
               />
-              {product.heading}
-            </li>
-            <li className="justify-self-center">${product.price}</li>
-            <li>
-              <input
-                className=" flex w-[72px] items-center justify-center rounded border px-3 py-[6px]"
-                type="number"
-                defaultValue={1}
-                min="01"
-              />
-            </li>
-            <li className=" w-[65px] justify-self-end text-start">
-              ${product.price * 1}
-            </li>
-          </ul>
-        ))}
+            </ul>
+          );
+        })}
 
         <div className="mt-[-16px] flex justify-between">
           <button className="rounded border px-12 py-4  font-medium">
-            Return To Shop
+            <Link to=".." path="relative">
+              Return To Shop
+            </Link>
           </button>
-          <button className="rounded border px-12 py-4  font-medium">
+          <button
+            onClick={updateCart}
+            className="rounded border px-12 py-4  font-medium"
+          >
             Update Cart
           </button>
         </div>
@@ -85,17 +110,17 @@ export const Cart = () => {
           <div className="flex flex-col py-6">
             <ul className="flex flex-col  gap-4 ">
               <li className="flex justify-between border-b pb-4">
-                <span>Subtotal</span> ${1170}
+                <span>Subtotal</span> ${subTotalRef.current}
               </li>
               <li className="flex justify-between border-b pb-4">
-                <span>Shipping</span> Free
+                <span>Shipping</span> {shipping === 1 ? "Free" : shipping}
               </li>
               <li className="flex justify-between pb-4">
-                <span>Total</span> ${1170}
+                <span>Total</span> ${subTotalRef.current * shipping}
               </li>
             </ul>
             <button className="primary-button self-center">
-              Process to checkout
+              <Link to="checkout">Process to checkout</Link>
             </button>
           </div>
         </div>
