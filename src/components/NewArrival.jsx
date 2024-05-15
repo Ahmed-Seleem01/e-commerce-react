@@ -11,7 +11,7 @@ import secure from "../assets/icons/Icon-secure.svg";
 
 export const NewArrival = () => {
   return (
-    <div className="mb-[140px]">
+    <div>
       <GeneralHeader label="Featured" heading="New Arrival" />
       <div className="mb-[140px] mt-[60px] flex justify-between ">
         <FeatureCard

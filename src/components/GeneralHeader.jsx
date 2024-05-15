@@ -24,17 +24,13 @@ export const GeneralHeader = (props) => {
                 return <span>Expired</span>;
               } else {
                 return (
-                  <span>
+                  <span className=" self-end">
                     <div className=" mb-1 flex items-end gap-4 text-3xl text-[#E07575]">
                       <DateCounter label="Days" value={days} /> :
                       <DateCounter label="Hours" value={hours} /> :
                       <DateCounter label="Minutes" value={minutes} /> :
                       <DateCounter label="Seconds" value={seconds} />
                     </div>
-                    {/* {days < 10 ? "0" + days : days}:{" "}
-                    {hours < 10 ? "0" + hours : hours}:
-                    {minutes < 10 ? "0" + minutes : minutes}:
-                    {seconds < 10 ? "0" + seconds : seconds} */}
                   </span>
                 );
               }

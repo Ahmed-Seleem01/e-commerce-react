@@ -33,7 +33,7 @@ export const Wishlist = () => {
   const { productItems: products } = productsItems;
 
   return (
-    <div className="my-[80px] flex w-full flex-col gap-[80px]">
+    <div className="mt-[80px] flex w-full flex-col gap-[80px]">
       <div className="flex flex-col gap-[60px] ">
         <div className="flex items-center justify-between">
           <label className=" text-xl/[26px]">

@@ -34,14 +34,20 @@ export const Header = ({ q }) => {
   };
 
   return (
-    <div className="col-span-full row-span-1 flex w-[100%] flex-col">
+    <div className=" sticky top-0 z-40 col-span-full row-span-1 flex w-[100%] flex-col">
+      <span className="absolute top-0 z-[-1] inline-block h-full w-[100vw] self-center bg-white"></span>
       <div className="relative flex h-[48px] w-[100%] items-stretch justify-center self-center py-3 text-[#FAFAFA] before:absolute before:top-0 before:z-[-1]  before:h-[100%] before:w-[100vw] before:bg-black before:content-['']">
         <p className="text-center text-sm/6">
           Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
           <a className=" ml-2 font-semibold underline">ShopNow</a>
         </p>
         <select className="absolute right-0 bg-transparent text-sm/6">
-          <option value="english">English</option>
+          <option className=" text-black" value="english">
+            English
+          </option>
+          <option className=" text-black" value="arabic">
+            Arabic
+          </option>
         </select>
       </div>
       <div className="mb-4 mt-10 flex h-[38px] items-center justify-between">
@@ -116,7 +122,7 @@ export const Header = ({ q }) => {
                   <img src={heart} alt="heart icon" />
                 </Link>
 
-                <Link to="cart">
+                <Link to="account/cart">
                   <img src={cart} alt="cart icon" />
                 </Link>
 
@@ -135,7 +141,10 @@ export const Header = ({ q }) => {
                         </NavLink>
                       </li>
                       <li className="flex gap-4 text-[14px]/[21px] text-white hover:underline">
-                        <NavLink className="flex gap-4" to="checkout">
+                        <NavLink
+                          className="flex gap-4"
+                          to="account/cart/checkout"
+                        >
                           <img src={bagIcon} alt="orders icon" /> My Order
                         </NavLink>
                       </li>

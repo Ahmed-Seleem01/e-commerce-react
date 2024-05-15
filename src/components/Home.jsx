@@ -30,9 +30,8 @@ export const Home = () => {
   };
   const { flashSales, bestSelling, exploreProducts, searchProducts, q } =
     useLoaderData();
-
   return !q ? (
-    <div className="flex w-[100%] flex-col gap-[140px]">
+    <div className="mb-8  flex w-[100%] flex-col gap-[140px]">
       <OpenningSection />
       <FlashSales cards={flashSales.cards} />
       <Category />
@@ -42,7 +41,7 @@ export const Home = () => {
       <NewArrival />
       <button
         onClick={scrollToTop}
-        className=" mr-[-23px] size-[46px] self-end rounded-full bg-[#F5F5F5] p-3"
+        className=" mr-[-23px] mt-[-78px] size-[46px] self-end rounded-full bg-[#F5F5F5] p-3"
       >
         <img src={arrowUp} alt="go to the top of the bag " />
       </button>

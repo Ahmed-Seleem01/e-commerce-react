@@ -9,7 +9,7 @@ import gamepad from "../assets/icons/category/Category-Gamepad.svg";
 
 export const Category = () => {
   return (
-    <div className=" border-b border-t pb-[70px] pt-[80px]">
+    <div className=" border-b-2 border-t-2 pb-[70px] pt-[80px]">
       <GeneralHeader label="Categories" heading="Browse By Category" toggle />
       <div className="mt-[60px] flex justify-between">
         <CategoryCard image={phone} heading="Phones" />
