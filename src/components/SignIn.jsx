@@ -58,7 +58,7 @@ export const SignIn = () => {
   return (
     <>
       {!isUser ? (
-        <div className="mb-[140px] mt-[60px] flex w-[100%] items-center justify-between">
+        <div className=" mt-[60px] flex w-[100%] items-center justify-between">
           <img
             className="ml-[-100px] w-auto max-w-[800px]"
             src={sideImage}
