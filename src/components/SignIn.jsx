@@ -58,13 +58,13 @@ export const SignIn = () => {
   return (
     <>
       {!isUser ? (
-        <div className=" mt-[60px] flex w-[100%] items-center justify-between">
+        <div className=" mt-[60px] flex w-[100%] flex-col items-center justify-between gap-20 md:flex-row md:flex-wrap md:gap-0">
           <img
-            className="ml-[-100px] w-auto max-w-[800px]"
+            className="w-auto md:ml-[-100px] md:max-w-[800px]"
             src={sideImage}
             alt="side page image"
           />
-          <form className=" w-[370px]">
+          <form className=" md:w-[370px]">
             <div className="mb-12">
               <h2 className=" mb-6 font-Inter text-[36px]/[30px] font-semibold">
                 Log in to Exclusive

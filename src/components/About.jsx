@@ -20,8 +20,8 @@ export const About = () => {
     <div>
       <PathDisplay path={window.location.pathname} />
       <div className="mt-[-40px] flex flex-col gap-[140px]">
-        <div className="flex items-center justify-between">
-          <div className="w-[525px]">
+        <div className="flex flex-col items-center justify-between md:flex-row md:max-lg:flex-wrap">
+          <div className="md:w-[525px]">
             <h1 className="font-Inter text-[54px]/[64px] font-semibold">
               Our Story
             </h1>
@@ -38,9 +38,10 @@ export const About = () => {
               ranging from consumer.
             </p>
           </div>
-          <div className="mr-[-90px] h-[605px] w-[705px] bg-[#EB7EA8]"></div>
+          <div className="hidden h-[605px] w-[655px] bg-[#EB7EA8] md:mr-[-140px] md:inline-block"></div>
         </div>
-        <div className="flex justify-between">
+
+        <div className="flex flex-col justify-between gap-10 self-center md:flex-row md:gap-0 md:self-start md:max-lg:flex-wrap">
           <AboutCard
             image={shop}
             heading="10.5k"
@@ -62,8 +63,9 @@ export const About = () => {
             description="Anual gross sale in our site"
           />
         </div>
+
         <div className="flex flex-col gap-10">
-          <div className="flex justify-between">
+          <div className="flex flex-col justify-between gap-10 md:flex-row md:gap-0 md:max-lg:flex-wrap">
             <AboutCardPerson
               image={tom}
               heading="Tom Cruise"
@@ -88,7 +90,7 @@ export const About = () => {
             <span className="inline-block size-3 rounded-full bg-gray-500 hover:border-2 hover:bg-[#DB4444] hover:outline hover:outline-gray-400 "></span>
           </div>
         </div>
-        <div className="flex justify-between gap-[30px]">
+        <div className="flex flex-col justify-between gap-[30px] md:flex-row">
           <FeatureCardSmall
             image={delivery}
             heading="FREE AND FAST DELIVERY"

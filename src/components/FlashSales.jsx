@@ -9,9 +9,9 @@ export const FlashSales = (props) => {
   const { cards } = props;
   console.log(cards);
   return (
-    <div className="flex w-[105%] flex-col gap-10 pr-10">
+    <div className="flex flex-col gap-10 md:w-[105%]  md:pr-10">
       <GeneralHeader label="Today’s" heading="Flash Sales" toggle dateCounter />
-      <div className="scrol flex w-[100vw] gap-[30px] overflow-x-scroll pr-40">
+      <div className="flex flex-col gap-[30px] self-center   md:flex-row md:max-lg:flex-wrap  lg:w-[110%] lg:self-start lg:overflow-x-scroll lg:pr-40">
         {cards.map((card) => (
           <ItemCard
             key={card.productId}

@@ -9,12 +9,15 @@ import logoutIcon from "../assets/icons/Icon-logout.svg";
 import { Form, Link, NavLink } from "react-router-dom";
 import { auth } from "../firebase.config";
 import { logout } from "../authServices";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
+import appContext from "./general/context/app-context";
 
 export const Header = ({ q }) => {
+  const { value } = useContext(appContext);
+  console.log(value);
   const [user, setUser] = useState(null);
-
+  const [menu, setMenu] = useState("-80vw");
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setUser(user);
@@ -33,10 +36,19 @@ export const Header = ({ q }) => {
     redirectToHomePage();
   };
 
+  const openMenu = () => {
+    console.log("clicked");
+    setMenu(0);
+  };
+
+  const closeMenu = () => {
+    console.log("clicked");
+    setMenu("-80vw");
+  };
   return (
     <div className=" sticky top-0 z-40 col-span-full row-span-1 flex w-[100%] flex-col">
       <span className="absolute top-0 z-[-1] inline-block h-full w-[100vw] self-center bg-white"></span>
-      <div className="relative flex h-[48px] w-[100%] items-stretch justify-center self-center py-3 text-[#FAFAFA] before:absolute before:top-0 before:z-[-1]  before:h-[100%] before:w-[100vw] before:bg-black before:content-['']">
+      <div className="relative flex w-[100%] items-stretch justify-center self-center py-3 text-[#FAFAFA] before:absolute before:top-0 before:z-[-1] before:h-[100%]  before:w-[100vw] before:bg-black md:h-[48px]">
         <p className="text-center text-sm/6">
           Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
           <a className=" ml-2 font-semibold underline">ShopNow</a>
@@ -50,14 +62,174 @@ export const Header = ({ q }) => {
           </option>
         </select>
       </div>
-      <div className="mb-4 mt-10 flex h-[38px] items-center justify-between">
-        <div className=" flex w-[60%] max-w-[675px] items-center justify-between text-black">
-          <h1 className=" font-Inter text-2xl/6 font-bold">
-            {" "}
-            <NavLink to="">Exclusive</NavLink>
-          </h1>
-          <nav>
-            <ul className="flex items-center justify-between gap-12 text-[16px]/6">
+
+      <div className=" mb-4 mt-5 flex flex-col gap-5 md:mt-10  md:h-[38px] md:flex-row md:justify-between md:px-5 ">
+        <div className=" flex flex-col gap-5 text-black  md:w-[60%] md:max-w-[675px] md:flex-row md:items-center md:justify-between md:gap-0 md:self-center">
+          <div className="flex w-full items-center  gap-5 self-start md:self-center">
+            <button
+              className="flex w-6 flex-col gap-1 active:bg-gray-300 md:hidden"
+              onClick={openMenu}
+            >
+              <span className="h-[2px] w-[50%] bg-black"></span>
+              <span className="h-[2px] w-[75%] bg-black"></span>
+              <span className="h-[2px] w-full bg-black"></span>
+            </button>
+
+            <div
+              className=" absolute left-[-20px] top-0 flex h-[100vh] w-[80vw] flex-col gap-10 bg-gray-100  p-5  transition-transform md:hidden"
+              style={{ transform: `translateX(${menu})` }}
+            >
+              <button
+                className="flex size-6 flex-col justify-between border active:bg-gray-200"
+                onClick={closeMenu}
+              >
+                <span className="inline-block h-[2px] w-full translate-y-[10px]  rotate-45 bg-black"></span>
+                <span className="inline-block h-[2px] w-full -translate-y-[10px] -rotate-45 bg-black"></span>
+              </button>
+              <nav>
+                <ul className="flex flex-col  justify-between gap-5 text-[16px]/6 md:gap-12">
+                  <li>
+                    <NavLink
+                      to=""
+                      className={({ isActive }) =>
+                        isActive ? "border-b border-black" : ""
+                      }
+                    >
+                      Home
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="contact"
+                      className={({ isActive }) =>
+                        isActive ? "border-b border-black" : ""
+                      }
+                    >
+                      Contact
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="about"
+                      className={({ isActive }) =>
+                        isActive ? "border-b border-black" : ""
+                      }
+                    >
+                      About
+                    </NavLink>{" "}
+                  </li>
+                  {!user && (
+                    <>
+                      <li>
+                        <a
+                          href="sign-up"
+                          className={`${window.location.pathname === "/sign-up" && "underline"} `}
+                        >
+                          Sign Up
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="login"
+                          className={`${window.location.pathname === "/sign-in" && "underline"} `}
+                        >
+                          Login in
+                        </a>
+                      </li>
+                    </>
+                  )}
+                  {window.location.pathname !== "/login" &&
+                    window.location.pathname !== "/sign-up" && (
+                      <div className="flex items-center gap-4">
+                        {user && (
+                          <li>
+                            <ul className="flex flex-col gap-3">
+                              <li className=" text-[14px]/[21px] hover:underline">
+                                <NavLink
+                                  className="flex items-center gap-4"
+                                  to="account"
+                                >
+                                  <img
+                                    className="invert"
+                                    src={userIcon}
+                                    alt="user account"
+                                  />{" "}
+                                  Manage My Account
+                                </NavLink>
+                              </li>
+                              <li className="flex gap-4 text-[14px]/[21px] hover:underline">
+                                <NavLink
+                                  className="flex items-center gap-4"
+                                  to="account/cart/checkout"
+                                >
+                                  <img
+                                    className="invert"
+                                    src={bagIcon}
+                                    alt="orders icon"
+                                  />{" "}
+                                  My Order
+                                </NavLink>
+                              </li>
+
+                              <li className="flex items-center gap-4 text-[14px]/[21px] hover:underline">
+                                <img
+                                  className="invert"
+                                  src={cancelIcon}
+                                  alt="cancel icon"
+                                />{" "}
+                                My Cancellations
+                              </li>
+
+                              <li className="flex items-center gap-4 text-[14px]/[21px] hover:underline">
+                                <img
+                                  className="invert"
+                                  src={starIcon}
+                                  alt="reviews icon"
+                                />{" "}
+                                My Reviews
+                              </li>
+
+                              <li
+                                onClick={logoutHandler}
+                                className="flex cursor-pointer items-center gap-4  text-[14px]/[21px] hover:underline"
+                              >
+                                <img
+                                  src={logoutIcon}
+                                  className="invert"
+                                  alt="logout icon"
+                                />{" "}
+                                Logout
+                              </li>
+                            </ul>
+                          </li>
+                        )}
+                      </div>
+                    )}
+                </ul>
+              </nav>
+            </div>
+
+            <h1 className=" font-Inter text-2xl/6 font-bold">
+              <NavLink to="">Exclusive</NavLink>
+            </h1>
+
+            {window.location.pathname !== "/login" &&
+              window.location.pathname !== "/sign-up" && (
+                <div className="ml-auto flex items-center gap-4 md:hidden">
+                  <Link to="wishlist">
+                    <img src={heart} alt="heart icon" />
+                  </Link>
+
+                  <Link to="account/cart">
+                    <img src={cart} alt="cart icon" />
+                    <span className="text-black">{value}</span>
+                  </Link>
+                </div>
+              )}
+          </div>
+
+          <nav className="hidden md:block">
+            <ul className="flex items-center justify-between gap-5 text-[16px]/6 md:gap-12">
               <li>
                 <NavLink
                   to=""
@@ -92,7 +264,7 @@ export const Header = ({ q }) => {
                 <li>
                   <a
                     href="sign-up"
-                    className={`${window.location.pathname === "/sign-up" && "underline"} `}
+                    className={`${window.location.pathname === "/sign-up" && "underline"} text-nowrap`}
                   >
                     Sign Up
                   </a>
@@ -102,7 +274,7 @@ export const Header = ({ q }) => {
           </nav>
         </div>
 
-        <div className="flex items-center justify-between gap-6">
+        <div className="items-center justify-between gap-6 self-center md:flex">
           <Form className="flex h-[38px] max-w-[243px] items-center rounded-[4px]  bg-[#F5F5F5] p-0">
             <input
               className={`h-6 w-[100%] rounded-[4px] bg-[#F5F5F5] pl-2 pr-8 text-[12px]/[18px] outline-0`}
@@ -117,17 +289,18 @@ export const Header = ({ q }) => {
 
           {window.location.pathname !== "/login" &&
             window.location.pathname !== "/sign-up" && (
-              <div className="flex items-center gap-4">
+              <div className=" hidden items-center gap-4 md:flex">
                 <Link to="wishlist">
                   <img src={heart} alt="heart icon" />
                 </Link>
 
                 <Link to="account/cart">
+                  <span className="text-black">{value}</span>
                   <img src={cart} alt="cart icon" />
                 </Link>
 
-                {user && (
-                  <div className="group relative">
+                {user ? (
+                  <div className="group relative hidden md:block">
                     <img
                       className="rounded-full p-1 invert hover:bg-[#DB4444] hover:invert-0"
                       src={userIcon}
@@ -166,11 +339,19 @@ export const Header = ({ q }) => {
                       </li>
                     </ul>
                   </div>
+                ) : (
+                  <a
+                    href="login"
+                    className={`${window.location.pathname === "/sign-up" && "underline"} text-nowrap`}
+                  >
+                    Login
+                  </a>
                 )}
               </div>
             )}
         </div>
       </div>
+
       <div className=" w-[100vw] self-center border-b-[1px] border-gray-300"></div>
     </div>
   );

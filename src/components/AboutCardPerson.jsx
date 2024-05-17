@@ -6,7 +6,7 @@ import linkedin from "../assets/icons/linkedin.svg";
 export const AboutCardPerson = (props) => {
   const { image, heading, description } = props;
   return (
-    <div className="flex h-[564px] w-[370px] flex-col">
+    <div className="flex flex-col md:h-[564px] md:w-[370px]">
       <div className="flex items-end justify-center bg-gray-200">
         <img className=" mt-10 object-contain" src={image}></img>
       </div>

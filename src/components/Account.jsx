@@ -1,16 +1,27 @@
+import { auth } from "../firebase.config";
 import { PathDisplay } from "./PathDisplay";
 
 export const Account = () => {
+  const userName = auth.currentUser.displayName;
+  console.log(userName);
+  const nameArr = userName.split(" ");
   return (
     <div>
-      <PathDisplay path={window.location.pathname} />
-      <div className="flex w-full justify-between">
+      <div className="mb-16 flex w-full flex-col justify-between md:mb-0 md:flex-row md:items-center ">
+        <PathDisplay path={window.location.pathname} />
+        <span className="-mt-14">
+          Welcome! <h2 className=" inline-block text-[#DB4444]">{userName}</h2>
+        </span>
+      </div>
+      <div className="flex w-full flex-col justify-between gap-10 md:flex-row md:gap-0 md:max-lg:flex-wrap">
         <div className="flex flex-col gap-6">
           <div>
             <h3 className=" font-medium">Manage My Account</h3>
             <ul className="ml-[35px] text-gray-400">
               <li className="mt-4">
-                <a href="#">My Profile</a>
+                <a className="text-[#DB4444]" href="#">
+                  My Profile
+                </a>
               </li>
               <li>
                 <a href="#">Address Book</a>
@@ -34,15 +45,15 @@ export const Account = () => {
         </div>
 
         <div>
-          <form className="flex max-h-[630px] flex-col gap-6 px-[80px] py-10 shadow-md">
+          <form className="flex flex-col gap-6 px-5 py-10 shadow-md md:max-h-[630px] lg:px-[80px]">
             <h3 className="text-xl font-medium text-[#DB4444]">
               Edit Your Profile
             </h3>
-            <span className="flex gap-[50px]">
+            <span className="flex flex-col gap-[50px] md:flex-row">
               <label className=" flex flex-col gap-2">
                 <span>First Name</span>
                 <input
-                  placeholder="Md"
+                  placeholder={nameArr[0] ? `${nameArr[0]}` : ""}
                   className="h-[50px] rounded bg-[#F5F5F5] px-4 py-3"
                   type="text"
                   name="firstName"
@@ -52,7 +63,7 @@ export const Account = () => {
               <label className="flex flex-col gap-2">
                 <span>Last Name</span>
                 <input
-                  placeholder="Rimel"
+                  placeholder={nameArr[1] ? `${nameArr[1]}` : ""}
                   className="h-[50px] rounded bg-[#F5F5F5] px-4 py-3"
                   type="text"
                   name="firstName"
@@ -60,11 +71,11 @@ export const Account = () => {
                 />
               </label>
             </span>
-            <span className="flex gap-[50px]">
+            <span className="flex flex-col gap-[50px] md:flex-row">
               <label className="flex flex-col gap-2">
                 <span>Email</span>
                 <input
-                  placeholder="rimel1111@gmail.com"
+                  placeholder={auth.currentUser.email}
                   className="h-[50px] rounded bg-[#F5F5F5] px-4 py-3"
                   type="email"
                   name="emailAddress"
@@ -99,16 +110,16 @@ export const Account = () => {
                   name=""
                 />
                 <input
-                  placeholder="Confirm New Passwod"
+                  placeholder="Confirm New Password"
                   className="h-[50px] rounded bg-[#F5F5F5] px-4 py-3"
                   type="password"
                   name=""
                 />
               </label>
             </span>
-            <span className="flex items-center gap-8 self-end">
+            <span className="flex w-full items-center justify-between gap-8 md:w-auto md:justify-start md:self-end ">
               <button>Cancel</button>
-              <button className=" primary-button font-medium">
+              <button className=" primary-button px-5 text-sm  font-medium md:px-10 md:text-base">
                 Save Changes
               </button>
             </span>

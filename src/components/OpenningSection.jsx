@@ -4,16 +4,16 @@ import heroPhone from "../assets/images/hero_phone.png";
 
 export const OpenningSection = () => {
   return (
-    <div className="flex justify-between ">
-      <nav className="border-r-2 pr-4 pt-10">
-        <ul className="flex w-[217px] flex-col gap-4 ">
-          <li className="flex w-[100%] items-center justify-between">
+    <div className="flex flex-col items-center justify-between md:flex-row md:items-start md:gap-[45px]">
+      <nav className=" self-stretch pr-4 pt-10 md:border-r-2">
+        <ul className="flex flex-col items-center gap-4 md:w-[217px] md:items-stretch">
+          <li className="flex items-center justify-between md:w-[100%]">
             Woman’s Fashion
-            <span className="inline-block size-2 rotate-45 border-r-2 border-t-2 border-black"></span>
+            <span className="hidden size-2 rotate-45 border-r-2 border-t-2 border-black md:inline-block"></span>
           </li>
-          <li className="flex w-[100%] items-center justify-between">
+          <li className="flex items-center justify-between md:w-[100%]">
             Men’s Fashion
-            <span className=" inline-block size-2 rotate-45 border-r-2 border-t-2 border-black"></span>
+            <span className=" hidden size-2 rotate-45 border-r-2 border-t-2 border-black md:inline-block "></span>
           </li>
           <li>Electronics</li>
           <li>Home & Lifestyle</li>
@@ -24,13 +24,13 @@ export const OpenningSection = () => {
           <li>Health & Beauty</li>
         </ul>
       </nav>
-      <div className="mt-10 flex flex-col items-center bg-black py-4 pl-16 pr-10  text-[#FAFAFA] ">
-        <div className="flex items-center">
-          <div className="flex max-w-[300px] flex-col gap-5">
-            <div className="flex items-center gap-6">
+      <div className="mt-10 flex flex-col items-center bg-black px-5 py-4 text-[#FAFAFA]  md:pl-16 md:pr-10 ">
+        <div className="flex flex-col items-center gap-6 md:flex-row md:max-lg:flex-wrap">
+          <div className="flex flex-col items-center gap-5 md:max-w-[300px] md:items-start">
+            <div className="flex items-center gap-6 text-center md:text-start">
               <img src={appleIcon} alt="apple icon" /> iPhone 14 Series
             </div>
-            <h2 className=" font-Inter text-5xl/[60px] font-semibold">
+            <h2 className=" text-center font-Inter text-5xl/[60px] font-semibold md:text-start">
               Up to 10% off Voucher
             </h2>
             <div className="flex gap-2">
@@ -45,7 +45,7 @@ export const OpenningSection = () => {
           </div>
           <img src={heroPhone} alt="hero openning image" />
         </div>
-        <div className="ml-[-150px] mt-[-20px] flex gap-3">
+        <div className="flex gap-3 md:ml-[-150px] md:mt-[-20px]">
           <span className="inline-block size-3 rounded-full bg-gray-500 "></span>
           <span className="inline-block size-3 rounded-full bg-gray-500 "></span>
           <span className="inline-block size-3 rounded-full bg-gray-500 "></span>

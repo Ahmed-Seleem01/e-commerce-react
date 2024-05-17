@@ -11,7 +11,7 @@ export const Category = () => {
   return (
     <div className=" border-b-2 border-t-2 pb-[70px] pt-[80px]">
       <GeneralHeader label="Categories" heading="Browse By Category" toggle />
-      <div className="mt-[60px] flex justify-between">
+      <div className="mt-[60px] flex flex-col items-center justify-between gap-5 md:flex-row md:gap-0 ">
         <CategoryCard image={phone} heading="Phones" />
         <CategoryCard image={computer} heading="Computers" />
         <CategoryCard image={smartWatch} heading="SmartWatch" />

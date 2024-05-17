@@ -4,8 +4,6 @@ import starYellow from "../assets/icons/star-yellow.svg";
 const StarRating = ({ totalStars, ratingValue }) => {
   const fullStars = Math.floor(Number(ratingValue));
   const hasHalfStar = ratingValue % 1 !== 0;
-  console.log(fullStars);
-  console.log(hasHalfStar);
 
   return (
     <div className="flex items-center">

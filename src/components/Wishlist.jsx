@@ -34,8 +34,8 @@ export const Wishlist = () => {
 
   return (
     <div className="mt-[80px] flex w-full flex-col gap-[80px]">
-      <div className="flex flex-col gap-[60px] ">
-        <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-[60px]">
+        <div className="flex flex-col items-start justify-between gap-10 md:flex-row md:items-center md:gap-0">
           <label className=" text-xl/[26px]">
             Wishlist ({products.length})
           </label>
@@ -56,7 +56,7 @@ export const Wishlist = () => {
             </button>
           </Form>
         </div>
-        <div className="flex flex-wrap justify-between">
+        <div className="flex flex-col flex-wrap justify-between md:flex-row md:max-lg:flex-wrap">
           {products.map((product) => {
             product.id = uuidv4();
             const { cardImage, heading, currentPrice, oldPrice, productId } =
@@ -77,7 +77,7 @@ export const Wishlist = () => {
       </div>
 
       <div className="flex flex-col gap-[60px] ">
-        <div className="flex justify-between">
+        <div className="flex flex-col justify-between gap-10 md:flex-row md:gap-0">
           <div className="flex items-center gap-4">
             <span className=" inline-block h-10 w-5 rounded bg-[#DB4444]"></span>
             <label className=" text-xl/[26px]">Just For You</label>
@@ -86,7 +86,7 @@ export const Wishlist = () => {
             See All
           </button>
         </div>
-        <div className="flex justify-between">
+        <div className="flex w-full flex-col items-center justify-between md:flex-row md:flex-wrap">
           <ItemCard
             cardImage={laptopProduct[0].mainImage}
             heading={laptopProduct[0].heading}

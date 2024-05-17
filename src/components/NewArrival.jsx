@@ -13,7 +13,7 @@ export const NewArrival = () => {
   return (
     <div>
       <GeneralHeader label="Featured" heading="New Arrival" />
-      <div className="mb-[140px] mt-[60px] flex justify-between ">
+      <div className="mb-[140px] mt-[60px] flex flex-col justify-between gap-10 md:flex-row md:flex-wrap md:gap-0">
         <FeatureCard
           image={playstation}
           heading="PlayStation 5"
@@ -21,12 +21,12 @@ export const NewArrival = () => {
         >
           <img className="self-end" src={playstation} alt="large playstation" />
         </FeatureCard>
-        <div className=" flex flex-col justify-between gap-8">
+        <div className=" flex flex-col justify-between gap-8 ">
           <FeatureCard
             heading="Women’s Collections"
             description="Featured woman collections that give you another vibe."
           ></FeatureCard>
-          <div className="flex gap-[30px]">
+          <div className="flex flex-col gap-[30px] md:flex-row">
             <FeatureCard
               heading="Speakers"
               description="Amazon wireless speakers"
@@ -47,7 +47,7 @@ export const NewArrival = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between">
+      <div className="flex flex-col justify-between gap-10 md:flex-row md:gap-0">
         <FeatureCardSmall
           image={delivery}
           heading="FREE AND FAST DELIVERY"

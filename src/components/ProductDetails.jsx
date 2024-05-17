@@ -82,8 +82,8 @@ export const ProductDetails = () => {
     <div>
       <PathDisplay path={window.location.pathname} />
       <div className="flex w-full  flex-col justify-between gap-[140px]">
-        <div className="flex justify-between">
-          <div className="flex gap-[30px]">
+        <div className="flex flex-col justify-between gap-10 md:flex-row md:flex-wrap md:gap-0">
+          <div className="flex flex-col items-center gap-[30px] md:flex-row md:flex-wrap">
             <span className="flex flex-col gap-4">
               {subImages.map((subImage, i) => (
                 <img
@@ -94,13 +94,13 @@ export const ProductDetails = () => {
                 />
               ))}
             </span>
-            <span className="flex h-[600px] w-[500px] items-center justify-center rounded bg-[rgb(245,245,245)]">
+            <span className="order-[-1] flex h-[300px] w-full  items-center justify-center rounded bg-[rgb(245,245,245)] md:order-1 md:h-[600px] md:w-[500px]">
               <img className="w-[80%]" src={mainImage} alt="main image" />
             </span>
           </div>
 
           <div className="flex flex-col justify-between  ">
-            <div className="flex flex-col gap-6 border-b border-gray-400 pb-6">
+            <div className="mb-10 flex flex-col gap-6 border-b border-gray-400 pb-6 md:mb-0">
               <div className="flex flex-col gap-4">
                 <h4 className="font-Inter text-2xl/6 font-semibold">
                   {heading}
@@ -189,7 +189,7 @@ export const ProductDetails = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-4 rounded border py-6">
+            <div className="mt-5 flex flex-col gap-4 rounded border py-6 md:mt-5">
               <div className="flex gap-4 pl-4">
                 <img src={carBlack} alt="" />
                 <div>
@@ -222,9 +222,9 @@ export const ProductDetails = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-10 pr-10">
+        <div className="flex flex-col gap-10 md:pr-10">
           <GeneralHeader label="Related Item" />
-          <div className="flex justify-between">
+          <div className="flex flex-col items-center self-center border md:flex-row md:flex-wrap md:justify-between md:self-start">
             <ItemCard
               cardImage={gamepadProduct[0].mainImage}
               heading="HAVIT HV-G92 Gamepad"

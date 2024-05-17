@@ -2,10 +2,13 @@ import heart2 from "../assets/icons/heart2.svg";
 import eye from "../assets/icons/eye.svg";
 import deleteIcon from "../assets/icons/delete.svg";
 import { Form, Link } from "react-router-dom";
-import { addToUserDB, auth } from "../firebase.config";
+import { addToUserDB, auth, getUserCartItems } from "../firebase.config";
 import StarRating from "./StarRating";
+import { useContext } from "react";
+import appContext from "./general/context/app-context";
 
 export const ItemCard = (props) => {
+  const { value, setValue } = useContext(appContext);
   const {
     cardImage,
     heading,
@@ -25,12 +28,15 @@ export const ItemCard = (props) => {
   // console.log(colors);
   // console.log(color1);
   console.log(ratingValue);
-  const addToCartHandler = () => {
-    addToUserDB(auth.currentUser.uid, "cart", {
+  const addToCartHandler = async () => {
+    await addToUserDB(auth.currentUser.uid, "cart", {
       cardImage,
       heading,
       currentPrice,
     });
+    const productsItems = await getUserCartItems(auth.currentUser.uid);
+
+    setValue(() => productsItems.productItems.length);
   };
 
   const addToWishlistHandler = () => {
@@ -43,7 +49,7 @@ export const ItemCard = (props) => {
   };
 
   return (
-    <div className="bg-white">
+    <div className="w-[270px] bg-white">
       <div className=" group relative flex h-[250px] w-[270px] cursor-pointer items-center justify-center rounded bg-[#F5F5F5] p-[50px]">
         <img src={cardImage} alt={heading} />
         {(discount && (
@@ -101,14 +107,15 @@ export const ItemCard = (props) => {
         </div>
         <button
           onClick={addToCartHandler}
-          className=" absolute bottom-0 z-[-1] w-full translate-y-10 overflow-hidden bg-black  py-1 text-base font-medium text-white transition-transform active:invert group-hover:z-10 group-hover:translate-y-0"
+          className=" absolute bottom-0  w-[99%] translate-y-10 overflow-hidden bg-black  py-1 text-base font-medium text-white transition-transform  active:invert group-hover:z-10 group-hover:translate-y-0"
         >
           Add to cart
         </button>
       </div>
-      <div className="relative z-20 flex flex-col gap-2 bg-white pt-4 text-base font-medium ">
+
+      <div className="relative z-20 flex w-full flex-col gap-2 bg-white pt-4 text-base font-medium">
         <h4>{heading}</h4>
-        <div className="flex w-[85%] flex-wrap items-center gap-3">
+        <div className="flex w-[88%] flex-wrap items-center gap-3">
           <div className="flex items-center gap-3">
             <span className="text-[#DB4444]">${currentPrice}</span>
             {oldPrice ? (

@@ -19,7 +19,7 @@ export const ExploreProducts = ({ cards }) => {
         toggle
       />
 
-      <div className="grid grid-cols-4 grid-rows-2 gap-x-7 gap-y-[60px] ">
+      <div className="grid grid-cols-1 gap-y-[60px] self-center md:grid-cols-4 md:grid-rows-2 md:gap-x-7 md:self-start md:max-lg:grid-cols-2 ">
         {cards.map((card) => (
           <ItemCard
             key={card.productId}

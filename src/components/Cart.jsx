@@ -3,9 +3,12 @@ import { Link, useLoaderData } from "react-router-dom";
 // import gamepad from "../assets/images/items/gamepad.png";
 import { auth, getUserCartItems, removeFromUserDB } from "../firebase.config";
 import { ItemsCounter } from "./ItemsCounter";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { PathDisplay } from "./PathDisplay";
+import appContext from "./general/context/app-context";
+
+const SHIPPING = 0;
 
 export async function load() {
   const user = auth.currentUser;
@@ -14,18 +17,22 @@ export async function load() {
 }
 
 export const Cart = () => {
-  const [subTotal, setSubTotal] = useState(0);
-  console.log(subTotal);
-  const shipping = 1;
+  // const [subTotal, setSubTotal] = useState(0);
+  const { value, setValue } = useContext(appContext);
+
   const subTotalRef = useRef(0);
 
   const { productsItems } = useLoaderData();
   const { productItems: products } = productsItems;
   console.log(products);
+  const subTotal = products.reduce((acc, cur) => acc + cur.currentPrice, 0);
 
+  useEffect(() => {
+    setValue(products.length);
+  }, []);
   const updateCart = () => {
     removeFromUserDB(auth.currentUser.uid, "cart");
-    setSubTotal(12);
+    // setSubTotal(12);
   };
 
   useEffect(() => {
@@ -41,7 +48,7 @@ export const Cart = () => {
       <div className="flex flex-col gap-10">
         <ul
           style={{ boxShadow: "0px 0px 10px 1px #eee" }}
-          className="grid w-full grid-cols-4 items-center justify-items-center bg-white px-10 py-6 drop-shadow-sm filter "
+          className="grid w-full grid-cols-4 items-center justify-items-center bg-white px-2 py-6 drop-shadow-sm filter md:px-10 "
         >
           <li className=" justify-self-start">Product</li>
           <li>Price</li>
@@ -61,9 +68,9 @@ export const Cart = () => {
             <ul
               key={productId}
               style={{ boxShadow: "0px 0px 10px 1px #eee" }}
-              className="grid w-full grid-cols-4 items-center justify-items-center bg-white px-10 py-6 drop-shadow-sm filter "
+              className="grid w-full grid-cols-4 items-center justify-items-center bg-white px-2 py-6 drop-shadow-sm filter md:px-10 "
             >
-              <li className="flex items-center gap-5  justify-self-start">
+              <li className="flex flex-col items-center gap-5 justify-self-start  text-sm md:flex-row md:text-base">
                 <img
                   className="size-[54px] object-contain"
                   src={image}
@@ -75,13 +82,13 @@ export const Cart = () => {
               <ItemsCounter
                 price={price}
                 subTotalRef={subTotalRef}
-                setSubTotal={setSubTotal}
+                // setSubTotal={setSubTotal}
               />
             </ul>
           );
         })}
 
-        <div className="mt-[-16px] flex justify-between">
+        <div className="mt-[-16px] flex flex-col justify-between gap-5 md:flex-row md:gap-0">
           <button className="rounded border px-12 py-4  font-medium">
             <Link to=".." path="relative">
               Return To Shop
@@ -96,27 +103,29 @@ export const Cart = () => {
         </div>
       </div>
 
-      <div className="mt-[80px] flex items-start justify-between">
-        <div className="flex items-center gap-4">
+      <div className="mt-[80px] flex flex-col items-start justify-between gap-10 md:flex-row md:gap-0 md:max-lg:flex-wrap">
+        <div className="flex flex-col items-center gap-4 md:flex-row">
           <input
             className="max-w-[300px] rounded border px-6 py-4"
             type="text"
             placeholder="Coupon Code"
           />
-          <button className=" primary-button">Apply coupon</button>
+          <button className=" primary-button self-start md:self-center">
+            Apply coupon
+          </button>
         </div>
-        <div className="w-[470px] rounded border-[1.5px] border-black px-6 py-8">
+        <div className="w-full rounded border-[1.5px] border-black px-6 py-8 md:w-[470px]">
           <h5 className=" text-xl font-medium">Cart Total</h5>
           <div className="flex flex-col py-6">
             <ul className="flex flex-col  gap-4 ">
               <li className="flex justify-between border-b pb-4">
-                <span>Subtotal</span> ${subTotalRef.current}
+                <span>Subtotal</span> ${subTotal}
               </li>
               <li className="flex justify-between border-b pb-4">
-                <span>Shipping</span> {shipping === 1 ? "Free" : shipping}
+                <span>Shipping</span> {SHIPPING === 0 ? "Free" : SHIPPING}
               </li>
               <li className="flex justify-between pb-4">
-                <span>Total</span> ${subTotalRef.current * shipping}
+                <span>Total</span> ${subTotal + SHIPPING}
               </li>
             </ul>
             <button className="primary-button self-center">

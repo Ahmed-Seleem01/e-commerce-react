@@ -41,13 +41,13 @@ export const Home = () => {
       <NewArrival />
       <button
         onClick={scrollToTop}
-        className=" mr-[-23px] mt-[-78px] size-[46px] self-end rounded-full bg-[#F5F5F5] p-3"
+        className=" mr-[-23px] size-[46px] self-center rounded-full bg-[#F5F5F5] p-3 md:mt-[-78px] md:self-end"
       >
         <img src={arrowUp} alt="go to the top of the bag " />
       </button>
     </div>
   ) : searchProducts.length ? (
-    <div className="flex min-h-[100vh] items-center gap-5">
+    <div className="mt-10 flex min-h-[100vh] flex-col items-center gap-5 md:mt-0 md:flex-row md:flex-wrap">
       {searchProducts.map((product) => (
         <ItemCard key={product.Id} {...product} cardImage={product.mainImage} />
       ))}

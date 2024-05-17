@@ -3,42 +3,31 @@ import visa from "../assets/icons/visa.png";
 import masterCard from "../assets/icons/master-card.png";
 import pay from "../assets/icons/pay.png";
 
-import lcd from "../assets/images/items/lcd.png";
-import gamepad from "../assets/images/items/gamepad.png";
+// import lcd from "../assets/images/items/lcd.png";
+// import gamepad from "../assets/images/items/gamepad.png";
 import { useLoaderData } from "react-router-dom";
 import { auth, getUserCartItems } from "../firebase.config";
 import { PathDisplay } from "./PathDisplay";
 
+const SHIPPING = 0;
 export async function load() {
   const user = auth.currentUser;
   console.log(user);
-  // const products = [
-  //   {
-  //     image: lcd,
-  //     heading: "LCD Monitor",
-  //     price: "650",
-  //   },
-  //   {
-  //     image: gamepad,
-  //     heading: "H1Gamepad",
-  //     price: "550",
-  //   },
-  // ];
   const productsItems = await getUserCartItems(user.uid);
-  // console.log(products);
   return { productsItems };
 }
 
 export const Checkout = () => {
   const { productsItems } = useLoaderData();
   const { productItems: products } = productsItems;
+
+  const subTotal = products.reduce((acc, cur) => acc + cur.currentPrice, 0);
   console.log(products);
   return (
     <div>
       <PathDisplay path={window.location.pathname} />
-      <div className="flex w-full items-center justify-between">
+      <div className="md-gap-0 flex w-full flex-col items-center justify-between gap-10 md:flex-row md:max-lg:flex-wrap">
         <div>
-          {" "}
           <h2 className=" font-Inter text-4xl/[30px]">Billing Details</h2>
           <form className="mt-12 flex max-w-[470px] flex-col gap-8">
             <label className=" mb-2 flex flex-col text-gray-500">
@@ -131,7 +120,7 @@ export const Checkout = () => {
           </form>
         </div>
 
-        <div className="flex w-[527px] flex-col gap-8">
+        <div className="flex flex-col gap-8 md:w-[527px]">
           <div className="flex w-[80%] flex-col gap-8 ">
             {products.map((product, i) => (
               <ul key={i} className="flex items-center  justify-between">
@@ -151,13 +140,13 @@ export const Checkout = () => {
           <div className="w-[80%] ">
             <ul className="flex flex-col  gap-4 ">
               <li className="flex justify-between border-b pb-4">
-                <span>Subtotal</span> ${1170}
+                <span>Subtotal</span> ${subTotal}
               </li>
               <li className="flex justify-between border-b pb-4">
-                <span>Shipping</span> Free
+                <span>Shipping</span> {SHIPPING === 0 ? "Free" : SHIPPING}
               </li>
               <li className="flex justify-between pb-4">
-                <span>Total</span> ${1170}
+                <span>Total</span> ${subTotal + SHIPPING}
               </li>
             </ul>
           </div>
@@ -190,13 +179,15 @@ export const Checkout = () => {
               <label htmlFor="cash">Cash on delivery</label>
             </div>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="gap-4v flex flex-col items-center gap-5 md:flex-row md:gap-0">
             <input
               className="max-w-[300px] rounded border px-6 py-4"
               type="text"
               placeholder="Coupon Code"
             />
-            <button className=" primary-button">Apply coupon</button>
+            <button className=" primary-button self-start md:self-center">
+              Apply coupon
+            </button>
           </div>
           <button className=" primary-button max-w-[200px]">Place Order</button>
         </div>

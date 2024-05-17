@@ -6,10 +6,10 @@ export const Contact = () => {
   return (
     <div>
       <PathDisplay path={window.location.pathname} />
-      <div className=" flex w-full  justify-between  ">
+      <div className=" md: flex w-full  flex-col  justify-between gap-10 md:flex-row md:gap-0 md:max-lg:flex-wrap">
         <div
           style={{ boxShadow: "0px 0px 5px 1px #eee" }}
-          className="flex max-h-[460px] max-w-[340px] flex-col gap-8 px-[35px] pt-10"
+          className="flex max-h-[460px] max-w-[340px] flex-col gap-8 px-[35px] pb-5 pt-10 md:pb-0"
         >
           <div className="flex flex-col">
             <span className="flex items-center gap-4 font-medium">
@@ -40,11 +40,11 @@ export const Contact = () => {
         </div>
 
         <div
-          className="max-h-[460px]  max-w-[800px] px-8 py-10"
+          className="max-w-[800px]  px-8 py-10 md:max-h-[460px]"
           style={{ boxShadow: "0px 0px 5px 1px #eee" }}
         >
           <form className="flex flex-col gap-8">
-            <span className="flex justify-between gap-4">
+            <span className="flex flex-col justify-between gap-4 md:flex-row ">
               <label className="group relative mb-2 flex max-w-[235px] flex-col text-gray-500">
                 <input
                   className="peer h-[50px] rounded bg-[#F5F5F5] px-4 py-3"
@@ -85,7 +85,7 @@ export const Contact = () => {
               name=""
               id=""
             ></textarea>
-            <button className=" primary-button self-end font-medium">
+            <button className=" primary-button font-medium md:self-end">
               Send Message
             </button>
           </form>
