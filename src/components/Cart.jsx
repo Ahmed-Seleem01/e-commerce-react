@@ -1,9 +1,15 @@
-import { Link, useLoaderData } from "react-router-dom";
-// import lcd from "../assets/images/items/lcd.png";
-// import gamepad from "../assets/images/items/gamepad.png";
-import { auth, getUserCartItems, removeFromUserDB } from "../firebase.config";
+import {
+  Form,
+  Link,
+  redirect,
+  useLoaderData,
+  useNavigate,
+} from "react-router-dom";
+import cancelIcon from "../assets/icons/icon-cancel-small.svg";
+
+import { auth, getUserCartItems } from "../firebase.config";
 import { ItemsCounter } from "./ItemsCounter";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { PathDisplay } from "./PathDisplay";
 import appContext from "./general/context/app-context";
@@ -17,28 +23,21 @@ export async function load() {
 }
 
 export const Cart = () => {
-  // const [subTotal, setSubTotal] = useState(0);
-  const { value, setValue } = useContext(appContext);
-
-  const subTotalRef = useRef(0);
+  const { setCartItemsCounter, subTotal, setSubTotal } = useContext(appContext);
+  const navigate = useNavigate("/");
 
   const { productsItems } = useLoaderData();
   const { productItems: products } = productsItems;
   console.log(products);
-  const subTotal = products.reduce((acc, cur) => acc + cur.currentPrice, 0);
-
   useEffect(() => {
-    setValue(products.length);
+    setCartItemsCounter(products.length);
+    setSubTotal(products.reduce((acc, cur) => acc + cur.currentPrice, 0));
   }, []);
+
   const updateCart = () => {
-    removeFromUserDB(auth.currentUser.uid, "cart");
-    // setSubTotal(12);
+    // removeFromUserDB(auth.currentUser.uid, "cart");
+    navigate();
   };
-
-  useEffect(() => {
-    // setSubTotal(subTotalRef.current);
-    subTotalRef.current = 0;
-  }, []);
 
   // console.log(subTotal.current);
   return (
@@ -70,7 +69,28 @@ export const Cart = () => {
               style={{ boxShadow: "0px 0px 10px 1px #eee" }}
               className="grid w-full grid-cols-4 items-center justify-items-center bg-white px-2 py-6 drop-shadow-sm filter md:px-10 "
             >
-              <li className="flex flex-col items-center gap-5 justify-self-start  text-sm md:flex-row md:text-base">
+              <li className="relative flex flex-col items-center gap-5 justify-self-start  text-sm md:flex-row md:text-base">
+                <Form
+                  action={`/${heading}/destroy-cart`}
+                  method="post"
+                  onSubmit={(event) => {
+                    if (
+                      !confirm("Please confirm you want to delete this record.")
+                    ) {
+                      event.preventDefault();
+                    } else {
+                      setCartItemsCounter((pre) => (pre -= 1));
+                    }
+                  }}
+                >
+                  <button
+                    type="submit"
+                    className="absolute left-0 top-0 -translate-x-3 "
+                  >
+                    <img src={cancelIcon}></img>
+                  </button>
+                </Form>
+
                 <img
                   className="size-[54px] object-contain"
                   src={image}
@@ -79,11 +99,7 @@ export const Cart = () => {
                 {heading}
               </li>
               <li className="justify-self-center">${price}</li>
-              <ItemsCounter
-                price={price}
-                subTotalRef={subTotalRef}
-                // setSubTotal={setSubTotal}
-              />
+              <ItemsCounter price={price} />
             </ul>
           );
         })}
