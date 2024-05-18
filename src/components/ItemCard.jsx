@@ -4,11 +4,15 @@ import deleteIcon from "../assets/icons/delete.svg";
 import { Form, Link } from "react-router-dom";
 import { addToUserDB, auth, getUserCartItems } from "../firebase.config";
 import StarRating from "./StarRating";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import appContext from "./general/context/app-context";
 
 export const ItemCard = (props) => {
-  const { value, setValue } = useContext(appContext);
+  const { setCartItemsCounter, setWishlistItemsCounter } =
+    useContext(appContext);
+  const [hideAddToCart, setHideAddToCart] = useState(false);
+  const [hideAddToWishlist, setHideAddToWishlist] = useState(false);
+
   const {
     cardImage,
     heading,
@@ -23,20 +27,15 @@ export const ItemCard = (props) => {
     ratingValue,
   } = props;
 
-  // const color1 = colors ? `bg-${colors[0]}-600` : "bg-yellow-400";
-  // const color2 = colors ? `bg-${colors[1]}-600` : "bg-red-400";
-  // console.log(colors);
-  // console.log(color1);
   console.log(ratingValue);
-  const addToCartHandler = async () => {
-    await addToUserDB(auth.currentUser.uid, "cart", {
+  const addToCartHandler = () => {
+    addToUserDB(auth.currentUser.uid, "cart", {
       cardImage,
       heading,
       currentPrice,
     });
-    const productsItems = await getUserCartItems(auth.currentUser.uid);
-
-    setValue(() => productsItems.productItems.length);
+    setCartItemsCounter((pre) => (pre += 1));
+    setHideAddToCart(true);
   };
 
   const addToWishlistHandler = () => {
@@ -46,6 +45,8 @@ export const ItemCard = (props) => {
       currentPrice,
       oldPrice,
     });
+    setWishlistItemsCounter((pre) => (pre += 1));
+    setHideAddToWishlist(true);
   };
 
   return (
@@ -72,6 +73,8 @@ export const ItemCard = (props) => {
                   !confirm("Please confirm you want to delete this record.")
                 ) {
                   event.preventDefault();
+                } else {
+                  setWishlistItemsCounter((pre) => (pre -= 1));
                 }
               }}
             >
@@ -94,6 +97,7 @@ export const ItemCard = (props) => {
                 <button
                   onClick={addToWishlistHandler}
                   className="size-[34px] rounded-full bg-white p-2 active:bg-[#DB4444]"
+                  hidden={hideAddToWishlist}
                 >
                   <img src={heart2} alt="love item" />
                 </button>
@@ -108,6 +112,7 @@ export const ItemCard = (props) => {
         <button
           onClick={addToCartHandler}
           className=" absolute bottom-0  w-[99%] translate-y-10 overflow-hidden bg-black  py-1 text-base font-medium text-white transition-transform  active:invert group-hover:z-10 group-hover:translate-y-0"
+          hidden={hideAddToCart}
         >
           Add to cart
         </button>

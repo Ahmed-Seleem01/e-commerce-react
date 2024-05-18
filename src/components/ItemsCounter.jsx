@@ -1,21 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import appContext from "./general/context/app-context";
 
-export const ItemsCounter = ({ price, subTotalRef }) => {
+export const ItemsCounter = ({ price }) => {
   const [count, setCount] = useState(1);
+  const { subTotal, setSubTotal } = useContext(appContext);
 
   const incrementHandler = () => {
     setCount((pre) => Number((pre += 1)));
-    subTotalRef.current = 0;
   };
   const decrementHandler = () => {
     if (count > 1) setCount((pre) => Number((pre -= 1)));
-    subTotalRef.current = 0;
   };
 
-  subTotalRef.current += price * count;
   console.log(price);
   console.log(count);
-  console.log(subTotalRef.current);
 
   // setSubTotal(subTotalRef.current);
 

@@ -1,9 +1,5 @@
 import { GeneralHeader } from "./GeneralHeader";
 import { ItemCard } from "./ItemCard";
-// import gamepad from "../assets/images/items/gamepad.png";
-// import keyboard from "../assets/images/items/wired-keyboard.png";
-// import lcd from "../assets/images/items/lcd.png";
-// import chair from "../assets/images/items/chair.png";
 
 export const FlashSales = (props) => {
   const { cards } = props;

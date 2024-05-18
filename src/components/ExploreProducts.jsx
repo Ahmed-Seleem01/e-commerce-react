@@ -1,15 +1,6 @@
 import { GeneralHeader } from "./GeneralHeader";
 import { ItemCard } from "./ItemCard";
 
-// import book from "../assets/images/items/cat-book.png";
-// import camera from "../assets/images/items/camera.png";
-// import labtop from "../assets/images/items/ideapad-gaming.png";
-// import cusmotic from "../assets/images/items/cat-book.png";
-// import car from "../assets/images/items/car.png";
-// import sneakers from "../assets/images/items/Copa_Sense.png";
-// import gamepad from "../assets/images/items/GP11_PRD3.png";
-// import jacket from "../assets/images/items/satin-jacket.png";
-
 export const ExploreProducts = ({ cards }) => {
   return (
     <div className="flex flex-col gap-[60px]">

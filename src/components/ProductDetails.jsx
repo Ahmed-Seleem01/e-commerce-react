@@ -1,8 +1,3 @@
-// import sideImg1 from "../assets/images/product/side-image1.png";
-// import sideImg2 from "../assets/images/product/side-image2.png";
-// import sideImg3 from "../assets/images/product/side-image3.png";
-// import sideImg4 from "../assets/images/product/side-image4.png";
-// import mainImg from "../assets/images/product/main-img.png";
 import { ItemCard } from "./ItemCard";
 import { GeneralHeader } from "./GeneralHeader";
 import heart2 from "../assets/icons/heart2.svg";

@@ -3,8 +3,6 @@ import visa from "../assets/icons/visa.png";
 import masterCard from "../assets/icons/master-card.png";
 import pay from "../assets/icons/pay.png";
 
-// import lcd from "../assets/images/items/lcd.png";
-// import gamepad from "../assets/images/items/gamepad.png";
 import { useLoaderData } from "react-router-dom";
 import { auth, getUserCartItems } from "../firebase.config";
 import { PathDisplay } from "./PathDisplay";

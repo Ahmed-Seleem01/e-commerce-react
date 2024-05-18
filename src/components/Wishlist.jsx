@@ -2,6 +2,8 @@ import { ItemCard } from "./ItemCard";
 import { auth, getProduct, getUserWishlistItems } from "../firebase.config";
 import { Form, useLoaderData } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { useContext, useEffect } from "react";
+import appContext from "./general/context/app-context";
 
 export async function load() {
   console.log(auth);
@@ -23,6 +25,7 @@ export async function load() {
 }
 
 export const Wishlist = () => {
+  const { setWishlistItemsCounter } = useContext(appContext);
   const {
     productsItems,
     laptopProduct,
@@ -32,6 +35,9 @@ export const Wishlist = () => {
   } = useLoaderData();
   const { productItems: products } = productsItems;
 
+  useEffect(() => {
+    setWishlistItemsCounter(products.length);
+  }, []);
   return (
     <div className="mt-[80px] flex w-full flex-col gap-[80px]">
       <div className="flex flex-col gap-[60px]">

@@ -14,8 +14,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import appContext from "./general/context/app-context";
 
 export const Header = ({ q }) => {
-  const { value } = useContext(appContext);
-  console.log(value);
+  const { cartItemsCounter, wishlistItemsCounter } = useContext(appContext);
+  console.log(cartItemsCounter);
   const [user, setUser] = useState(null);
   const [menu, setMenu] = useState("-80vw");
   useEffect(() => {
@@ -222,7 +222,7 @@ export const Header = ({ q }) => {
 
                   <Link to="account/cart">
                     <img src={cart} alt="cart icon" />
-                    <span className="text-black">{value}</span>
+                    <span className="text-black">{cartItemsCounter}</span>
                   </Link>
                 </div>
               )}
@@ -290,12 +290,17 @@ export const Header = ({ q }) => {
           {window.location.pathname !== "/login" &&
             window.location.pathname !== "/sign-up" && (
               <div className=" hidden items-center gap-4 md:flex">
-                <Link to="wishlist">
+                <Link className="relative" to="wishlist">
+                  <span className=" absolute flex size-4 -translate-y-[6px] translate-x-3  items-start justify-center rounded-full bg-[#DB4444] text-xs text-white">
+                    {wishlistItemsCounter}
+                  </span>
                   <img src={heart} alt="heart icon" />
                 </Link>
 
-                <Link to="account/cart">
-                  <span className="text-black">{value}</span>
+                <Link className="relative" to="account/cart">
+                  <span className=" absolute  flex size-4 translate-x-4  items-start justify-center rounded-full bg-[#DB4444] text-xs text-white">
+                    {cartItemsCounter}
+                  </span>
                   <img src={cart} alt="cart icon" />
                 </Link>
 
