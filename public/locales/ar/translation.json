@@ -1,0 +1,213 @@
+{
+  "description": {
+    "home": "الصفحة الرئيسية",
+    "contact": "اتصل بنا",
+    "about": "عن الموقع",
+    "Categories": "الفئات",
+    "ViewAllProducts": "عرض جميع المنتجات",
+    "Hours": "ساعات",
+    "Days": "أيام",
+    "Minutes": "دقائق",
+    "Seconds": "ثواني",
+    "search": "عن ماذا تبحث؟",
+    "ManageMyAccount": "إدارة حسابي",
+    "MyOrder": "طلبي",
+    "MyCancellations": "إلغاءاتي",
+    "MyReviews": "تقييماتي",
+    "Logout": "تسجيل خروج",
+    "signUpHome": "انشاء حساب",
+    "loginHome": "تسجيل الدخول",
+
+    "opening": {
+      "WomanFashion": "أزياء النساء",
+      "MenFashion": "أزياء الرجال",
+      "Electronics": "إلكترونيات",
+      "HomeLifestyle": "المنزل ونمط الحياة",
+      "Medicine": "دواء",
+      "SportsOutdoor": "الرياضة والهواء الطلق",
+      "BabyToys": "الأطفال والألعاب",
+      "GroceriesPets": "البقالة والحيوانات الأليفة",
+      "HealthBeauty": "الصحة والجمال"
+    },
+    "flash": {
+      "Today": "اليوم",
+      "FlashSales": "عروض فلاش"
+    },
+    "categories": {
+      "BrowseByCategory": "تصفح حسب الفئة",
+      "Phones": "الهواتف",
+      "Computers": "أجهزة الكمبيوتر",
+      "SmartWatch": "ساعة ذكية",
+      "Camera": "كاميرا",
+      "HeadPhones": "سماعات الرأس",
+      "Gaming": "الألعاب"
+    },
+    "bestSelling": {
+      "ThisMonth": "هذا الشهر",
+      "BestSellingProducts": "أفضل المنتجات مبيعاً",
+      "ViewAll": "عرض الكل"
+    },
+
+    "Ad": {
+      "Enhance": "عزز تجربتك الصوتية",
+      "BuyNow": "اشترِ الآن!"
+    },
+    "OurProducts": {
+      "OurProducts": "منتجاتنا",
+      "ExploreOurProducts": "استكشاف منتجاتنا"
+    },
+    "NewArrival": {
+      "Featured": "متميز",
+      "NewArrival": "وصل حديثاً",
+      "PlayStation5": "بلاي ستيشن 5",
+      "description": "نسخة باللونين الأسود والأبيض من PS5 ستطرح للبيع.",
+      "WomenCollections": "مجموعات النساء",
+      "FeaturedDescription": "مجموعات نسائية مميزة تمنحك شعوراً مختلفاً.",
+      "ShopNow": "تسوق الآن",
+      "Speakers": "مكبرات الصوت",
+      "WirelessSpeakers": "مكبرات صوت لاسلكية من أمازون",
+      "Perfume": "عطر",
+      "GucciIntenseOudEDP": "عطر غوتشي إنتنس عود"
+    },
+    "Services": {
+      "FREEANDFASTDELIVERY": "توصيل مجاني وسريع",
+      "Freedelivery": "توصيل مجاني لجميع الطلبات فوق 140 دولار",
+      "CUSTOMERSERVICE": "خدمة العملاء 24/7",
+      "customersupport": "دعم العملاء ودود على مدار الساعة",
+      "MONEYBACK": "ضمان استعادة الأموال",
+      "ReturnMoney": "نحن نعيد المال خلال 30 يوماً"
+    },
+    "Footer": {
+      "Subscribe": "اشترك",
+      "firstorder": "احصل على خصم 10٪ على طلبك الأول",
+      "email": "أدخل بريدك الإلكتروني",
+      "Support": "الدعم",
+      "address": "111 شارع بيجوي، دكا، DH 1515، بنجلاديش.",
+      "Account": "الحساب",
+      "MyAccount": "حسابي",
+      "LoginRegister": "تسجيل الدخول / التسجيل",
+      "Cart": "عربة التسوق",
+      "Wishlist": "قائمة الرغبات",
+      "Shop": "تسوق",
+      "QuickLink": "روابط سريعة",
+      "PrivacyPolicy": "سياسة الخصوصية",
+      "TermsOfUse": "شروط الاستخدام",
+      "FAQ": "الأسئلة المتكررة",
+      "Contact": "اتصل",
+      "About": "عن الموقع",
+      "DownloadApp": "تحميل التطبيق",
+      "Save": "وفر 3 دولارات مع التطبيق للمستخدمين الجدد فقط"
+    },
+    "About": {
+      "OurStory": "قصتنا",
+      "Launched2015": "تم إطلاق Exclusive في عام 2015، وهي السوق الإلكترونية الرائدة في جنوب آسيا مع وجود نشط في بنغلاديش. مدعومة بمجموعة واسعة من الحلول التسويقية المخصصة، والبيانات، والخدمات، تحتوي Exclusive على 10,500 بائع و300 علامة تجارية وتخدم 3 ملايين عميل عبر المنطقة.",
+      "ExclusiveOffers": "تقدم Exclusive أكثر من مليون منتج، وتنمو بسرعة كبيرة. تقدم Exclusive مجموعة متنوعة من الفئات بدءًا من المستهلك.",
+      "SellersActiveOurSite": "البائعون النشطون على موقعنا",
+      "MonthlyProductSale": "مبيعات المنتج الشهرية",
+      "CustomerActiveOurSite": "العملاء النشطون على موقعنا",
+      "AnnualGrossSaleOurSite": "إجمالي المبيعات السنوية على موقعنا",
+      "FounderAndChairman": "المؤسس والرئيس",
+      "ManagingDirector": "المدير العام",
+      "ProductDesigner": "مصمم المنتجات"
+    },
+    "call": {
+      "CallToUs": "اتصل بنا",
+      "Availability": "نحن متاحون 24/7، 7 أيام في الأسبوع.",
+      "WriteToUs": "اكتب لنا",
+      "ContactFormInstruction": "املأ النموذج وسنتصل بك في غضون 24 ساعة.",
+      "YourName": "اسمك*",
+      "YourEmail": "بريدك الإلكتروني*",
+      "YourPhone": "هاتفك*",
+      "YourMessage": "رسالتك",
+      "SendMessage": "أرسل رسالة"
+    },
+    "cart": {
+      "Product": "المنتج",
+      "Price": "السعر",
+      "Quantity": "الكمية",
+      "Subtotal": "المجموع الفرعي",
+      "ReturnToShop": "العودة إلى المتجر",
+      "UpdateCart": "تحديث السلة",
+      "CouponCode": "رمز القسيمة",
+      "ApplyCoupon": "تطبيق القسيمة",
+      "CartTotal": "إجمالي السلة",
+      "Shipping": "الشحن",
+      "Free": "مجاني",
+      "Total": "الإجمالي",
+      "ProceedToCheckout": "المتابعة إلى الدفع"
+    },
+    "wishlist": {
+      "Wishlist": "قائمة الرغبات",
+      "MoveAllToBag": "نقل الكل إلى الحقيبة",
+      "JustForYou": "فقط لأجلك",
+      "SeeAll": "عرض الكل"
+    },
+    "billing": {
+      "BillingDetails": "تفاصيل الفاتورة",
+      "FirstName": "الاسم الأول*",
+      "CompanyName": "اسم الشركة",
+      "StreetAddress": "عنوان الشارع*",
+      "ApartmentFloorEtcOptional": "شقة، طابق، إلخ (اختياري)",
+      "TownCity": "المدينة*",
+      "PhoneNumber": "رقم الهاتف*",
+      "EmailAddress": "عنوان البريد الإلكتروني*",
+      "SaveInfo": "احفظ هذه المعلومات لتسريع الدفع في المرة القادمة"
+    },
+    "account": {
+      "Welcome": "مرحبا",
+      "ManageMyAccount": "إدارة حسابي",
+      "MyProfile": "ملفي الشخصي",
+      "AddressBook": "دفتر العناوين",
+      "MyPaymentOptions": "خيارات الدفع الخاصة بي",
+      "MyOrders": "طلباتي",
+      "MyReturns": "مرتجعاتي",
+      "MyCancellations": "إلغاءاتي",
+      "MyWishList": "قائمة رغباتي",
+      "EditYourProfile": "تعديل ملفك الشخصي",
+      "FirstName": "الاسم الأول",
+      "LastName": "اسم العائلة",
+      "Email": "البريد الإلكتروني",
+      "Address": "العنوان",
+      "KingstonAddress": "كينغستون، 5236، الولايات المتحدة",
+      "PasswordChanges": "تغييرات كلمة المرور",
+      "CurrentPassword": "كلمة المرور الحالية",
+      "NewPassword": "كلمة المرور الجديدة",
+      "ConfirmNewPassword": "تأكيد كلمة المرور الجديدة",
+      "Cancel": "إلغاء",
+      "SaveChanges": "حفظ التغييرات"
+    },
+    "ProductDescription": {
+      "PlayStation5": "جلد وحدة تحكم بلاي ستيشن 5 مصنوع من فينيل عالي الجودة مع لاصق بقنوات هوائية لتثبيت خالٍ من الفقاعات وإزالة خالية من الفوضى. حساس للضغط.",
+      "Colors": "الألوان:",
+      "Size": "الحجم:",
+      "BuyNow": "اشترِ الآن",
+      "FreeDelivery": "توصيل مجاني",
+      "PostalCode": "أدخل الرمز البريدي للتحقق من توفر التوصيل",
+      "ReturnDelivery": "إرجاع التوصيل",
+      "FreeDeliveryReturns": "إرجاع مجاني لمدة 30 يومًا. التفاصيل",
+      "RelatedItems": "عناصر ذو صلة",
+      "InStock": "متوفر في المخزون",
+      "Reviews": "المراجعات"
+    },
+    "signUp": {
+      "CreateAccount": "إنشاء حساب",
+      "EnterDetailsBelow": "أدخل تفاصيلك أدناه",
+      "Name": "الاسم",
+      "EmailOrPhoneNumber": "البريد الإلكتروني أو رقم الهاتف",
+      "Password": "كلمة المرور",
+      "CreateAccountButton": "إنشاء حساب",
+      "SignUpWithGoogle": "التسجيل بواسطة جوجل",
+      "AlreadyHaveAccount": "هل لديك حساب بالفعل؟",
+      "LogIn": "تسجيل الدخول"
+    },
+    "login": {
+      "LoginToExclusive": "تسجيل الدخول",
+      "EnterDetailsBelow": "أدخل تفاصيلك أدناه",
+      "EmailOrPhoneNumber": "البريد الإلكتروني أو رقم الهاتف",
+      "Password": "كلمة المرور",
+      "LogIn": "تسجيل الدخول",
+      "ForgetPassword": "نسيت كلمة المرور؟",
+      "SignInWithGoogle": "التسجيل بواسطة جوجل"
+    }
+  }
+}

@@ -9,6 +9,7 @@ import { addToUserDB, auth, getProduct } from "../firebase.config";
 import { useState } from "react";
 import StarRating from "./StarRating";
 import { PathDisplay } from "./PathDisplay";
+import { useTranslation } from "react-i18next";
 
 export async function load({ params }) {
   const product = await getProduct(params.productName);
@@ -27,6 +28,7 @@ export async function load({ params }) {
 }
 
 export const ProductDetails = () => {
+  const { t } = useTranslation();
   const {
     product,
     coolerProduct,
@@ -108,11 +110,15 @@ export const ProductDetails = () => {
                         totalStars={5}
                         ratingValue={ratingValue ? ratingValue : 0}
                       />
-                      <span>({rating} Reviews)</span>
+                      <span>
+                        ({rating} {t("description.ProductDescription.Reviews")})
+                      </span>
                     </span>
 
                     <span>|</span>
-                    <span className="text-sm text-[#00FF66]"> In Stock</span>
+                    <span className="text-sm text-[#00FF66]">
+                      {t("description.ProductDescription.InStock")}
+                    </span>
                   </div>
                 </div>
 
@@ -126,7 +132,7 @@ export const ProductDetails = () => {
 
             <div className=" flex flex-col gap-6 font-Inter text-xl/5">
               <div className="flex gap-6">
-                <span>Colors:</span>
+                <span> {t("description.ProductDescription.Colors")}:</span>
                 <span className="flex gap-2">
                   {colors.map((_, i) => (
                     <span
@@ -139,7 +145,7 @@ export const ProductDetails = () => {
               </div>
 
               <div className="flex items-center gap-6">
-                <span>Size:</span>
+                <span> {t("description.ProductDescription.Size")}:</span>
                 <span className="flex gap-4 text-sm  font-medium">
                   {sizes.map((size, i) => (
                     <span
@@ -173,7 +179,7 @@ export const ProductDetails = () => {
                   onClick={addToCartHandler}
                   className="primary-button h-[100%]  py-0 active:invert"
                 >
-                  Buy Now
+                  {t("description.ProductDescription.BuyNow")}
                 </button>
                 <button
                   onClick={addToWishlistHandler}
@@ -188,10 +194,12 @@ export const ProductDetails = () => {
               <div className="flex gap-4 pl-4">
                 <img src={carBlack} alt="" />
                 <div>
-                  <h5 className="mb-2 text-base  font-medium">Free Delivery</h5>
+                  <h5 className="mb-2 text-base  font-medium">
+                    {t("description.ProductDescription.FreeDelivery")}
+                  </h5>
                   <p className="text-xs/[18px] font-medium">
                     <a className=" underline" href="#">
-                      Enter your postal code for Delivery Availability
+                      {t("description.ProductDescription.PostalCode")}
                     </a>
                   </p>
                 </div>
@@ -203,10 +211,10 @@ export const ProductDetails = () => {
                 <img src={returnIcon} alt="" />
                 <div>
                   <h5 className="mb-2 text-base  font-medium">
-                    Return Delivery
+                    {t("description.ProductDescription.ReturnDelivery")}
                   </h5>
                   <p className="text-xs/[18px] font-medium">
-                    Free 30 Days Delivery Returns.{" "}
+                    {t("description.ProductDescription.FreeDeliveryReturns")}.
                     <a className=" underline" href="#">
                       Details
                     </a>
@@ -218,7 +226,9 @@ export const ProductDetails = () => {
         </div>
 
         <div className="flex flex-col gap-10 md:pr-10">
-          <GeneralHeader label="Related Item" />
+          <GeneralHeader
+            label={t("description.ProductDescription.RelatedItems")}
+          />
           <div className="flex flex-col items-center self-center border md:flex-row md:flex-wrap md:justify-between md:self-start">
             <ItemCard
               cardImage={gamepadProduct[0].mainImage}

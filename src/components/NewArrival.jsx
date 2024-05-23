@@ -8,28 +8,34 @@ import perfum from "../assets/images/items/perfum.png";
 import delivery from "../assets/icons/icon-delivery.svg";
 import service from "../assets/icons/Icon-Customer-service.svg";
 import secure from "../assets/icons/Icon-secure.svg";
+import { useTranslation } from "react-i18next";
 
 export const NewArrival = () => {
+  const { t } = useTranslation();
+
   return (
     <div>
-      <GeneralHeader label="Featured" heading="New Arrival" />
-      <div className="mb-[140px] mt-[60px] flex flex-col justify-between gap-10 md:flex-row md:flex-wrap md:gap-0">
+      <GeneralHeader
+        label={t("description.NewArrival.Featured")}
+        heading={t("description.NewArrival.NewArrival")}
+      />
+      <div className="mb-[140px] mt-[60px] flex flex-col justify-between gap-10 md:flex-wrap lg:flex-row lg:gap-0">
         <FeatureCard
           image={playstation}
-          heading="PlayStation 5"
-          description="Black and White version of the PS5 coming out on sale."
+          heading={t("description.NewArrival.PlayStation5")}
+          description={t("description.NewArrival.PlayStation5")}
         >
           <img className="self-end" src={playstation} alt="large playstation" />
         </FeatureCard>
-        <div className=" flex flex-col justify-between gap-8 ">
+        <div className=" flex flex-col justify-between gap-8 md:max-xl:mt-10">
           <FeatureCard
-            heading="Women’s Collections"
-            description="Featured woman collections that give you another vibe."
+            heading={t("description.NewArrival.WomenCollections")}
+            description={t("description.NewArrival.FeaturedDescription")}
           ></FeatureCard>
           <div className="flex flex-col gap-[30px] md:flex-row">
             <FeatureCard
-              heading="Speakers"
-              description="Amazon wireless speakers"
+              heading={t("description.NewArrival.Speakers")}
+              description={t("description.NewArrival.WirelessSpeakers")}
             >
               <img
                 className="self-center"
@@ -37,12 +43,11 @@ export const NewArrival = () => {
                 alt="large playstation"
               />
             </FeatureCard>
-            <FeatureCard heading="Perfume" description="GUCCI INTENSE OUD EDP">
-              <img
-                className="self-center"
-                src={perfum}
-                alt="large playstation"
-              />
+            <FeatureCard
+              heading={t("description.NewArrival.Perfume")}
+              description={t("description.NewArrival.GucciIntenseOudEDP")}
+            >
+              <img className="self-center" src={perfum} alt="perfume" />
             </FeatureCard>
           </div>
         </div>
@@ -50,18 +55,18 @@ export const NewArrival = () => {
       <div className="flex flex-col justify-between gap-10 md:flex-row md:gap-0">
         <FeatureCardSmall
           image={delivery}
-          heading="FREE AND FAST DELIVERY"
-          description="Free delivery for all orders over $140"
+          heading={t("description.Services.FREEANDFASTDELIVERY")}
+          description={t("description.Services.Freedelivery")}
         />
         <FeatureCardSmall
           image={service}
-          heading="24/7 CUSTOMER SERVICE"
-          description="Friendly 24/7 customer support"
+          heading={t("description.Services.CUSTOMERSERVICE")}
+          description={t("description.Services.customersupport")}
         />
         <FeatureCardSmall
           image={secure}
-          heading="MONEY BACK GUARANTEE"
-          description="We reurn money within 30 days"
+          heading={t("description.Services.MONEYBACK")}
+          description={t("description.Services.ReturnMoney")}
         />
       </div>
     </div>

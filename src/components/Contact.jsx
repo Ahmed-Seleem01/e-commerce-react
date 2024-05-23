@@ -1,8 +1,10 @@
 import phone from "../assets/icons/icons-phone.svg";
 import email from "../assets/icons/icons-mail.svg";
 import { PathDisplay } from "./PathDisplay";
+import { useTranslation } from "react-i18next";
 
 export const Contact = () => {
+  const { t } = useTranslation();
   return (
     <div>
       <PathDisplay path={window.location.pathname} />
@@ -14,10 +16,10 @@ export const Contact = () => {
           <div className="flex flex-col">
             <span className="flex items-center gap-4 font-medium">
               <img src={phone} alt="phone icon" />
-              Call To Us
+              {t("description.call.CallToUs")}
             </span>
             <span className="mt-6 flex flex-col gap-4 text-sm">
-              <span>We are available 24/7, 7 days a week.</span>
+              <span> {t("description.call.Availability")}</span>
               <span>Phone: +8801611112222</span>
             </span>
           </div>
@@ -27,12 +29,10 @@ export const Contact = () => {
           <div className="flex flex-col">
             <span className="flex items-center gap-4 font-medium">
               <img src={email} alt="mail icon" />
-              Write To US
+              {t("description.call.WriteToUs")}
             </span>
             <span className="mt-6 flex flex-col gap-4 text-sm">
-              <span>
-                Fill out our form and we will contact you within 24 hours.
-              </span>
+              <span>{t("description.call.ContactFormInstruction")}</span>
               <span>Emails: customer@exclusive.com</span>
               <span>Emails: support@exclusive.com</span>
             </span>
@@ -53,7 +53,8 @@ export const Contact = () => {
                   required
                 />
                 <span className="absolute left-4 top-3 peer-focus:hidden">
-                  Your Name<span className=" text-red-400">*</span>
+                  {t("description.call.YourName")}
+                  <span className=" text-red-400">*</span>
                 </span>
               </label>
               <label className=" relative mb-2  flex max-w-[235px] flex-col text-gray-500">
@@ -64,7 +65,8 @@ export const Contact = () => {
                   required
                 />
                 <span className="absolute left-4 top-3 mb-[-10px] peer-focus:hidden">
-                  Your Email<span className=" text-red-400">*</span>
+                  {t("description.call.YourEmail")}
+                  <span className=" text-red-400">*</span>
                 </span>
               </label>
               <label className=" relative  mb-2 flex max-w-[235px] flex-col text-gray-500">
@@ -75,18 +77,19 @@ export const Contact = () => {
                   required
                 />
                 <span className="absolute left-4 top-3 mb-[-10px] peer-focus:hidden">
-                  Your Phone<span className=" text-red-400">*</span>
+                  {t("description.call.YourPhone")}
+                  <span className=" text-red-400">*</span>
                 </span>
               </label>
             </span>
             <textarea
               className="h-[210px] w-full bg-[#F5F5F5] pl-4 pt-3"
-              placeholder="Your Message"
+              placeholder={t("description.call.YourMessage")}
               name=""
               id=""
             ></textarea>
             <button className=" primary-button font-medium md:self-end">
-              Send Message
+              {t("description.call.SendMessage")}
             </button>
           </form>
         </div>

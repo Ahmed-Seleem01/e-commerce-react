@@ -13,7 +13,11 @@ import { useContext, useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import appContext from "./general/context/app-context";
 
+import { useTranslation } from "react-i18next";
+
 export const Header = ({ q }) => {
+  const { t, i18n } = useTranslation();
+
   const { cartItemsCounter, wishlistItemsCounter } = useContext(appContext);
   console.log(cartItemsCounter);
   const [user, setUser] = useState(null);
@@ -49,15 +53,21 @@ export const Header = ({ q }) => {
     <div className=" sticky top-0 z-40 col-span-full row-span-1 flex w-[100%] flex-col">
       <span className="absolute top-0 z-[-1] inline-block h-full w-[100vw] self-center bg-white"></span>
       <div className="relative flex w-[100%] items-stretch justify-center self-center py-3 text-[#FAFAFA] before:absolute before:top-0 before:z-[-1] before:h-[100%]  before:w-[100vw] before:bg-black md:h-[48px]">
-        <p className="text-center text-sm/6">
+        <p className="mr-auto w-60 text-center text-sm/6 md:mr-0 md:w-auto">
           Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
           <a className=" ml-2 font-semibold underline">ShopNow</a>
         </p>
-        <select className="absolute right-0 bg-transparent text-sm/6">
-          <option className=" text-black" value="english">
+        <select
+          defaultValue={i18n.language}
+          className="absolute right-0 bg-transparent text-sm/6"
+          onChange={(e) => {
+            i18n.changeLanguage(e.target.value);
+          }}
+        >
+          <option className=" text-black" value="en">
             English
           </option>
-          <option className=" text-black" value="arabic">
+          <option className=" text-black" value="ar">
             Arabic
           </option>
         </select>
@@ -95,7 +105,7 @@ export const Header = ({ q }) => {
                         isActive ? "border-b border-black" : ""
                       }
                     >
-                      Home
+                      {t("description.home")}
                     </NavLink>
                   </li>
                   <li>
@@ -105,7 +115,7 @@ export const Header = ({ q }) => {
                         isActive ? "border-b border-black" : ""
                       }
                     >
-                      Contact
+                      {t("description.contact")}
                     </NavLink>
                   </li>
                   <li>
@@ -115,7 +125,7 @@ export const Header = ({ q }) => {
                         isActive ? "border-b border-black" : ""
                       }
                     >
-                      About
+                      {t("description.about")}
                     </NavLink>{" "}
                   </li>
                   {!user && (
@@ -125,7 +135,7 @@ export const Header = ({ q }) => {
                           href="sign-up"
                           className={`${window.location.pathname === "/sign-up" && "underline"} `}
                         >
-                          Sign Up
+                          {t("description.signUpHome")}
                         </a>
                       </li>
                       <li>
@@ -133,7 +143,7 @@ export const Header = ({ q }) => {
                           href="login"
                           className={`${window.location.pathname === "/sign-in" && "underline"} `}
                         >
-                          Login in
+                          {t("description.loginHome")}
                         </a>
                       </li>
                     </>
@@ -217,47 +227,58 @@ export const Header = ({ q }) => {
               window.location.pathname !== "/sign-up" && (
                 <div className="ml-auto flex items-center gap-4 md:hidden">
                   <Link to="wishlist">
+                    <span className=" absolute flex size-4 -translate-y-[6px] translate-x-3  items-start justify-center rounded-full bg-[#DB4444] text-xs text-white">
+                      {wishlistItemsCounter}
+                    </span>
                     <img src={heart} alt="heart icon" />
                   </Link>
 
                   <Link to="account/cart">
+                    <span className=" absolute  flex size-4 translate-x-4  items-start justify-center rounded-full bg-[#DB4444] text-xs text-white">
+                      {cartItemsCounter}
+                    </span>
                     <img src={cart} alt="cart icon" />
-                    <span className="text-black">{cartItemsCounter}</span>
                   </Link>
                 </div>
               )}
           </div>
 
           <nav className="hidden md:block">
-            <ul className="flex items-center justify-between gap-5 text-[16px]/6 md:gap-12">
+            <ul className="flex items-center justify-between gap-5 text-[16px]/6 md:gap-5 md:max-lg:justify-center md:max-lg:gap-2 lg:gap-12">
               <li>
                 <NavLink
                   to=""
                   className={({ isActive }) =>
-                    isActive ? "border-b border-black" : ""
+                    isActive
+                      ? "text-nowrap border-b border-black"
+                      : "text-nowrap"
                   }
                 >
-                  Home
+                  {t("description.home")}
                 </NavLink>
               </li>
               <li>
                 <NavLink
                   to="contact"
                   className={({ isActive }) =>
-                    isActive ? "border-b border-black" : ""
+                    isActive
+                      ? "text-nowrap border-b border-black"
+                      : "text-nowrap md:max-lg:hidden"
                   }
                 >
-                  Contact
+                  {t("description.contact")}
                 </NavLink>
               </li>
               <li>
                 <NavLink
                   to="about"
                   className={({ isActive }) =>
-                    isActive ? "border-b border-black" : ""
+                    isActive
+                      ? "text-nowrap border-b border-black"
+                      : "text-nowrap md:max-lg:hidden"
                   }
                 >
-                  About
+                  {t("description.about")}
                 </NavLink>{" "}
               </li>
               {!user && (
@@ -266,7 +287,7 @@ export const Header = ({ q }) => {
                     href="sign-up"
                     className={`${window.location.pathname === "/sign-up" && "underline"} text-nowrap`}
                   >
-                    Sign Up
+                    {t("description.signUpHome")}
                   </a>
                 </li>
               )}
@@ -279,7 +300,7 @@ export const Header = ({ q }) => {
             <input
               className={`h-6 w-[100%] rounded-[4px] bg-[#F5F5F5] pl-2 pr-8 text-[12px]/[18px] outline-0`}
               type="text"
-              placeholder="What are you looking for?"
+              placeholder={t("description.search")}
               name="q"
               id="q"
               defaultValue={q}
@@ -289,15 +310,19 @@ export const Header = ({ q }) => {
 
           {window.location.pathname !== "/login" &&
             window.location.pathname !== "/sign-up" && (
-              <div className=" hidden items-center gap-4 md:flex">
-                <Link className="relative" to="wishlist">
+              <div className=" min-w[600px] hidden items-center gap-4 md:flex">
+                <Link className="relative  shrink-0 grow-0" to="wishlist">
                   <span className=" absolute flex size-4 -translate-y-[6px] translate-x-3  items-start justify-center rounded-full bg-[#DB4444] text-xs text-white">
                     {wishlistItemsCounter}
                   </span>
-                  <img src={heart} alt="heart icon" />
+                  <img
+                    className=" shrink-0 grow-0"
+                    src={heart}
+                    alt="heart icon"
+                  />
                 </Link>
 
-                <Link className="relative" to="account/cart">
+                <Link className="relative shrink-0 grow-0" to="account/cart">
                   <span className=" absolute  flex size-4 translate-x-4  items-start justify-center rounded-full bg-[#DB4444] text-xs text-white">
                     {cartItemsCounter}
                   </span>
@@ -314,8 +339,8 @@ export const Header = ({ q }) => {
                     <ul className="absolute right-0 top-10 z-20 hidden w-[224px] flex-col justify-between gap-3 rounded-[4px] bg-gray-500 px-5 py-[18px] blur-[0.4px] group-hover:flex">
                       <li className=" text-[14px]/[21px] text-white hover:underline">
                         <NavLink className="flex gap-4" to="account">
-                          <img src={userIcon} alt="user account" /> Manage My
-                          Account
+                          <img src={userIcon} alt="user account" />{" "}
+                          {t("description.ManageMyAccount")}
                         </NavLink>
                       </li>
                       <li className="flex gap-4 text-[14px]/[21px] text-white hover:underline">
@@ -323,33 +348,36 @@ export const Header = ({ q }) => {
                           className="flex gap-4"
                           to="account/cart/checkout"
                         >
-                          <img src={bagIcon} alt="orders icon" /> My Order
+                          <img src={bagIcon} alt="orders icon" />{" "}
+                          {t("description.MyOrder")}
                         </NavLink>
                       </li>
 
                       <li className="flex gap-4 text-[14px]/[21px] text-white hover:underline">
-                        <img src={cancelIcon} alt="cancel icon" /> My
-                        Cancellations
+                        <img src={cancelIcon} alt="cancel icon" />{" "}
+                        {t("description.MyCancellations")}
                       </li>
 
                       <li className="flex gap-4 text-[14px]/[21px] text-white hover:underline">
-                        <img src={starIcon} alt="reviews icon" /> My Reviews
+                        <img src={starIcon} alt="reviews icon" />{" "}
+                        {t("description.MyReviews")}
                       </li>
 
                       <li
                         onClick={logoutHandler}
                         className="flex cursor-pointer gap-4 text-[14px]/[21px] text-white hover:underline"
                       >
-                        <img src={logoutIcon} alt="logout icon" /> Logout
+                        <img src={logoutIcon} alt="logout icon" />{" "}
+                        {t("description.Logout")}
                       </li>
                     </ul>
                   </div>
                 ) : (
                   <a
                     href="login"
-                    className={`${window.location.pathname === "/sign-up" && "underline"} text-nowrap`}
+                    className={`${window.location.pathname === "/sign-up" && "underline"} text-nowrap md:max-lg:hidden`}
                   >
-                    Login
+                    {t("description.loginHome")}
                   </a>
                 )}
               </div>

@@ -57,7 +57,7 @@ export const GeneralHeader = (props) => {
       )) ||
         (viewButton && (
           <button className="mt-10 self-center rounded bg-[#DB4444] px-12 py-4 text-base font-medium text-[#FAFAFA] md:mt-0 md:self-end">
-            View All
+            {viewButton}
           </button>
         ))}
     </div>

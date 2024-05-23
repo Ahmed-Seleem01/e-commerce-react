@@ -1,45 +1,54 @@
+import { useTranslation } from "react-i18next";
 import { auth } from "../firebase.config";
 import { PathDisplay } from "./PathDisplay";
 
 export const Account = () => {
+  const { t } = useTranslation();
   const userName = auth.currentUser.displayName;
   console.log(userName);
   const nameArr = userName.split(" ");
   return (
-    <div>
+    <div className="w-full">
       <div className="mb-16 flex w-full flex-col justify-between md:mb-0 md:flex-row md:items-center ">
         <PathDisplay path={window.location.pathname} />
         <span className="-mt-14">
-          Welcome! <h2 className=" inline-block text-[#DB4444]">{userName}</h2>
+          {t("description.account.Welcome")}!
+          <h2 className=" inline-block text-[#DB4444]">{userName}</h2>
         </span>
       </div>
-      <div className="flex w-full flex-col justify-between gap-10 md:flex-row md:gap-0 md:max-lg:flex-wrap">
+      <div className="flex flex-col justify-between gap-10 md:flex-row md:gap-0 md:max-lg:flex-wrap">
         <div className="flex flex-col gap-6">
           <div>
-            <h3 className=" font-medium">Manage My Account</h3>
+            <h3 className=" font-medium">
+              {t("description.account.ManageMyAccount")}
+            </h3>
             <ul className="ml-[35px] text-gray-400">
               <li className="mt-4">
                 <a className="text-[#DB4444]" href="#">
-                  My Profile
+                  {t("description.account.MyProfile")}
                 </a>
               </li>
               <li>
-                <a href="#">Address Book</a>
+                <a href="#">{t("description.account.AddressBook")}</a>
               </li>
               <li>
-                <a href="#">My Payment Options</a>
+                <a href="#">{t("description.account.MyPaymentOptions")}</a>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className=" font-medium">My Orders</h3>
+            <h3 className=" font-medium">
+              {t("description.account.MyOrders")}
+            </h3>
             <ul className="ml-[35px] text-gray-400">
-              <li className="mt-4">My Returns</li>
-              <li>My Cancellations</li>
+              <li className="mt-4">{t("description.account.MyReturns")}</li>
+              <li>{t("description.account.MyCancellations")}</li>
             </ul>
           </div>
           <div>
-            <h3 className=" font-medium">My WishList</h3>
+            <h3 className=" font-medium">
+              {t("description.account.MyWishList")}
+            </h3>
             <ul className="ml-[35px] text-gray-400"></ul>
           </div>
         </div>
@@ -47,11 +56,11 @@ export const Account = () => {
         <div>
           <form className="flex flex-col gap-6 px-5 py-10 shadow-md md:max-h-[630px] lg:px-[80px]">
             <h3 className="text-xl font-medium text-[#DB4444]">
-              Edit Your Profile
+              {t("description.account.EditYourProfile")}
             </h3>
             <span className="flex flex-col gap-[50px] md:flex-row">
               <label className=" flex flex-col gap-2">
-                <span>First Name</span>
+                <span>{t("description.account.FirstName")}</span>
                 <input
                   placeholder={nameArr[0] ? `${nameArr[0]}` : ""}
                   className="h-[50px] rounded bg-[#F5F5F5] px-4 py-3"
@@ -61,7 +70,7 @@ export const Account = () => {
                 />
               </label>
               <label className="flex flex-col gap-2">
-                <span>Last Name</span>
+                <span>{t("description.account.LastName")}</span>
                 <input
                   placeholder={nameArr[1] ? `${nameArr[1]}` : ""}
                   className="h-[50px] rounded bg-[#F5F5F5] px-4 py-3"
@@ -73,7 +82,7 @@ export const Account = () => {
             </span>
             <span className="flex flex-col gap-[50px] md:flex-row">
               <label className="flex flex-col gap-2">
-                <span>Email</span>
+                <span>{t("description.account.Email")}</span>
                 <input
                   placeholder={auth.currentUser.email}
                   className="h-[50px] rounded bg-[#F5F5F5] px-4 py-3"
@@ -83,10 +92,10 @@ export const Account = () => {
                 />
               </label>
               <label className=" flex flex-col gap-2">
-                <span>Address</span>
+                <span>{t("description.account.Address")}</span>
 
                 <input
-                  placeholder="Kingston, 5236, United State"
+                  placeholder={t("description.account.KingstonAddress")}
                   className="h-[50px] rounded bg-[#F5F5F5] px-4 py-3"
                   type="text"
                   name="streetAddress"
@@ -96,21 +105,21 @@ export const Account = () => {
             </span>
             <span>
               <label className="flex flex-col gap-4">
-                <span>Password Changes</span>
+                <span>{t("description.account.PasswordChanges")}</span>
                 <input
-                  placeholder="Current Passwod"
+                  placeholder={t("description.account.CurrentPassword")}
                   className="h-[50px] rounded bg-[#F5F5F5] px-4 py-3"
                   type="password"
                   name=""
                 />
                 <input
-                  placeholder="New Passwod"
+                  placeholder={t("description.account.NewPassword")}
                   className="h-[50px] rounded bg-[#F5F5F5] px-4 py-3"
                   type="password"
                   name=""
                 />
                 <input
-                  placeholder="Confirm New Password"
+                  placeholder={t("description.account.ConfirmNewPassword")}
                   className="h-[50px] rounded bg-[#F5F5F5] px-4 py-3"
                   type="password"
                   name=""
@@ -118,9 +127,9 @@ export const Account = () => {
               </label>
             </span>
             <span className="flex w-full items-center justify-between gap-8 md:w-auto md:justify-start md:self-end ">
-              <button>Cancel</button>
+              <button>{t("description.account.Cancel")}</button>
               <button className=" primary-button px-5 text-sm  font-medium md:px-10 md:text-base">
-                Save Changes
+                {t("description.account.SaveChanges")}
               </button>
             </span>
           </form>

@@ -1,12 +1,15 @@
+import { useTranslation } from "react-i18next";
 import { GeneralHeader } from "./GeneralHeader";
 import { ItemCard } from "./ItemCard";
 
 export const ExploreProducts = ({ cards }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col gap-[60px]">
       <GeneralHeader
-        label="Our Products"
-        heading="Explore Our Products"
+        label={t("description.OurProducts.OurProducts")}
+        heading={t("description.OurProducts.ExploreOurProducts")}
         toggle
       />
 
@@ -25,7 +28,7 @@ export const ExploreProducts = ({ cards }) => {
         ))}
       </div>
       <button className="mt-5 self-center rounded bg-[#DB4444] px-12 py-4 text-base font-semibold text-white">
-        View All Products
+        {t("description.ViewAllProducts")}
       </button>
     </div>
   );

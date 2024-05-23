@@ -14,8 +14,10 @@ import tom from "../assets/icons/tom.png";
 
 import tom2 from "../assets/icons/tom2.png";
 import { PathDisplay } from "./PathDisplay";
+import { useTranslation } from "react-i18next";
 
 export const About = () => {
+  const { t, i18n } = useTranslation();
   return (
     <div>
       <PathDisplay path={window.location.pathname} />
@@ -23,19 +25,16 @@ export const About = () => {
         <div className="flex flex-col items-center justify-between md:flex-row md:max-lg:flex-wrap">
           <div className="md:w-[525px]">
             <h1 className="font-Inter text-[54px]/[64px] font-semibold">
-              Our Story
+              {t("description.About.OurStory")}
             </h1>
-            <p className="mb-6 mt-10">
-              Launced in 2015, Exclusive is South Asia’s premier online shopping
-              makterplace with an active presense in Bangladesh. Supported by
-              wide range of tailored marketing, data and service solutions,
-              Exclusive has 10,500 sallers and 300 brands and serves 3 millioons
-              customers across the region.
+            <p
+              dir={i18n.language === "ar" ? "rtl" : "ltr"}
+              className="mb-6 mt-10"
+            >
+              {t("description.About.Launched2015")}
             </p>
-            <p>
-              Exclusive has more than 1 Million products to offer, growing at a
-              very fast. Exclusive offers a diverse assotment in categories
-              ranging from consumer.
+            <p dir={i18n.language === "ar" ? "rtl" : "ltr"}>
+              {t("description.About.ExclusiveOffers")}
             </p>
           </div>
           <div className="hidden h-[605px] w-[655px] bg-[#EB7EA8] md:mr-[-140px] md:inline-block"></div>
@@ -45,41 +44,41 @@ export const About = () => {
           <AboutCard
             image={shop}
             heading="10.5k"
-            description="Sallers active our site"
+            description={t("description.About.SellersActiveOurSite")}
           />
           <AboutCard
             image={sale}
             heading="33k"
-            description="Mopnthly Produduct Sale"
+            description={t("description.About.MonthlyProductSale")}
           />
           <AboutCard
             image={shoppingBag}
             heading="45.5k"
-            description="Customer active in our site"
+            description={t("description.About.CustomerActiveOurSite")}
           />
           <AboutCard
             image={moneyBag}
             heading="25k"
-            description="Anual gross sale in our site"
+            description={t("description.About.AnnualGrossSaleOurSite")}
           />
         </div>
 
         <div className="flex flex-col gap-10">
-          <div className="flex flex-col justify-between gap-10 md:flex-row md:gap-0 md:max-lg:flex-wrap">
+          <div className="flex flex-col justify-between gap-10 md:flex-row  md:max-lg:flex-wrap">
             <AboutCardPerson
               image={tom}
               heading="Tom Cruise"
-              description="Founder & Chairman"
+              description={t("description.About.FounderAndChairman")}
             />
             <AboutCardPerson
               image={tom2}
               heading="Will Smith"
-              description="Managing Director"
+              description={t("description.About.ManagingDirector")}
             />
             <AboutCardPerson
               image={tom2}
               heading="Will Smith"
-              description="Product Designer"
+              description={t("description.About.ProductDesigner")}
             />
           </div>
           <div className="flex gap-3 self-center">
@@ -93,18 +92,18 @@ export const About = () => {
         <div className="flex flex-col justify-between gap-[30px] md:flex-row">
           <FeatureCardSmall
             image={delivery}
-            heading="FREE AND FAST DELIVERY"
-            description="Free delivery for all orders over $140"
+            heading={t("description.Services.FREEANDFASTDELIVERY")}
+            description={t("description.Services.Freedelivery")}
           />
           <FeatureCardSmall
             image={service}
-            heading="24/7 CUSTOMER SERVICE"
-            description="Friendly 24/7 customer support"
+            heading={t("description.Services.CUSTOMERSERVICE")}
+            description={t("description.Services.customersupport")}
           />
           <FeatureCardSmall
             image={secure}
-            heading="MONEY BACK GUARANTEE"
-            description="We return money within 30 days"
+            heading={t("description.Services.MONEYBACK")}
+            description={t("description.Services.ReturnMoney")}
           />
         </div>
       </div>

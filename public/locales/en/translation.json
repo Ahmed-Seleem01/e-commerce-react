@@ -1,0 +1,216 @@
+{
+  "description": {
+    "home": "Home",
+    "contact": "Contact",
+    "about": "About",
+    "ViewAllProducts": "View All Products",
+    "Categories": "Categories",
+    "Hours": "Hours",
+    "Days": "Days",
+    "Minutes": "Minutes",
+    "Seconds": "Seconds",
+    "search": "What are you looking for?",
+    "ManageMyAccount": "Manage My Account",
+    "MyOrder": "My Order",
+    "MyCancellations": "My Cancellations",
+    "MyReviews": "My Reviews",
+    "Logout": "Logout",
+    "signUpHome": "signUp",
+    "loginHome": "Login",
+
+    "opening": {
+      "WomanFashion": "Woman’s Fashion",
+      "MenFashion": "Men’s Fashion",
+      "Electronics": "Electronics",
+      "HomeLifestyle": "Home & Lifestyle",
+      "Medicine": "Medicine",
+      "SportsOutdoor": "Sports & Outdoor",
+      "BabyToys": "Baby’s & Toys",
+      "GroceriesPets": "Groceries & Pets",
+      "HealthBeauty": "Health & Beauty"
+    },
+    "flash": {
+      "Today": "Today’s",
+      "FlashSales": "Flash Sales"
+    },
+    "categories": {
+      "BrowseByCategory": "Browse By Category",
+      "Phones": "Phones",
+      "Computers": "Computers",
+      "SmartWatch": "SmartWatch",
+      "Camera": "Camera",
+      "HeadPhones": "HeadPhones",
+      "Gaming": "Gaming"
+    },
+    "bestSelling": {
+      "ThisMonth": "This Month",
+      "BestSellingProducts": "Best Selling Products",
+      "ViewAll": "View All"
+    },
+    "Ad": {
+      "Enhance": "Enhance Your Music Experience",
+      "BuyNow": "Buy Now!"
+    },
+    "OurProducts": {
+      "OurProducts": "Our Products",
+      "ExploreOurProducts": "Explore Our Products",
+      "Featured": "Featured",
+      "Perfume": "Perfume",
+      "GucciIntenseOudEDP": "GUCCI INTENSE OUD EDP"
+    },
+    "NewArrival": {
+      "Featured": "Featured",
+      "NewArrival": "New Arrival",
+      "largeplaystation": "large playstation",
+      "PlayStation5": "PlayStation 5",
+      "description": "Black and White version of the PS5 coming out on sale.",
+      "WomenCollections": "Women’s Collections",
+      "FeaturedDescription": "Featured woman collections that give you another vibe.",
+      "ShopNow": "Shop Now",
+      "Speakers": "Speakers",
+      "WirelessSpeakers": "Amazon wireless speakers",
+      "Perfume": "Perfume",
+      "GucciIntenseOudEDP": "GucciIntenseOudEDP"
+    },
+    "Services": {
+      "FREEANDFASTDELIVERY": "FREE AND FAST DELIVERY",
+      "Freedelivery": "Free delivery for all orders over $140",
+      "CUSTOMERSERVICE": "24/7 CUSTOMER SERVICE",
+      "customersupport": "Friendly 24/7 customer support",
+      "MONEYBACK": "MONEY BACK GUARANTEE",
+      "ReturnMoney": "We return money within 30 days"
+    },
+    "Footer": {
+      "Subscribe": "Subscribe",
+      "firstorder": "Get 10% off your first order",
+      "email": "Enter your email",
+      "Support": "Support",
+      "address": "111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.",
+      "Account": "Account",
+      "MyAccount": "My Account",
+      "LoginRegister": "Login / Register",
+      "Cart": "Cart",
+      "Wishlist": "Wishlist",
+      "Shop": "Shop",
+      "QuickLink": "Quick Link",
+      "PrivacyPolicy": "Privacy Policy",
+      "TermsOfUse": "Terms Of Use",
+      "FAQ": "FAQ",
+      "Contact": "Contact",
+      "About": "About",
+      "DownloadApp": "Download App",
+      "Save": "Save $3 with App New User Only"
+    },
+    "About": {
+      "OurStory": "Our Story",
+      "Launched2015": "Launched in 2015, Exclusive is South Asia’s premier online shopping marketplace with an active presence in Bangladesh. Supported by a wide range of tailored marketing, data, and service solutions, Exclusive has 10,500 sellers and 300 brands and serves 3 million customers across the region.",
+      "ExclusiveOffers": "Exclusive has more than 1 million products to offer, growing very fast. Exclusive offers a diverse assortment in categories ranging from consumer.",
+      "SellersActiveOurSite": "Sellers active on our site",
+      "MonthlyProductSale": "Monthly Product Sale",
+      "CustomerActiveOurSite": "Customer active on our site",
+      "AnnualGrossSaleOurSite": "Annual gross sale on our site",
+      "FounderAndChairman": "Founder & Chairman",
+      "ManagingDirector": "Managing Director",
+      "ProductDesigner": "Product Designer"
+    },
+    "call": {
+      "CallToUs": "Call To Us",
+      "Availability": "We are available 24/7, 7 days a week.",
+      "WriteToUs": "Write To Us",
+      "ContactFormInstruction": "Fill out our form and we will contact you within 24 hours.",
+      "YourName": "Your Name",
+      "YourEmail": "Your Email",
+      "YourPhone": "Your Phone",
+      "YourMessage": "Your Message",
+      "SendMessage": "Send Message"
+    },
+    "cart": {
+      "Product": "Product",
+      "Price": "Price",
+      "Quantity": "Quantity",
+      "ReturnToShop": "Return To Shop",
+      "UpdateCart": "Update Cart",
+      "CouponCode": "Coupon Code",
+      "ApplyCoupon": "Apply coupon",
+      "CartTotal": "Cart Total",
+      "Subtotal": "Subtotal",
+      "Shipping": "Shipping",
+      "Free": "Free",
+      "Total": "Total",
+      "ProceedToCheckout": "Proceed to checkout"
+    },
+    "wishlist": {
+      "Wishlist": "Wishlist",
+      "MoveAllToBag": "Move All To Bag",
+      "JustForYou": "Just For You",
+      "SeeAll": "See All"
+    },
+    "billing": {
+      "BillingDetails": "Billing Details",
+      "FirstName": "First Name*",
+      "CompanyName": "Company Name",
+      "StreetAddress": "Street Address*",
+      "ApartmentFloorEtcOptional": "Apartment, floor, etc. (optional)",
+      "TownCity": "Town/City*",
+      "PhoneNumber": "Phone Number*",
+      "EmailAddress": "Email Address*",
+      "SaveInfo": "Save this information for faster check-out next time"
+    },
+    "account": {
+      "Welcome": "Welcome",
+      "ManageMyAccount": "Manage My Account",
+      "MyProfile": "My Profile",
+      "AddressBook": "Address Book",
+      "MyPaymentOptions": "My Payment Options",
+      "MyOrders": "My Orders",
+      "MyReturns": "My Returns",
+      "MyCancellations": "My Cancellations",
+      "MyWishList": "My WishList",
+      "EditYourProfile": "Edit Your Profile",
+      "FirstName": "First Name",
+      "LastName": "Last Name",
+      "Email": "Email",
+      "Address": "Address",
+      "KingstonAddress": "Kingston, 5236, United State",
+      "PasswordChanges": "Password Changes",
+      "CurrentPassword": "Current Password",
+      "NewPassword": "New Password",
+      "ConfirmNewPassword": "Confirm New Password",
+      "Cancel": "Cancel",
+      "SaveChanges": "Save Changes"
+    },
+    "ProductDescription": {
+      "PlayStation5": "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
+      "Colors": "Colors:",
+      "Size": "Size:",
+      "BuyNow": "Buy Now",
+      "FreeDelivery": "Free Delivery",
+      "PostalCode": "Enter your postal code for Delivery Availability",
+      "ReturnDelivery": "Return Delivery",
+      "Free3DeliveryReturns": "Free 30 Days Delivery Returns. Details",
+      "RelatedItems": "Related Items",
+      "InStock": "In Stock",
+      "Reviews": "Reviews"
+    },
+    "signUp": {
+      "CreateAccount": "Create an account",
+      "EnterDetailsBelow": "Enter your details below",
+      "Name": "Name",
+      "EmailOrPhoneNumber": "Email or Phone Number",
+      "Password": "Password",
+      "CreateAccountButton": "Create Account",
+      "SignUpWithGoogle": "Sign up with Google",
+      "AlreadyHaveAccount": "Already have an account?",
+      "LogIn": "Log in"
+    },
+    "login": {
+      "LogInToExclusive": "Log in to Exclusive",
+      "EnterDetailsBelow": "Enter your details below",
+      "EmailOrPhoneNumber": "Email or Phone Number",
+      "Password": "Password",
+      "LogInButton": "Log In",
+      "ForgetPassword": "Forget Password?",
+      "SignInWithGoogle": "Sign in with Google"
+    }
+  }
+}

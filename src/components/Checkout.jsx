@@ -6,6 +6,7 @@ import pay from "../assets/icons/pay.png";
 import { useLoaderData } from "react-router-dom";
 import { auth, getUserCartItems } from "../firebase.config";
 import { PathDisplay } from "./PathDisplay";
+import { useTranslation } from "react-i18next";
 
 const SHIPPING = 0;
 export async function load() {
@@ -16,6 +17,7 @@ export async function load() {
 }
 
 export const Checkout = () => {
+  const { t } = useTranslation();
   const { productsItems } = useLoaderData();
   const { productItems: products } = productsItems;
 
@@ -26,11 +28,14 @@ export const Checkout = () => {
       <PathDisplay path={window.location.pathname} />
       <div className="md-gap-0 flex w-full flex-col items-center justify-between gap-10 md:flex-row md:max-lg:flex-wrap">
         <div>
-          <h2 className=" font-Inter text-4xl/[30px]">Billing Details</h2>
+          <h2 className=" font-Inter text-4xl/[30px]">
+            {t("description.billing.BillingDetails")}
+          </h2>
           <form className="mt-12 flex max-w-[470px] flex-col gap-8">
             <label className=" mb-2 flex flex-col text-gray-500">
               <span>
-                First Name<span className=" text-red-400">*</span>
+                {t("description.billing.FirstName")}
+                <span className=" text-red-400">*</span>
               </span>
               <input
                 className="h-[50px] rounded bg-[#F5F5F5]"
@@ -40,7 +45,7 @@ export const Checkout = () => {
               />
             </label>
             <label className=" mb-2 flex flex-col text-gray-500">
-              <span>Company Name</span>
+              <span>{t("description.billing.CompanyName")}</span>
 
               <input
                 className="h-[50px] rounded bg-[#F5F5F5]"
@@ -50,7 +55,8 @@ export const Checkout = () => {
             </label>
             <label className=" mb-2 flex flex-col text-gray-500">
               <span>
-                Street Address<span className=" text-red-400">*</span>
+                {t("description.billing.StreetAddress")}
+                <span className=" text-red-400">*</span>
               </span>
 
               <input
@@ -61,7 +67,7 @@ export const Checkout = () => {
               />
             </label>
             <label className=" mb-2 flex flex-col text-gray-500">
-              <span>Apartment, floor, etc. (optional)</span>
+              <span>{t("description.billing.ApartmentFloorEtcOptional")}</span>
               <input
                 className="h-[50px] rounded bg-[#F5F5F5]"
                 type="text"
@@ -70,7 +76,8 @@ export const Checkout = () => {
             </label>
             <label className=" mb-2 flex flex-col text-gray-500">
               <span>
-                Town/City<span className=" text-red-400">*</span>
+                {t("description.billing.TownCity")}
+                <span className=" text-red-400">*</span>
               </span>
 
               <input
@@ -82,7 +89,8 @@ export const Checkout = () => {
             </label>
             <label className=" mb-2 flex flex-col text-gray-500">
               <span>
-                Phone Number<span className=" text-red-400">*</span>
+                {t("description.billing.PhoneNumber")}
+                <span className=" text-red-400">*</span>
               </span>
 
               <input
@@ -94,7 +102,8 @@ export const Checkout = () => {
             </label>
             <label className=" mb-2 flex flex-col text-gray-500">
               <span>
-                Email Address<span className=" text-red-400">*</span>
+                {t("description.billing.EmailAddress")}
+                <span className=" text-red-400">*</span>
               </span>
 
               <input
@@ -113,7 +122,7 @@ export const Checkout = () => {
               <span className="flex size-6 items-center justify-center rounded border peer-checked:bg-red-500">
                 <span className="inline-block h-[14px]  w-[8px] translate-y-[-2px] rotate-45 border-b-2 border-r-2 border-white"></span>
               </span>
-              Save this information for faster check-out next time
+              {t("description.billing.SaveInfo")}
             </label>
           </form>
         </div>

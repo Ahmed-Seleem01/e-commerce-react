@@ -4,8 +4,11 @@ import { loginWithEmailAndPassword, signInWithGoogle } from "../authServices";
 import { auth } from "../firebase.config";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export const SignIn = () => {
+  const { t } = useTranslation();
+
   const [isUser, setIsUser] = useState();
   const [message, setMessage] = useState("");
 
@@ -67,9 +70,9 @@ export const SignIn = () => {
           <form className=" md:w-[370px]">
             <div className="mb-12">
               <h2 className=" mb-6 font-Inter text-[36px]/[30px] font-semibold">
-                Log in to Exclusive
+                {t("description.login.LoginToExclusive")}
               </h2>
-              <span>Enter your details below</span>
+              <span> {t("description.login.EnterDetailsBelow")}</span>
             </div>
             <div className="flex flex-col gap-10">
               <input
@@ -77,7 +80,7 @@ export const SignIn = () => {
                 type="text"
                 name="email-phone"
                 id="email-phone"
-                placeholder="Email or Phone Number"
+                placeholder={t("description.login.EmailOrPhoneNumber")}
                 ref={mailRef}
               />
               <input
@@ -85,7 +88,7 @@ export const SignIn = () => {
                 type="password"
                 name="password"
                 id="password"
-                placeholder="Password"
+                placeholder={t("description.login.Password")}
                 ref={passwordRef}
               />
               {message && <div>{message}</div>}
@@ -94,15 +97,18 @@ export const SignIn = () => {
                   onClick={signInWithMailAndPasswordHandler}
                   className=" rounded-[4px] bg-[#DB4444] px-12 py-4 text-[16px]/6 font-medium text-[#FAFAFA]"
                 >
-                  Log In
+                  {t("description.login.LogIn")}
                 </button>
-                <a className="text-[#DB4444]">Forget Password?</a>
+                <a className="text-[#DB4444]">
+                  {" "}
+                  {t("description.login.ForgetPassword")}?
+                </a>
                 <button
                   onClick={signInWithGoogle}
                   className="flex cursor-pointer items-center justify-center gap-4 rounded-[4px] border-[1px] p-4 text-[16px]/6 font-normal"
                 >
                   <img src={googleIcon} alt="google icon" />
-                  Sign in with Google
+                  {t("description.login.SignInWithGoogle")}
                 </button>
               </div>
             </div>

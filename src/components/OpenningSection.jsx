@@ -1,27 +1,31 @@
+import { useTranslation } from "react-i18next";
 import appleIcon from "../assets/icons/appleIcon.svg";
 import arrowIcon from "../assets/icons/arrow.svg";
 import heroPhone from "../assets/images/hero_phone.png";
 
 export const OpenningSection = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col items-center justify-between md:flex-row md:items-start md:gap-[45px]">
       <nav className=" self-stretch pr-4 pt-10 md:border-r-2">
         <ul className="flex flex-col items-center gap-4 md:w-[217px] md:items-stretch">
           <li className="flex items-center justify-between md:w-[100%]">
-            Woman’s Fashion
+            {t("description.opening.WomanFashion")}
             <span className="hidden size-2 rotate-45 border-r-2 border-t-2 border-black md:inline-block"></span>
           </li>
           <li className="flex items-center justify-between md:w-[100%]">
-            Men’s Fashion
+            {t("description.opening.MenFashion")}
+
             <span className=" hidden size-2 rotate-45 border-r-2 border-t-2 border-black md:inline-block "></span>
           </li>
-          <li>Electronics</li>
-          <li>Home & Lifestyle</li>
-          <li>Medicine</li>
-          <li>Sports & Outdoor</li>
-          <li>Baby’s & Toys</li>
-          <li>Groceries & Pets</li>
-          <li>Health & Beauty</li>
+          <li> {t("description.opening.Electronics")}</li>
+          <li> {t("description.opening.HomeLifestyle")}</li>
+          <li> {t("description.opening.Medicine")}</li>
+          <li> {t("description.opening.SportsOutdoor")}</li>
+          <li> {t("description.opening.BabyToys")}</li>
+          <li> {t("description.opening.GroceriesPets")}</li>
+          <li> {t("description.opening.HealthBeauty")}</li>
         </ul>
       </nav>
       <div className="mt-10 flex flex-col items-center bg-black px-5 py-4 text-[#FAFAFA]  md:pl-16 md:pr-10 ">
