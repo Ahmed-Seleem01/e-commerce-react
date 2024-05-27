@@ -4,15 +4,15 @@ import masterCard from "../assets/icons/master-card.png";
 import pay from "../assets/icons/pay.png";
 
 import { useLoaderData } from "react-router-dom";
-import { auth, getUserCartItems } from "../firebase.config";
+import { getUserCartItems } from "../firebase.config";
 import { PathDisplay } from "./PathDisplay";
 import { useTranslation } from "react-i18next";
+import getUserUID from "./general/userAuth";
 
 const SHIPPING = 0;
 export async function load() {
-  const user = auth.currentUser;
-  console.log(user);
-  const productsItems = await getUserCartItems(user.uid);
+  const userUid = await getUserUID();
+  const productsItems = await getUserCartItems(userUid);
   return { productsItems };
 }
 
@@ -22,7 +22,6 @@ export const Checkout = () => {
   const { productItems: products } = productsItems;
 
   const subTotal = products.reduce((acc, cur) => acc + cur.currentPrice, 0);
-  console.log(products);
   return (
     <div>
       <PathDisplay path={window.location.pathname} />
