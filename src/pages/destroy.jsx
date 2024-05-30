@@ -1,24 +1,20 @@
 import { redirect } from "react-router-dom";
 import {
   addToUserDB,
-  auth,
-  getUserWishlistItems,
+  getUserItems,
   removeFieldFromUserDB,
   removeFromUserDB,
 } from "../firebase.config";
+import getUserUID from "../components/general/userAuth";
 
 export async function action({ params }) {
-  const user = auth.currentUser;
-  console.log("removed", params.heading);
-  await removeFieldFromUserDB(user.uid, "wishlist", params.heading);
+  const userUID = await getUserUID();
+  await removeFieldFromUserDB(userUID, "wishlist", params.heading);
 
   if (params.heading.toLowerCase() === "move all to bag") {
-    const { productItems } = await getUserWishlistItems(user.uid);
-    console.log(productItems);
-    productItems.forEach(async (product) => {
-      await addToUserDB(auth.currentUser.uid, "cart", product);
-      await removeFromUserDB(auth.currentUser.uid, "wishlist", product);
-    });
+    const { productItems } = await getUserItems(userUID, "wishlist");
+    await removeFromUserDB(userUID, "wishlist");
+    await addToUserDB(userUID, "cart", productItems);
   }
   return redirect("../wishlist");
 }
