@@ -1,0 +1,216 @@
+{
+  "description": {
+    "home": "Inicio",
+    "contact": "Contacto",
+    "about": "Acerca de",
+    "ViewAllProducts": "Ver todos los productos",
+    "Categories": "Categorías",
+    "Hours": "Horas",
+    "Days": "Días",
+    "Minutes": "Minutos",
+    "Seconds": "Segundos",
+    "search": "¿Qué estás buscando?",
+    "ManageMyAccount": "Gestionar mi cuenta",
+    "MyOrder": "Mi pedido",
+    "MyCancellations": "Mis cancelaciones",
+    "MyReviews": "Mis opiniones",
+    "Logout": "Cerrar sesión",
+    "signUpHome": "Registrarse",
+    "loginHome": "Iniciar sesión",
+
+    "opening": {
+      "WomanFashion": "Moda de mujer",
+      "MenFashion": "Moda de hombre",
+      "Electronics": "Electrónica",
+      "HomeLifestyle": "Hogar y estilo de vida",
+      "Medicine": "Medicina",
+      "SportsOutdoor": "Deportes y aire libre",
+      "BabyToys": "Bebés y juguetes",
+      "GroceriesPets": "Comestibles y mascotas",
+      "HealthBeauty": "Salud y belleza"
+    },
+    "flash": {
+      "Today": "Hoy",
+      "FlashSales": "Ventas flash"
+    },
+    "categories": {
+      "BrowseByCategory": "Navegar por categoría",
+      "Phones": "Teléfonos",
+      "Computers": "Computadoras",
+      "SmartWatch": "Reloj inteligente",
+      "Camera": "Cámara",
+      "HeadPhones": "Auriculares",
+      "Gaming": "Juegos"
+    },
+    "bestSelling": {
+      "ThisMonth": "Este mes",
+      "BestSellingProducts": "Productos más vendidos",
+      "ViewAll": "Ver todo"
+    },
+    "Ad": {
+      "Enhance": "Mejora tu experiencia musical",
+      "BuyNow": "¡Compra ahora!"
+    },
+    "OurProducts": {
+      "OurProducts": "Nuestros productos",
+      "ExploreOurProducts": "Explora nuestros productos",
+      "Featured": "Destacados",
+      "Perfume": "Perfume",
+      "GucciIntenseOudEDP": "GUCCI INTENSE OUD EDP"
+    },
+    "NewArrival": {
+      "Featured": "Destacados",
+      "NewArrival": "Nueva llegada",
+      "largeplaystation": "gran playstation",
+      "PlayStation5": "PlayStation 5",
+      "description": "Versión en blanco y negro de la PS5 en oferta.",
+      "WomenCollections": "Colecciones de mujeres",
+      "FeaturedDescription": "Colecciones destacadas de mujeres que te dan otra vibra.",
+      "ShopNow": "Comprar ahora",
+      "Speakers": "Altavoces",
+      "WirelessSpeakers": "Altavoces inalámbricos Amazon",
+      "Perfume": "Perfume",
+      "GucciIntenseOudEDP": "GucciIntenseOudEDP"
+    },
+    "Services": {
+      "FREEANDFASTDELIVERY": "ENTREGA GRATIS Y RÁPIDA",
+      "Freedelivery": "Entrega gratuita para todos los pedidos superiores a $140",
+      "CUSTOMERSERVICE": "SERVICIO AL CLIENTE 24/7",
+      "customersupport": "Soporte al cliente amigable 24/7",
+      "MONEYBACK": "GARANTÍA DE DEVOLUCIÓN DE DINERO",
+      "ReturnMoney": "Devolvemos el dinero dentro de los 30 días"
+    },
+    "Footer": {
+      "Subscribe": "Suscribirse",
+      "firstorder": "Obtén un 10% de descuento en tu primer pedido",
+      "email": "Introduce tu correo electrónico",
+      "Support": "Soporte",
+      "address": "111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.",
+      "Account": "Cuenta",
+      "MyAccount": "Mi cuenta",
+      "LoginRegister": "Iniciar sesión / Registrarse",
+      "Cart": "Carrito",
+      "Wishlist": "Lista de deseos",
+      "Shop": "Tienda",
+      "QuickLink": "Enlace rápido",
+      "PrivacyPolicy": "Política de privacidad",
+      "TermsOfUse": "Términos de uso",
+      "FAQ": "Preguntas frecuentes",
+      "Contact": "Contacto",
+      "About": "Acerca de",
+      "DownloadApp": "Descargar aplicación",
+      "Save": "Ahorra $3 con la aplicación solo para nuevos usuarios"
+    },
+    "About": {
+      "OurStory": "Nuestra historia",
+      "Launched2015": "Lanzado en 2015, Exclusive es el mercado en línea líder en el sur de Asia con una presencia activa en Bangladesh. Con el apoyo de una amplia gama de soluciones de marketing, datos y servicios personalizados, Exclusive tiene 10,500 vendedores y 300 marcas y atiende a 3 millones de clientes en la región.",
+      "ExclusiveOffers": "Exclusive tiene más de 1 millón de productos para ofrecer, creciendo muy rápido. Exclusive ofrece una variedad diversa en categorías que van desde el consumidor.",
+      "SellersActiveOurSite": "Vendedores activos en nuestro sitio",
+      "MonthlyProductSale": "Venta mensual de productos",
+      "CustomerActiveOurSite": "Cliente activo en nuestro sitio",
+      "AnnualGrossSaleOurSite": "Venta bruta anual en nuestro sitio",
+      "FounderAndChairman": "Fundador y presidente",
+      "ManagingDirector": "Director gerente",
+      "ProductDesigner": "Diseñador de productos"
+    },
+    "call": {
+      "CallToUs": "Llámanos",
+      "Availability": "Estamos disponibles 24/7, 7 días a la semana.",
+      "WriteToUs": "Escríbenos",
+      "ContactFormInstruction": "Rellena nuestro formulario y te contactaremos en 24 horas.",
+      "YourName": "Tu nombre",
+      "YourEmail": "Tu correo electrónico",
+      "YourPhone": "Tu teléfono",
+      "YourMessage": "Tu mensaje",
+      "SendMessage": "Enviar mensaje"
+    },
+    "cart": {
+      "Product": "Producto",
+      "Price": "Precio",
+      "Quantity": "Cantidad",
+      "ReturnToShop": "Volver a la tienda",
+      "UpdateCart": "Actualizar carrito",
+      "CouponCode": "Código de cupón",
+      "ApplyCoupon": "Aplicar cupón",
+      "CartTotal": "Total del carrito",
+      "Subtotal": "Subtotal",
+      "Shipping": "Envío",
+      "Free": "Gratis",
+      "Total": "Total",
+      "ProceedToCheckout": "Proceder a la compra"
+    },
+    "wishlist": {
+      "Wishlist": "Lista de deseos",
+      "MoveAllToBag": "Mover todo a la bolsa",
+      "JustForYou": "Solo para ti",
+      "SeeAll": "Ver todo"
+    },
+    "billing": {
+      "BillingDetails": "Detalles de facturación",
+      "FirstName": "Nombre*",
+      "CompanyName": "Nombre de la empresa",
+      "StreetAddress": "Dirección*",
+      "ApartmentFloorEtcOptional": "Apartamento, piso, etc. (opcional)",
+      "TownCity": "Ciudad*",
+      "PhoneNumber": "Número de teléfono*",
+      "EmailAddress": "Correo electrónico*",
+      "SaveInfo": "Guardar esta información para un pago más rápido la próxima vez"
+    },
+    "account": {
+      "Welcome": "Bienvenido",
+      "ManageMyAccount": "Gestionar mi cuenta",
+      "MyProfile": "Mi perfil",
+      "AddressBook": "Libreta de direcciones",
+      "MyPaymentOptions": "Mis opciones de pago",
+      "MyOrders": "Mis pedidos",
+      "MyReturns": "Mis devoluciones",
+      "MyCancellations": "Mis cancelaciones",
+      "MyWishList": "Mi lista de deseos",
+      "EditYourProfile": "Editar tu perfil",
+      "FirstName": "Nombre",
+      "LastName": "Apellido",
+      "Email": "Correo electrónico",
+      "Address": "Dirección",
+      "KingstonAddress": "Kingston, 5236, Estados Unidos",
+      "PasswordChanges": "Cambios de contraseña",
+      "CurrentPassword": "Contraseña actual",
+      "NewPassword": "Nueva contraseña",
+      "ConfirmNewPassword": "Confirmar nueva contraseña",
+      "Cancel": "Cancelar",
+      "SaveChanges": "Guardar cambios"
+    },
+    "ProductDescription": {
+      "PlayStation5": "Skin del controlador de PlayStation 5. Vinilo de alta calidad con adhesivo de canal de aire para una fácil instalación sin burbujas y una eliminación sin residuos. Sensible a la presión.",
+      "Colors": "Colores:",
+      "Size": "Tamaño:",
+      "BuyNow": "Comprar ahora",
+      "FreeDelivery": "Envío gratuito",
+      "PostalCode": "Introduce tu código postal para la disponibilidad del envío",
+      "ReturnDelivery": "Devolución de envío",
+      "Free3DeliveryReturns": "Devoluciones de entrega gratuitas de 30 días. Detalles",
+      "RelatedItems": "Artículos relacionados",
+      "InStock": "En stock",
+      "Reviews": "Opiniones"
+    },
+    "signUp": {
+      "CreateAccount": "Crear una cuenta",
+      "EnterDetailsBelow": "Introduce tus datos a continuación",
+      "Name": "Nombre",
+      "EmailOrPhoneNumber": "Correo electrónico o número de teléfono",
+      "Password": "Contraseña",
+      "CreateAccountButton": "Crear cuenta",
+      "SignUpWithGoogle": "Regístrate con Google",
+      "AlreadyHaveAccount": "¿Ya tienes una cuenta?",
+      "LogIn": "Inicia sesión"
+    },
+    "login": {
+      "LoginToExclusive": "Inicia sesión en Exclusive",
+      "EnterDetailsBelow": "Introduce tus datos a continuación",
+      "EmailOrPhoneNumber": "Correo electrónico o número de teléfono",
+      "Password": "Contraseña",
+      "LogInButton": "Iniciar sesión",
+      "ForgetPassword": "¿Olvidaste tu contraseña?",
+      "SignInWithGoogle": "Inicia sesión con Google"
+    }
+  }
+}

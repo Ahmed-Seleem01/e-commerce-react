@@ -81,6 +81,9 @@ export const Header = ({ q }) => {
           <option className=" text-black" value="ar">
             Arabic
           </option>
+          <option className=" text-black" value="es">
+            Spanish
+          </option>
         </select>
       </div>
 
