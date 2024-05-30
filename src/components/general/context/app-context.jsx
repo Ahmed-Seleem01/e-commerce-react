@@ -1,9 +1,10 @@
+import { createContext } from "react";
 import { useState } from "react";
-import appContext from "./app-context";
 
-const MyProvider = ({ children }) => {
+const appContext = createContext();
+
+export const MyProvider = ({ children }) => {
   const [cartItemsCounter, setCartItemsCounter] = useState(0);
-
   const [wishlistItemsCounter, setWishlistItemsCounter] = useState(0);
   const [subTotal, setSubTotal] = useState(0);
 
@@ -23,4 +24,4 @@ const MyProvider = ({ children }) => {
   );
 };
 
-export default MyProvider;
+export default appContext;
