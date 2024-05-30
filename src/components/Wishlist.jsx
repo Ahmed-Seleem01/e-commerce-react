@@ -1,16 +1,15 @@
 import { ItemCard } from "./ItemCard";
-import { auth, getProduct, getUserWishlistItems } from "../firebase.config";
+import { getProduct, getUserItems } from "../firebase.config";
 import { Form, useLoaderData } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
+import { useTranslation } from "react-i18next";
+import getUserUID from "./general/userAuth";
 import { useContext, useEffect } from "react";
 import appContext from "./general/context/app-context";
-import { useTranslation } from "react-i18next";
+
+const user = await getUserUID();
 
 export async function load() {
-  console.log(auth);
-  let user = auth.currentUser.uid;
-  console.log(user);
-  const productsItems = await getUserWishlistItems(user);
+  const productsItems = await getUserItems(user, "wishlist");
   const laptopProduct = await getProduct("ASUS FHD Gaming Laptop");
   const lcdProduct = await getProduct("IPS LCD Gaming Monitor");
   const gamepadProduct = await getProduct("HAVIT HV-G92 Gamepad");
@@ -26,8 +25,9 @@ export async function load() {
 }
 
 export const Wishlist = () => {
+  const { setWishlistItemsCounter, setCartItemsCounter } =
+    useContext(appContext);
   const { t } = useTranslation();
-  const { setWishlistItemsCounter } = useContext(appContext);
   const {
     productsItems,
     laptopProduct,
@@ -37,9 +37,18 @@ export const Wishlist = () => {
   } = useLoaderData();
   const { productItems: products } = productsItems;
 
+  async function setCartItemsLength() {
+    const { productItems } = await getUserItems(user, "cart");
+    setCartItemsCounter(productItems.length);
+  }
+
   useEffect(() => {
     setWishlistItemsCounter(products.length);
-  }, []);
+    if (products.length === 0) {
+      setCartItemsLength();
+    }
+  }, [products.length]);
+
   return (
     <div className="mt-[80px] flex w-full flex-col gap-[80px]">
       <div className="flex flex-col gap-[60px]">
@@ -66,11 +75,9 @@ export const Wishlist = () => {
         </div>
         <div className="flex flex-col flex-wrap gap-4 md:flex-row md:max-lg:flex-wrap">
           {products.map((product) => {
-            product.id = uuidv4();
-            const { cardImage, heading, currentPrice, oldPrice, productId } =
-              product;
+            const { cardImage, heading, currentPrice, oldPrice } = product;
             return (
-              <div key={productId}>
+              <div key={heading}>
                 <ItemCard
                   cardImage={cardImage}
                   heading={heading}

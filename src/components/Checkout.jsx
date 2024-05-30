@@ -4,7 +4,7 @@ import masterCard from "../assets/icons/master-card.png";
 import pay from "../assets/icons/pay.png";
 
 import { useLoaderData } from "react-router-dom";
-import { getUserCartItems } from "../firebase.config";
+import { getUserItems } from "../firebase.config";
 import { PathDisplay } from "./PathDisplay";
 import { useTranslation } from "react-i18next";
 import getUserUID from "./general/userAuth";
@@ -12,7 +12,7 @@ import getUserUID from "./general/userAuth";
 const SHIPPING = 0;
 export async function load() {
   const userUid = await getUserUID();
-  const productsItems = await getUserCartItems(userUid);
+  const productsItems = await getUserItems(userUid, "cart");
   return { productsItems };
 }
 
@@ -21,7 +21,11 @@ export const Checkout = () => {
   const { productsItems } = useLoaderData();
   const { productItems: products } = productsItems;
 
-  const subTotal = products.reduce((acc, cur) => acc + cur.currentPrice, 0);
+  const subTotal = products.reduce(
+    (acc, cur) => acc + cur.currentPrice * cur.amount,
+    0,
+  );
+
   return (
     <div>
       <PathDisplay path={window.location.pathname} />
@@ -130,7 +134,7 @@ export const Checkout = () => {
           <div className="flex w-[80%] flex-col gap-8 ">
             {products.map((product, i) => (
               <ul key={i} className="flex items-center  justify-between">
-                <li className="flex items-center gap-5 ">
+                <li className="flex items-center gap-5">
                   <img
                     className="size-[54px] object-contain"
                     src={product.cardImage}
@@ -139,7 +143,10 @@ export const Checkout = () => {
                   {product.heading}
                 </li>
 
-                <li>${product.currentPrice * 1}</li>
+                <li className="flex w-20 items-center justify-between">
+                  <span className="text-red-600">x {product.amount}</span>$
+                  {product.currentPrice * product.amount}
+                </li>
               </ul>
             ))}
           </div>

@@ -1,21 +1,18 @@
-import { useContext, useState } from "react";
-import appContext from "./general/context/app-context";
+import { useEffect, useRef, useState } from "react";
+import { Form } from "react-router-dom";
 
-export const ItemsCounter = ({ price }) => {
-  const [count, setCount] = useState(1);
-  const { subTotal, setSubTotal } = useContext(appContext);
+export const ItemsCounter = ({ amount, price, productHeading }) => {
+  const [count, setCount] = useState(Number(amount));
+  const subTotal = useRef(price);
 
-  const incrementHandler = () => {
-    setCount((pre) => Number((pre += 1)));
-  };
-  const decrementHandler = () => {
-    if (count > 1) setCount((pre) => Number((pre -= 1)));
-  };
+  // const incrementHandler = () => {
+  //   setCount((pre) => Number((pre += 1)));
+  // };
+  // const decrementHandler = () => {
+  //   if (count > 1) setCount((pre) => Number((pre -= 1)));
+  // };
 
-  console.log(price);
-  console.log(count);
-
-  // setSubTotal(subTotalRef.current);
+  subTotal.current = price * count;
 
   return (
     <>
@@ -26,16 +23,26 @@ export const ItemsCounter = ({ price }) => {
             {count}
           </div>
           <div className="flex flex-col">
-            <button className=" rotate-180 " onClick={incrementHandler}>
-              ⌄
-            </button>
-            <button onClick={decrementHandler}>⌄</button>
+            <Form
+              action={`/${productHeading}/${Number(count + 1)}/update-amount`}
+              method="post"
+              onSubmit={() => {}}
+            >
+              <button className=" rotate-180">⌄</button>
+            </Form>
+            <Form
+              action={`/${productHeading}/${Number(count - 1)}/update-amount`}
+              method="post"
+              onSubmit={() => {}}
+            >
+              <button>⌄</button>
+            </Form>
           </div>
         </div>
       </li>
 
       <li className=" w-[65px] justify-self-end text-start">
-        ${price * count}
+        ${subTotal.current}
       </li>
     </>
   );

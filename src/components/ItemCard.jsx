@@ -2,14 +2,16 @@ import heart2 from "../assets/icons/heart2.svg";
 import eye from "../assets/icons/eye.svg";
 import deleteIcon from "../assets/icons/delete.svg";
 import { Form, Link } from "react-router-dom";
-import { addToUserDB, auth, getUserCartItems } from "../firebase.config";
+import { addToUserDB, getUserItems } from "../firebase.config";
 import StarRating from "./StarRating";
 import { useContext, useState } from "react";
 import appContext from "./general/context/app-context";
+import authContext from "./general/context/auth-context";
 
 export const ItemCard = (props) => {
   const { setCartItemsCounter, setWishlistItemsCounter } =
     useContext(appContext);
+  const { user } = useContext(authContext);
   const [hideAddToCart, setHideAddToCart] = useState(false);
   const [hideAddToWishlist, setHideAddToWishlist] = useState(false);
 
@@ -27,25 +29,27 @@ export const ItemCard = (props) => {
     ratingValue,
   } = props;
 
-  console.log(ratingValue);
-  const addToCartHandler = () => {
-    addToUserDB(auth.currentUser.uid, "cart", {
+  const addToCartHandler = async () => {
+    await addToUserDB(user.uid, "cart", {
       cardImage,
       heading,
       currentPrice,
+      amount: 1,
     });
-    setCartItemsCounter((pre) => (pre += 1));
+    const { productItems } = await getUserItems(user.uid, "cart");
+    setCartItemsCounter(productItems.length);
     setHideAddToCart(true);
   };
 
-  const addToWishlistHandler = () => {
-    addToUserDB(auth.currentUser.uid, "wishlist", {
+  const addToWishlistHandler = async () => {
+    await addToUserDB(user.uid, "wishlist", {
       cardImage,
       heading,
       currentPrice,
-      oldPrice,
+      oldPrice: oldPrice || 0,
     });
-    setWishlistItemsCounter((pre) => (pre += 1));
+    const { productItems } = await getUserItems(user.uid, "wishlist");
+    setWishlistItemsCounter(productItems.length);
     setHideAddToWishlist(true);
   };
 
@@ -73,8 +77,6 @@ export const ItemCard = (props) => {
                   !confirm("Please confirm you want to delete this record.")
                 ) {
                   event.preventDefault();
-                } else {
-                  setWishlistItemsCounter((pre) => (pre -= 1));
                 }
               }}
             >

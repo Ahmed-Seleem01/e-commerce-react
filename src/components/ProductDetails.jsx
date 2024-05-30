@@ -4,7 +4,7 @@ import heart2 from "../assets/icons/heart2.svg";
 
 import carBlack from "../assets/icons/icon-delivery-car-black.svg";
 import returnIcon from "../assets/icons/Icon-return.svg";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { addToUserDB, auth, getProduct } from "../firebase.config";
 import { useState } from "react";
 import StarRating from "./StarRating";
@@ -28,6 +28,7 @@ export async function load({ params }) {
 }
 
 export const ProductDetails = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const {
     product,
@@ -52,21 +53,24 @@ export const ProductDetails = () => {
 
   const [count, setCount] = useState(1);
 
-  const addToCartHandler = () => {
-    addToUserDB(auth.currentUser.uid, "cart", {
+  const addToCartHandler = async () => {
+    await addToUserDB(auth.currentUser.uid, "cart", {
       cardImage: mainImage,
       heading,
       currentPrice,
+      amount: count,
     });
+    navigate("../../account/cart");
   };
 
-  const addToWishlistHandler = () => {
-    addToUserDB(auth.currentUser.uid, "wishlist", {
+  const addToWishlistHandler = async () => {
+    await addToUserDB(auth.currentUser.uid, "wishlist", {
       cardImage: mainImage,
       heading,
       currentPrice,
       oldPrice,
     });
+    navigate("../../wishlist");
   };
 
   const increment = () => {

@@ -1,34 +1,38 @@
-import { Form, Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Form, Link, useLoaderData } from "react-router-dom";
 import cancelIcon from "../assets/icons/icon-cancel-small.svg";
 
-import { auth, getUserCartItems } from "../firebase.config";
+import { getUserItems } from "../firebase.config";
 import { ItemsCounter } from "./ItemsCounter";
 import { useContext, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { PathDisplay } from "./PathDisplay";
 import appContext from "./general/context/app-context";
 import { useTranslation } from "react-i18next";
+import getUserUID from "./general/userAuth";
 
 const SHIPPING = 0;
 
 export async function load() {
-  const user = auth.currentUser;
-  const productsItems = await getUserCartItems(user.uid);
+  const user = await getUserUID();
+  const productsItems = await getUserItems(user, "cart");
   return { productsItems };
 }
 
 export const Cart = () => {
   const { setCartItemsCounter, subTotal, setSubTotal } = useContext(appContext);
-  const navigate = useNavigate("/");
   const { t } = useTranslation();
-
   const { productsItems } = useLoaderData();
   const { productItems: products } = productsItems;
   console.log(products);
+
+  const total = products.reduce(
+    (acc, cur) => acc + cur.currentPrice * cur.amount,
+    0,
+  );
   useEffect(() => {
+    setSubTotal(total);
     setCartItemsCounter(products.length);
-    setSubTotal(products.reduce((acc, cur) => acc + cur.currentPrice, 0));
-  }, []);
+  }, [products.length, total]);
 
   const updateCart = () => {
     // removeFromUserDB(auth.currentUser.uid, "cart");
@@ -56,6 +60,7 @@ export const Cart = () => {
           const {
             cardImage: image,
             currentPrice: price,
+            amount,
             heading,
             productId,
           } = product;
@@ -75,8 +80,6 @@ export const Cart = () => {
                       !confirm("Please confirm you want to delete this record.")
                     ) {
                       event.preventDefault();
-                    } else {
-                      setCartItemsCounter((pre) => (pre -= 1));
                     }
                   }}
                 >
@@ -96,7 +99,11 @@ export const Cart = () => {
                 {heading}
               </li>
               <li className="justify-self-center">${price}</li>
-              <ItemsCounter price={price} />
+              <ItemsCounter
+                amount={amount}
+                price={price}
+                productHeading={heading}
+              />
             </ul>
           );
         })}
