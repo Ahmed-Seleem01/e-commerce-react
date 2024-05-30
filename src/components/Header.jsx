@@ -388,7 +388,7 @@ export const Header = ({ q }) => {
                   </div>
                 ) : (
                   <a
-                    href="login"
+                    href="../login"
                     className={`${window.location.pathname === "/sign-up" && "underline"} text-nowrap md:max-lg:hidden`}
                   >
                     {t("description.loginHome")}

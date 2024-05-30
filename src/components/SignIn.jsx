@@ -95,7 +95,7 @@ export const SignIn = () => {
                   onClick={signInWithMailAndPasswordHandler}
                   className=" rounded-[4px] bg-[#DB4444] px-12 py-4 text-[16px]/6 font-medium text-[#FAFAFA]"
                 >
-                  {t("description.login.LogIn")}
+                  {t("description.login.LogInButton")}
                 </button>
                 <a className="text-[#DB4444]">
                   {" "}
