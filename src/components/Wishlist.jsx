@@ -6,9 +6,8 @@ import getUserUID from "./general/userAuth";
 import { useContext, useEffect } from "react";
 import appContext from "./general/context/app-context";
 
-const user = await getUserUID();
-
 export async function load() {
+  const user = await getUserUID();
   const productsItems = await getUserItems(user, "wishlist");
   const laptopProduct = await getProduct("ASUS FHD Gaming Laptop");
   const lcdProduct = await getProduct("IPS LCD Gaming Monitor");
@@ -38,6 +37,7 @@ export const Wishlist = () => {
   const { productItems: products } = productsItems;
 
   async function setCartItemsLength() {
+    const user = await getUserUID();
     const { productItems } = await getUserItems(user, "cart");
     setCartItemsCounter(productItems.length);
   }
