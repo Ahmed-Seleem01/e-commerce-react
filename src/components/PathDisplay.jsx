@@ -1,7 +1,6 @@
 export const PathDisplay = (props) => {
   let { path } = props;
   path = path.split("/");
-  console.log(path);
 
   return (
     <div className="my-[80px] text-gray-400">

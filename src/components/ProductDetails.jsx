@@ -37,7 +37,6 @@ export const ProductDetails = () => {
     gamepadProduct,
     keyboardProduct,
   } = useLoaderData();
-  console.log(product);
   const {
     subImages,
     mainImage,

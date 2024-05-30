@@ -15,7 +15,6 @@ export const SignIn = () => {
   useEffect(() => {
     let a = 0;
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log(user);
       setIsUser(user);
       a = setTimeout(() => {
         if (user) redirectToHomePage();
@@ -57,7 +56,6 @@ export const SignIn = () => {
       });
   };
 
-  console.log(isUser);
   return (
     <>
       {!isUser ? (

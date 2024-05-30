@@ -6,7 +6,6 @@ export const FlashSales = (props) => {
   const { t } = useTranslation();
 
   const { cards } = props;
-  console.log(cards);
   return (
     <div className="flex flex-col gap-10 md:w-[105%]  md:pr-10">
       <GeneralHeader

@@ -37,15 +37,10 @@ export const SignUP = () => {
         // Update the user's display name
         updateProfile(user, {
           displayName: nameRef.current.value,
-        })
-          .then(() => {
-            // Update successful
-            console.log("Display name set:", nameRef.current.value);
-          })
-          .catch((error) => {
-            // An error occurred
-            console.error("Update profile error:", error.message);
-          });
+        }).catch((error) => {
+          // An error occurred
+          console.error("Update profile error:", error.message);
+        });
       })
       .catch((error) => {
         // An error occurred

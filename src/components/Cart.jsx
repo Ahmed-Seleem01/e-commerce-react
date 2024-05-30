@@ -23,7 +23,6 @@ export const Cart = () => {
   const { t } = useTranslation();
   const { productsItems } = useLoaderData();
   const { productItems: products } = productsItems;
-  console.log(products);
 
   const total = products.reduce(
     (acc, cur) => acc + cur.currentPrice * cur.amount,
@@ -38,7 +37,6 @@ export const Cart = () => {
     // removeFromUserDB(auth.currentUser.uid, "cart");
   };
 
-  // console.log(subTotal.current);
   return (
     <div className="w-full">
       <PathDisplay path={window.location.pathname} />

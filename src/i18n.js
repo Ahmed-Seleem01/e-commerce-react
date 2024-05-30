@@ -23,24 +23,7 @@ i18n
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
-    // resources: {
-        // en: {
-        //     translation: {
-        //       description: {
-        //         part1: 'Home',
-        //         part2: 'Learn React'
-        //       }
-        //     }
-        //   },
-        //   ar: {
-        //     translation: {
-        //       description: {
-        //         part1: "الصفحة الرئيسية",
-        //         part2: 'Lerne React'
-        //       }
-        //     }
-        //   }
-    // }
+    
   });
 
 export default i18n;
