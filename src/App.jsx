@@ -10,6 +10,7 @@ import { load as loadLayout } from "./pages/LayoutPage";
 
 import { action as destroyAction } from "./pages/destroy";
 import { action as destroyCartAction } from "./pages/destroy-cart";
+import { action as updateAmountAction } from "./pages/update-amount";
 
 import {
   About,
@@ -78,6 +79,11 @@ const router = createBrowserRouter([
             path: ":heading/destroy-cart",
             element: <destroy-cart />,
             action: destroyCartAction,
+          },
+          {
+            path: ":heading/:amount/update-amount",
+            element: <update-amount />,
+            action: updateAmountAction,
           },
           {
             path: "account",
