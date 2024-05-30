@@ -7,25 +7,38 @@ import cancelIcon from "../assets/icons/icon-cancel.svg";
 import starIcon from "../assets/icons/Icon-Reviews.svg";
 import logoutIcon from "../assets/icons/Icon-logout.svg";
 import { Form, Link, NavLink } from "react-router-dom";
-import { auth } from "../firebase.config";
 import { logout } from "../authServices";
 import { useContext, useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/auth";
 import appContext from "./general/context/app-context";
-
 import { useTranslation } from "react-i18next";
+import authContext from "./general/context/auth-context";
+import { getUserItems } from "../firebase.config";
 
 export const Header = ({ q }) => {
   const { t, i18n } = useTranslation();
 
-  const { cartItemsCounter, wishlistItemsCounter } = useContext(appContext);
-  console.log(cartItemsCounter);
-  const [user, setUser] = useState(null);
+  const {
+    cartItemsCounter,
+    setCartItemsCounter,
+    wishlistItemsCounter,
+    setWishlistItemsCounter,
+  } = useContext(appContext);
+
+  const { user } = useContext(authContext);
   const [menu, setMenu] = useState("-80vw");
+
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      setUser(user);
-    });
+    if (user) {
+      getUserItems(user.uid, "cart").then((productsItems) =>
+        setCartItemsCounter(productsItems.productItems.length),
+      );
+      getUserItems(user.uid, "wishlist").then((productsItems) =>
+        setWishlistItemsCounter(productsItems.productItems.length),
+      );
+    }
+  }, [user]);
+
+  useEffect(() => {
     document.getElementById("q").value = q;
   }, [q]);
 
@@ -41,12 +54,10 @@ export const Header = ({ q }) => {
   };
 
   const openMenu = () => {
-    console.log("clicked");
     setMenu(0);
   };
 
   const closeMenu = () => {
-    console.log("clicked");
     setMenu("-80vw");
   };
   return (
@@ -330,13 +341,16 @@ export const Header = ({ q }) => {
                 </Link>
 
                 {user ? (
-                  <div className="group relative hidden md:block">
-                    <img
-                      className="rounded-full p-1 invert hover:bg-[#DB4444] hover:invert-0"
-                      src={userIcon}
-                      alt="account icon"
-                    />
-                    <ul className="absolute right-0 top-10 z-20 hidden w-[224px] flex-col justify-between gap-3 rounded-[4px] bg-gray-500 px-5 py-[18px] blur-[0.4px] group-hover:flex">
+                  <div className="relative hidden shrink-0 grow-0 md:block ">
+                    <input className="peer hidden" type="checkbox" id="menu" />
+                    <label
+                      className=" inline-block rounded-full invert peer-checked:bg-[#DB4444] peer-checked:invert-0"
+                      htmlFor="menu"
+                    >
+                      <img src={userIcon} alt="account icon" />
+                    </label>
+
+                    <ul className="absolute right-0 top-10 z-20 hidden w-[224px] flex-col justify-between gap-3 rounded-[4px] bg-gray-500 px-5 py-[18px] blur-[0.4px] peer-checked:flex">
                       <li className=" text-[14px]/[21px] text-white hover:underline">
                         <NavLink className="flex gap-4" to="account">
                           <img src={userIcon} alt="user account" />{" "}
