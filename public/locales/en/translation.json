@@ -204,7 +204,7 @@
       "LogIn": "Log in"
     },
     "login": {
-      "LogInToExclusive": "Log in to Exclusive",
+      "LoginToExclusive": "Log in to Exclusive",
       "EnterDetailsBelow": "Enter your details below",
       "EmailOrPhoneNumber": "Email or Phone Number",
       "Password": "Password",

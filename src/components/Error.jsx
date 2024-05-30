@@ -14,7 +14,8 @@ export const Error = () => {
         <p className="mb-20 mt-10">
           {error.status === 404
             ? "Your visited page not found. You may go home page."
-            : error.message.includes("uid")
+            : error.message.includes("uid") ||
+                error.message.includes("Cannot read properties of null")
               ? "You must login first"
               : error.statusText || error.message}
         </p>

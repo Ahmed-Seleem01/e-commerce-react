@@ -3,12 +3,12 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 const getUserUID = () => {
   const auth = getAuth();
 
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve,) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         resolve(user.uid);
       } else {
-        reject(new Error('User not authenticated'));
+        resolve(null);
       }
       unsubscribe();
     });

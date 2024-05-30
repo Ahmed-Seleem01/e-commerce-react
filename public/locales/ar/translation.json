@@ -205,7 +205,7 @@
       "EnterDetailsBelow": "أدخل تفاصيلك أدناه",
       "EmailOrPhoneNumber": "البريد الإلكتروني أو رقم الهاتف",
       "Password": "كلمة المرور",
-      "LogIn": "تسجيل الدخول",
+      "LogInButton": "تسجيل الدخول",
       "ForgetPassword": "نسيت كلمة المرور؟",
       "SignInWithGoogle": "التسجيل بواسطة جوجل"
     }
