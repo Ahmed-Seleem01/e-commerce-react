@@ -29,7 +29,7 @@ export const Checkout = () => {
   return (
     <div>
       <PathDisplay path={window.location.pathname} />
-      <div className="md-gap-0 flex w-full flex-col items-center justify-between gap-10 md:flex-row md:max-lg:flex-wrap">
+      <div className="md-gap-0 flex w-full flex-col items-center justify-between gap-10 md:flex-row md:items-start md:max-lg:flex-wrap">
         <div>
           <h2 className=" font-Inter text-4xl/[30px]">
             {t("description.billing.BillingDetails")}
@@ -133,7 +133,7 @@ export const Checkout = () => {
         <div className="flex flex-col gap-8 md:w-[527px]">
           <div className="flex w-[80%] flex-col gap-8 ">
             {products.map((product, i) => (
-              <ul key={i} className="flex items-center  justify-between">
+              <ul key={i} className="flex items-center  justify-between gap-4">
                 <li className="flex items-center gap-5">
                   <img
                     className="size-[54px] object-contain"
@@ -143,7 +143,7 @@ export const Checkout = () => {
                   {product.heading}
                 </li>
 
-                <li className="flex w-20 items-center justify-between">
+                <li className="flex w-20 shrink-0 items-center justify-between">
                   <span className="text-red-600">x {product.amount}</span>$
                   {product.currentPrice * product.amount}
                 </li>

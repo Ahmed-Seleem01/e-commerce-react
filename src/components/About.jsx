@@ -37,7 +37,7 @@ export const About = () => {
               {t("description.About.ExclusiveOffers")}
             </p>
           </div>
-          <div className="hidden h-[605px] w-[655px] bg-[#EB7EA8] md:mr-[-140px] md:inline-block"></div>
+          <div className="hidden h-[605px] w-[655px] bg-[#EB7EA8] md:mr-[-140px] lg:inline-block"></div>
         </div>
 
         <div className="flex flex-col justify-between gap-10 self-center md:flex-row md:gap-0 md:self-start md:max-lg:flex-wrap">
