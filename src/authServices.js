@@ -1,6 +1,7 @@
 import { GoogleAuthProvider, createUserWithEmailAndPassword, 
-    signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+    signInWithEmailAndPassword, signInWithPopup, signInWithRedirect, signOut } from "firebase/auth";
 import { auth } from "./firebase.config";
+import { isMobile } from 'react-device-detect';
 
 export const signUpAndSignInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
@@ -28,13 +29,17 @@ export const signUpAndSignInWithGoogle = () => {
  export const signInWithGoogle = (e) => {
     e.preventDefault()
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      
-      .catch((error) => {
+
+    if (isMobile) {
+      // Use redirect for mobile devices
+      signInWithRedirect(auth, provider);
+    } else {
+    signInWithPopup(auth, provider).catch((error) => {
         // Handle errors here.
         const errorMessage = error.message;
         console.error(errorMessage);
       });
+    }
   };
 
   export const signUpWithEmailAndPassword = ( email, password ) => {
