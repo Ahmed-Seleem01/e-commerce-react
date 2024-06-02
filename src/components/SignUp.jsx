@@ -21,9 +21,9 @@ export const SignUP = () => {
     window.location.href = "/";
   };
 
-  const signUpWithGoogleHandler = (e) => {
+  const signUpWithGoogleHandler = async (e) => {
     e.preventDefault();
-    signUpAndSignInWithGoogle();
+    await signUpAndSignInWithGoogle();
     redirectToHomePage();
   };
 
