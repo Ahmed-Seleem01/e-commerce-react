@@ -23,8 +23,6 @@ export const LayoutPage = () => {
             className={`" mb-[140px] flex w-full justify-center px-5 ${navigation.state === "loading" ? "opacity-40 transition-opacity duration-200 ease-in-out" : ""}`}
           >
             <Outlet />
-
-            {/* <div className=" size-12 animate-spin self-center rounded-full border-8  border-blue-600 border-t-transparent  "></div> */}
           </div>
         </MyProvider>
       </LoginProvider>

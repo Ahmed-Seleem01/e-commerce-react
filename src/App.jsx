@@ -25,6 +25,7 @@ import {
 } from "./components";
 import { HomePage } from "./pages";
 import { About } from "./components/about";
+import { Spinner } from "./components/general";
 
 const router = createBrowserRouter([
   {
@@ -116,7 +117,13 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <RouterProvider
+      fallbackElement={<Spinner />}
+      future={{ v7_startTransition: true }}
+      router={router}
+    />
+  );
 }
 
 export default App;
