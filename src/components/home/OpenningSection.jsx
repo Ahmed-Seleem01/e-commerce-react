@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
-import appleIcon from "../assets/icons/appleIcon.svg";
-import arrowIcon from "../assets/icons/arrow.svg";
-import heroPhone from "../assets/images/hero_phone.png";
+import appleIcon from "../../assets/icons/appleIcon.svg";
+import arrowIcon from "../../assets/icons/arrow.svg";
+import heroPhone from "../../assets/images/hero_phone.png";
 
 export const OpenningSection = () => {
   const { t } = useTranslation();

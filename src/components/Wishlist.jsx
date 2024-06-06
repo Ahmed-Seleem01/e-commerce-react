@@ -1,4 +1,4 @@
-import { ItemCard } from "./ItemCard";
+import { ItemCard } from "./general";
 import { getProduct, getUserItems } from "../firebase.config";
 import { Form, useLoaderData } from "react-router-dom";
 import { useTranslation } from "react-i18next";

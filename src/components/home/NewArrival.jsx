@@ -1,13 +1,13 @@
-import { GeneralHeader } from "./GeneralHeader";
+import { GeneralHeader } from "../general";
 import { FeatureCard } from "./FeatureCard";
-import playstation from "../assets/images/items/playstation_large.png";
-import speakers from "../assets/images/items/speakers2.png";
+import playstation from "../../assets/images/items/playstation_large.png";
+import speakers from "../../assets/images/items/speakers2.png";
 
 import { FeatureCardSmall } from "./FeatureCardSmall";
-import perfum from "../assets/images/items/perfum.png";
-import delivery from "../assets/icons/icon-delivery.svg";
-import service from "../assets/icons/Icon-Customer-service.svg";
-import secure from "../assets/icons/Icon-secure.svg";
+import perfum from "../../assets/images/items/perfum.png";
+import delivery from "../../assets/icons/icon-delivery.svg";
+import service from "../../assets/icons/Icon-Customer-service.svg";
+import secure from "../../assets/icons/Icon-secure.svg";
 import { useTranslation } from "react-i18next";
 
 export const NewArrival = () => {

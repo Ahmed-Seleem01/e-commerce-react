@@ -1,5 +1,5 @@
 import Countdown from "react-countdown";
-import arrowIcon from "../assets/icons/arrow.svg";
+import arrowIcon from "../../assets/icons/arrow.svg";
 import { DateCounter } from "./DateCounter";
 
 export const GeneralHeader = (props) => {

@@ -1,6 +1,6 @@
 import phone from "../assets/icons/icons-phone.svg";
 import email from "../assets/icons/icons-mail.svg";
-import { PathDisplay } from "./PathDisplay";
+import { PathDisplay } from "./general";
 import { useTranslation } from "react-i18next";
 
 export const Contact = () => {

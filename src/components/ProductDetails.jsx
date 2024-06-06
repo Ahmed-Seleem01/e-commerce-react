@@ -1,5 +1,5 @@
-import { ItemCard } from "./ItemCard";
-import { GeneralHeader } from "./GeneralHeader";
+import { ItemCard } from "./general";
+import { GeneralHeader } from "./general";
 import heart2 from "../assets/icons/heart2.svg";
 
 import carBlack from "../assets/icons/icon-delivery-car-black.svg";
@@ -7,8 +7,8 @@ import returnIcon from "../assets/icons/Icon-return.svg";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { addToUserDB, auth, getProduct } from "../firebase.config";
 import { useState } from "react";
-import StarRating from "./StarRating";
-import { PathDisplay } from "./PathDisplay";
+import { StarRating } from "./general";
+import { PathDisplay } from "./general";
 import { useTranslation } from "react-i18next";
 
 export async function load({ params }) {

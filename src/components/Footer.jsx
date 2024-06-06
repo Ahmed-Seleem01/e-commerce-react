@@ -1,5 +1,5 @@
 import sendIcon from "../assets/icons/send.svg";
-import qrcode from "../assets/icons/Qrcode 1.png";
+import qrcode from "../assets/icons/Qrcode.png";
 import appStore from "../assets/icons/download-appstore.png";
 import googleStore from "../assets/icons/google-play-store-logo.png";
 import facebookIcon from "../assets/icons/Icon-Facebook.svg";

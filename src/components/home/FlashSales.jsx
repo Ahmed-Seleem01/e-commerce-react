@@ -1,28 +1,29 @@
 import { useTranslation } from "react-i18next";
-import { GeneralHeader } from "./GeneralHeader";
-import { ItemCard } from "./ItemCard";
+import { GeneralHeader } from "../general";
+import { ItemCard } from "../general";
 
-export const ExploreProducts = ({ cards }) => {
+export const FlashSales = (props) => {
   const { t } = useTranslation();
 
+  const { cards } = props;
   return (
-    <div className="flex flex-col gap-[60px]">
+    <div className="flex flex-col gap-10 md:w-[105%]  md:pr-10">
       <GeneralHeader
-        label={t("description.OurProducts.OurProducts")}
-        heading={t("description.OurProducts.ExploreOurProducts")}
+        label={t("description.flash.Today")}
+        heading={t("description.flash.FlashSales")}
         toggle
+        dateCounter
       />
-
-      <div className="grid grid-cols-1 gap-y-[60px] self-center md:grid-cols-4 md:grid-rows-2 md:gap-x-7 md:self-start md:max-lg:grid-cols-2 ">
+      <div className="flex flex-col gap-[30px] self-center   md:flex-row md:max-lg:flex-wrap  lg:w-[110%] lg:self-start lg:overflow-x-scroll lg:pr-40">
         {cards.map((card) => (
           <ItemCard
             key={card.productId}
             cardImage={card.mainImage}
             heading={card.heading}
             currentPrice={card.currentPrice}
+            oldPrice={card.oldPrice}
+            discount={card.discount}
             rating={card.rating}
-            newItem={card.new ? true : false}
-            colors={card.colors ? card.colors : ""}
             ratingValue={card.ratingValue}
           />
         ))}

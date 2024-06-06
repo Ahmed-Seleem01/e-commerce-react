@@ -1,7 +1,7 @@
-import twitter from "../assets/icons/twitter.png";
-import insta from "../assets/icons/insta.svg";
+import twitter from "../../assets/icons/twitter.png";
+import insta from "../../assets/icons/insta.svg";
 
-import linkedin from "../assets/icons/linkedin.svg";
+import linkedin from "../../assets/icons/linkedin.svg";
 
 export const AboutCardPerson = (props) => {
   const { image, heading, description } = props;

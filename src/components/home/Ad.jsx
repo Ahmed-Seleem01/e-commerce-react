@@ -1,6 +1,6 @@
 import Countdown from "react-countdown";
-import heroSpeaker from "../assets/images/boom-box-hero.png";
-import { DateCounterRadial } from "./DateCounterRadial";
+import heroSpeaker from "../../assets/images/boom-box-hero.png";
+import { DateCounterRadial } from "../general";
 import { useTranslation } from "react-i18next";
 
 export const Ad = () => {

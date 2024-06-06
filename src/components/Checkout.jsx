@@ -5,7 +5,7 @@ import pay from "../assets/icons/pay.png";
 
 import { useLoaderData } from "react-router-dom";
 import { getUserItems } from "../firebase.config";
-import { PathDisplay } from "./PathDisplay";
+import { PathDisplay } from "./general";
 import { useTranslation } from "react-i18next";
 import getUserUID from "./general/userAuth";
 

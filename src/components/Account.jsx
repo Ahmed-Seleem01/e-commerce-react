@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { PathDisplay } from "./PathDisplay";
+import { PathDisplay } from "./general";
 import { useContext } from "react";
 import authContext from "./general/context/auth-context";
 

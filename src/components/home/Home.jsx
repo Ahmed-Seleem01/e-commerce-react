@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { getCardItems, getProduct } from "../firebase.config";
+import { getCardItems, getProduct } from "../../firebase.config";
 import { Ad } from "./Ad";
 import { BestSelling } from "./BestSelling";
 import { Category } from "./Category";
@@ -7,8 +7,8 @@ import { ExploreProducts } from "./ExploreProducts";
 import { FlashSales } from "./FlashSales";
 import { NewArrival } from "./NewArrival";
 import { OpenningSection } from "./OpenningSection";
-import { ItemCard } from "./ItemCard";
-import arrowUp from "../assets/icons/icons_arrow-up.svg";
+import { ItemCard } from "../general";
+import arrowUp from "../../assets/icons/icons_arrow-up.svg";
 
 export async function load({ request }) {
   const flashSales = await getCardItems("home", "flashSales");

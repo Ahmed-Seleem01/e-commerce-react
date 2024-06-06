@@ -1,7 +1,7 @@
-import star from "../assets/icons/star.svg";
-import starYellow from "../assets/icons/star-yellow.svg";
+import star from "../../assets/icons/star.svg";
+import starYellow from "../../assets/icons/star-yellow.svg";
 
-const StarRating = ({ totalStars, ratingValue }) => {
+export const StarRating = ({ totalStars, ratingValue }) => {
   const fullStars = Math.floor(Number(ratingValue));
   const hasHalfStar = ratingValue % 1 !== 0;
 
@@ -43,5 +43,3 @@ const StarRating = ({ totalStars, ratingValue }) => {
     </div>
   );
 };
-
-export default StarRating;

@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { GeneralHeader } from "./GeneralHeader";
-import { ItemCard } from "./ItemCard";
+import { GeneralHeader } from "../general";
+import { ItemCard } from "../general";
 
 export const BestSelling = ({ cards }) => {
   const { t } = useTranslation();

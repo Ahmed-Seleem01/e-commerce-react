@@ -2,10 +2,10 @@ import { Form, Link, useLoaderData } from "react-router-dom";
 import cancelIcon from "../assets/icons/icon-cancel-small.svg";
 
 import { getUserItems } from "../firebase.config";
-import { ItemsCounter } from "./ItemsCounter";
+import { ItemsCounter } from "./general";
 import { useContext, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { PathDisplay } from "./PathDisplay";
+import { PathDisplay } from "./general";
 import appContext from "./general/context/app-context";
 import { useTranslation } from "react-i18next";
 import getUserUID from "./general/userAuth";

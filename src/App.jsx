@@ -3,7 +3,7 @@ import "./index.css";
 import { LayoutPage } from "./pages";
 import { load as loadCart } from "./components/Cart";
 import { load as loadCheckout } from "./components/Checkout";
-import { load as loadFlash } from "./components/Home";
+import { load as loadFlash } from "./components/home";
 import { load as loadWishlist } from "./components/Wishlist";
 import { load as loadProductDetails } from "./components/ProductDetails";
 import { load as loadLayout } from "./pages/LayoutPage";
@@ -13,18 +13,18 @@ import { action as destroyCartAction } from "./pages/destroy-cart";
 import { action as updateAmountAction } from "./pages/update-amount";
 
 import {
-  About,
   Account,
   Cart,
   Checkout,
   Contact,
   Error,
-  Home,
   SignIn,
   SignUP,
   Wishlist,
   ProductDetails,
 } from "./components";
+import { HomePage } from "./pages";
+import { About } from "./components/about";
 
 const router = createBrowserRouter([
   {
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Home />,
+            element: <HomePage />,
             loader: loadFlash,
           },
           {

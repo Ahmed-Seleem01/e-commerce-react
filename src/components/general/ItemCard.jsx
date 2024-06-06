@@ -1,12 +1,12 @@
-import heart2 from "../assets/icons/heart2.svg";
-import eye from "../assets/icons/eye.svg";
-import deleteIcon from "../assets/icons/delete.svg";
+import heart2 from "../../assets/icons/heart2.svg";
+import eye from "../../assets/icons/eye.svg";
+import deleteIcon from "../../assets/icons/delete.svg";
 import { Form, Link } from "react-router-dom";
-import { addToUserDB, getUserItems } from "../firebase.config";
-import StarRating from "./StarRating";
+import { addToUserDB, getUserItems } from "../../firebase.config";
+import { StarRating } from "./StarRating";
 import { useContext, useState } from "react";
-import appContext from "./general/context/app-context";
-import authContext from "./general/context/auth-context";
+import appContext from "./context/app-context";
+import authContext from "./context/auth-context";
 
 export const ItemCard = (props) => {
   const { setCartItemsCounter, setWishlistItemsCounter } =

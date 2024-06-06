@@ -1,5 +1,5 @@
 import { Link, useRouteError } from "react-router-dom";
-import { PathDisplay } from "./PathDisplay";
+import { PathDisplay } from "./general";
 
 export const Error = () => {
   const error = useRouteError();

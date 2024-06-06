@@ -1,11 +1,11 @@
 import { CategoryCard } from "./CategoryCard";
-import { GeneralHeader } from "./GeneralHeader";
-import phone from "../assets/icons/category/Category-CellPhone.svg";
-import computer from "../assets/icons/category/Category-Computer.svg";
-import smartWatch from "../assets/icons/category/Category-SmartWatch.svg";
-import camera from "../assets/icons/category/Category-Camera.svg";
-import headphone from "../assets/icons/category/Category-Headphone.svg";
-import gamepad from "../assets/icons/category/Category-Gamepad.svg";
+import { GeneralHeader } from "../general";
+import phone from "../../assets/icons/category/Category-CellPhone.svg";
+import computer from "../../assets/icons/category/Category-Computer.svg";
+import smartWatch from "../../assets/icons/category/Category-SmartWatch.svg";
+import camera from "../../assets/icons/category/Category-Camera.svg";
+import headphone from "../../assets/icons/category/Category-Headphone.svg";
+import gamepad from "../../assets/icons/category/Category-Gamepad.svg";
 import { useTranslation } from "react-i18next";
 
 export const Category = () => {

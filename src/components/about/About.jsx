@@ -1,19 +1,19 @@
-import { FeatureCardSmall } from "./FeatureCardSmall";
-import delivery from "../assets/icons/icon-delivery.svg";
-import service from "../assets/icons/Icon-Customer-service.svg";
-import secure from "../assets/icons/Icon-secure.svg";
+import { FeatureCardSmall } from "../home/FeatureCardSmall";
+import delivery from "../../assets/icons/icon-delivery.svg";
+import service from "../../assets/icons/Icon-Customer-service.svg";
+import secure from "../../assets/icons/Icon-secure.svg";
 import { AboutCard } from "./AboutCard";
 import { AboutCardPerson } from "./AboutCardPerson";
 
-import shop from "../assets/icons/icon_shop.svg";
-import sale from "../assets/icons/Icon-Sale.svg";
-import shoppingBag from "../assets/icons/Icon-Shopping-bag.svg";
-import moneyBag from "../assets/icons/Icon-Moneybag.svg";
+import shop from "../../assets/icons/icon_shop.svg";
+import sale from "../../assets/icons/Icon-Sale.svg";
+import shoppingBag from "../../assets/icons/Icon-Shopping-bag.svg";
+import moneyBag from "../../assets/icons/Icon-Moneybag.svg";
 
-import tom from "../assets/icons/tom.png";
+import tom from "../../assets/icons/tom.png";
 
-import tom2 from "../assets/icons/tom2.png";
-import { PathDisplay } from "./PathDisplay";
+import tom2 from "../../assets/icons/tom2.png";
+import { PathDisplay } from "../general";
 import { useTranslation } from "react-i18next";
 
 export const About = () => {
