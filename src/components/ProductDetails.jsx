@@ -79,11 +79,11 @@ export const ProductDetails = () => {
     if (count > 1) setCount((pre) => pre - 1);
   };
   return (
-    <div>
+    <div className="w-full">
       <PathDisplay path={window.location.pathname} />
       <div className="flex w-full  flex-col justify-between gap-[140px]">
-        <div className="flex flex-col justify-between gap-10 md:flex-row md:flex-wrap md:gap-0">
-          <div className="flex flex-col items-center gap-[30px] md:flex-row md:flex-wrap">
+        <div className="flex flex-col justify-between gap-10  md:flex-row md:flex-wrap md:gap-0">
+          <div className="flex flex-col items-center gap-8 md:flex-row md:flex-wrap">
             <span className="flex flex-col gap-4">
               {subImages.map((subImage, i) => (
                 <img
@@ -95,7 +95,7 @@ export const ProductDetails = () => {
               ))}
             </span>
             <span className="order-[-1] flex h-[300px] w-full  items-center justify-center rounded bg-[rgb(245,245,245)] md:order-1 md:h-[600px] md:w-[500px]">
-              <img className="w-[80%]" src={mainImage} alt="main image" />
+              <img className="w-80%]" src={mainImage} alt="main image" />
             </span>
           </div>
 
@@ -180,7 +180,7 @@ export const ProductDetails = () => {
 
                 <button
                   onClick={addToCartHandler}
-                  className="primary-button h-[100%]  py-0 active:invert"
+                  className="primary-button h-[100%] px-2 py-0 text-sm  active:invert md:px-12 md:text-base"
                 >
                   {t("description.ProductDescription.BuyNow")}
                 </button>
@@ -217,9 +217,9 @@ export const ProductDetails = () => {
                     {t("description.ProductDescription.ReturnDelivery")}
                   </h5>
                   <p className="text-xs/[18px] font-medium">
-                    {t("description.ProductDescription.FreeDeliveryReturns")}.
+                    {t("description.ProductDescription.FreeDeliveryReturns")}{" "}
                     <a className=" underline" href="#">
-                      Details
+                      {t("description.ProductDescription.Details")}
                     </a>
                   </p>
                 </div>
@@ -228,11 +228,11 @@ export const ProductDetails = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-10 md:pr-10">
+        <div className="flex flex-col gap-10">
           <GeneralHeader
             label={t("description.ProductDescription.RelatedItems")}
           />
-          <div className="flex flex-col items-center self-center border md:flex-row md:flex-wrap md:justify-between md:self-start">
+          <div className="flex flex-col items-center  border md:flex-row md:flex-wrap md:justify-between ">
             <ItemCard
               cardImage={gamepadProduct[0].mainImage}
               heading="HAVIT HV-G92 Gamepad"

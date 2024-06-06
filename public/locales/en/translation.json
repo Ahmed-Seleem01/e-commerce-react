@@ -187,7 +187,8 @@
       "FreeDelivery": "Free Delivery",
       "PostalCode": "Enter your postal code for Delivery Availability",
       "ReturnDelivery": "Return Delivery",
-      "Free3DeliveryReturns": "Free 30 Days Delivery Returns. Details",
+      "FreeDeliveryReturns": "Free 30 Days Delivery Returns.",
+      "Details": "Details",
       "RelatedItems": "Related Items",
       "InStock": "In Stock",
       "Reviews": "Reviews"

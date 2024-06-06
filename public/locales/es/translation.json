@@ -187,7 +187,8 @@
       "FreeDelivery": "Envío gratuito",
       "PostalCode": "Introduce tu código postal para la disponibilidad del envío",
       "ReturnDelivery": "Devolución de envío",
-      "Free3DeliveryReturns": "Devoluciones de entrega gratuitas de 30 días. Detalles",
+      "FreeDeliveryReturns": "Devoluciones de entrega gratuitas de 30 días.",
+      "Details": "Detalles",
       "RelatedItems": "Artículos relacionados",
       "InStock": "En stock",
       "Reviews": "Opiniones"

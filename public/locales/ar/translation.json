@@ -184,7 +184,8 @@
       "FreeDelivery": "توصيل مجاني",
       "PostalCode": "أدخل الرمز البريدي للتحقق من توفر التوصيل",
       "ReturnDelivery": "إرجاع التوصيل",
-      "FreeDeliveryReturns": "إرجاع مجاني لمدة 30 يومًا. التفاصيل",
+      "FreeDeliveryReturns": "إرجاع مجاني لمدة 30 يومًا.",
+      "Details": "التفاصيل",
       "RelatedItems": "عناصر ذو صلة",
       "InStock": "متوفر في المخزون",
       "Reviews": "المراجعات"
