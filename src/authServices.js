@@ -1,8 +1,7 @@
 import { GoogleAuthProvider, createUserWithEmailAndPassword, 
     getRedirectResult, 
-    signInWithEmailAndPassword, signInWithPopup, signInWithRedirect, signOut } from "firebase/auth";
+    signInWithEmailAndPassword, signInWithRedirect, signOut } from "firebase/auth";
 import { auth } from "./firebase.config";
-import { isMobile } from 'react-device-detect';
 
 export const signUpAndSignInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
@@ -28,33 +27,19 @@ export const signUpAndSignInWithGoogle = async () => {
       });
   };
 
- export const signInWithGoogle = (e) => {
-    e.preventDefault()
-    const provider = new GoogleAuthProvider();
-    
-    
-      signInWithRedirect(auth, provider).catch((error) => {
-            // Handle errors here.
-            const errorMessage = error.message;
-            console.error(errorMessage);
-          });
+export const signUpWithEmailAndPassword = ( email, password ) => {
+  return createUserWithEmailAndPassword(auth, email, password);
+};
 
-      // Another method by popup
-    // signInWithPopup(auth, provider).catch((error) => {
-    //     // Handle errors here.
-    //     const errorMessage = error.message;
-    //     console.error(errorMessage);
-    //   });
-  };
+export const signInWithGoogle = () => {
+  const provider = new GoogleAuthProvider();
+  return signInWithRedirect(auth, provider)
+};
 
-  export const signUpWithEmailAndPassword = ( email, password ) => {
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
+export const loginWithEmailAndPassword = (email, password) => {
+  return signInWithEmailAndPassword(auth, email, password);
+};
 
-  export const loginWithEmailAndPassword = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
-  };
-
-  export const logout = () => {
-    signOut(auth)
-  };
+export const logout = () => {
+  signOut(auth)
+};

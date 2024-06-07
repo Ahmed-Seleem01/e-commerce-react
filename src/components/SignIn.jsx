@@ -1,31 +1,24 @@
 import sideImage from "../assets/images/Side Image.png";
 import googleIcon from "../assets/icons/Icon-Google.svg";
 import { loginWithEmailAndPassword, signInWithGoogle } from "../authServices";
-import { auth } from "../firebase.config";
-import { onAuthStateChanged } from "firebase/auth";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import authContext from "./general/context/auth-context";
 
 export const SignIn = () => {
-  const { t } = useTranslation();
-
-  const [isUser, setIsUser] = useState();
+  const { user, loading } = useContext(authContext);
   const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    let a = 0;
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setIsUser(user);
-      a = setTimeout(() => {
-        if (user) redirectToHomePage();
-      }, 3000);
-    });
+  const mailRef = useRef();
+  const passwordRef = useRef();
 
-    return () => {
-      unsubscribe();
-      clearTimeout(a);
-    };
-  }, []);
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    if (user) {
+      redirectToHomePage();
+    }
+  }, [user]);
 
   // Function to redirect to the home page
   const redirectToHomePage = () => {
@@ -35,30 +28,35 @@ export const SignIn = () => {
       window.location.href = "/"; // Replace '/home' with the path to your home page
     }
   };
-  const mailRef = useRef();
-  const passwordRef = useRef();
 
   const signInWithMailAndPasswordHandler = (e) => {
     e.preventDefault();
-    loginWithEmailAndPassword(mailRef.current.value, passwordRef.current.value)
-      .then((userCredential) => {
-        // Signed in successfully
-        const user = userCredential.user;
-        console.log("User signed in:", user.uid);
-        redirectToHomePage();
-      })
+    loginWithEmailAndPassword(
+      mailRef.current.value,
+      passwordRef.current.value,
+    ).catch((error) => {
+      // An error occurred
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error("Login error:", errorCode, errorMessage);
+      setMessage(errorMessage);
+    });
+  };
+
+  const signInWithGoogleHandler = (e) => {
+    e.preventDefault();
+    signInWithGoogle()
+      .then(() => redirectToHomePage())
       .catch((error) => {
-        // An error occurred
-        const errorCode = error.code;
+        // Handle errors here.
         const errorMessage = error.message;
-        console.error("Login error:", errorCode, errorMessage);
         setMessage(errorMessage);
       });
   };
 
   return (
     <>
-      {!isUser ? (
+      {!loading && !user ? (
         <div className=" mt-[60px] flex w-[100%] flex-col items-center justify-between gap-20 md:flex-row md:flex-wrap md:gap-0">
           <img
             className="w-auto md:ml-[-100px] md:max-w-[800px]"
@@ -102,7 +100,7 @@ export const SignIn = () => {
                   {t("description.login.ForgetPassword")}?
                 </a>
                 <button
-                  onClick={signInWithGoogle}
+                  onClick={signInWithGoogleHandler}
                   className="flex cursor-pointer items-center justify-center gap-4 rounded-[4px] border-[1px] p-4 text-[16px]/6 font-normal"
                 >
                   <img src={googleIcon} alt="google icon" />
