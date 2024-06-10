@@ -24,6 +24,9 @@ export const ExploreProducts = ({ cards }) => {
             newItem={card.new ? true : false}
             colors={card.colors ? card.colors : ""}
             ratingValue={card.ratingValue}
+            isInCart={card.isInCart}
+            isInWishlist={card.isInWishlist}
+            label="exploreProducts"
           />
         ))}
       </div>

@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { getCardItems, getProduct } from "../../firebase.config";
+import { getCardItems, getProduct, getUserItems } from "../../firebase.config";
 import { Ad } from "./Ad";
 import { BestSelling } from "./BestSelling";
 import { Category } from "./Category";
@@ -9,8 +9,13 @@ import { NewArrival } from "./NewArrival";
 import { OpenningSection } from "./OpenningSection";
 import { ItemCard } from "../general";
 import arrowUp from "../../assets/icons/icons_arrow-up.svg";
+import getUserUID from "../general/userAuth";
+import { useContext, useEffect } from "react";
+import appContext from "../general/context/app-context";
 
 export async function load({ request }) {
+  const user = await getUserUID();
+  const productsItems = await getUserItems(user, "wishlist");
   const flashSales = await getCardItems("home", "flashSales");
   const bestSelling = await getCardItems("home", "bestSelling");
   const exploreProducts = await getCardItems("home", "exploreProducts");
@@ -18,18 +23,38 @@ export async function load({ request }) {
   const q = url.searchParams.get("q");
   const searchProducts = q ? await getProduct(q) : [];
 
-  return { flashSales, bestSelling, exploreProducts, searchProducts, q };
+  return {
+    flashSales,
+    bestSelling,
+    exploreProducts,
+    searchProducts,
+    productsItems,
+    q,
+  };
 }
 
 export const Home = () => {
+  const {
+    flashSales,
+    bestSelling,
+    exploreProducts,
+    searchProducts,
+    productsItems,
+    q,
+  } = useLoaderData();
+  const { productItems: wishlistItems } = productsItems;
+  const { setWishlistItemsCounter } = useContext(appContext);
+
+  useEffect(() => {
+    setWishlistItemsCounter(wishlistItems.length);
+  }, [wishlistItems.length]);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   };
-  const { flashSales, bestSelling, exploreProducts, searchProducts, q } =
-    useLoaderData();
   return !q ? (
     <div className="mb-8  flex w-[100%] flex-col gap-[140px]">
       <OpenningSection />

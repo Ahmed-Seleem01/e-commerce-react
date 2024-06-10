@@ -22,6 +22,9 @@ export const BestSelling = ({ cards }) => {
             oldPrice={card.oldPrice}
             rating={card.rating}
             ratingValue={card.ratingValue}
+            isInCart={card.isInCart}
+            isInWishlist={card.isInWishlist}
+            label="bestSelling"
           />
         ))}
       </div>

@@ -54,9 +54,8 @@ export const addToUserDB= async (userId, docId, data)=>{
       },
       { merge: true },
     );
+    }
   }
-  
-}
 
 export const getUserItems = async (userId, docId)=>{
   const docRef = doc(db, "users", userId);
@@ -128,6 +127,28 @@ export const updateProductAmount = async (userId, docId, productName, amount=0 )
     });
 }
 
+export const updateProductStatus = async ( docId, productName, section, status )=> {
+  const homeRef = doc(db, "home", docId);
+  // const itemsRef = doc(userRef, docId, "items")
+  const products =  await getCardItems("home", docId);
+  setDoc(
+    homeRef,
+    {
+      cards: products.cards.map (product => {
+        if(product.heading === productName){
+          product[section] = status;
+        }
+        return product;
+      })
+    },
+    { merge: true },
+  ).then(() => {
+      console.log('Document successfully modified');
+    })
+    .catch((error) => {
+      console.error('Error modifying document: ', error);
+    });
+}
 
 export const getProduct = async (productName)=>{
   let product = []
@@ -145,3 +166,23 @@ querySnapshot.forEach((doc) => {
 })
 return product
 }
+
+// export const getCardItems2 = async (collection, documentId) => {
+//   const docRef = doc(db, collection, documentId);
+//   const docSnapshot = await getDoc(docRef);
+//   if (docSnapshot.exists()) {
+//    const modified = docSnapshot.data().cards.map((card)=>{
+//       return({...card, isInCart: false, isInWishlist: false})
+//    });
+//    setDoc(docRef,{cards: modified},{ merge: true })
+
+//   } else {
+//     console.log('No such document!');
+//   }
+
+// }
+
+// getCardItems2("home", "exploreProducts")
+
+
+

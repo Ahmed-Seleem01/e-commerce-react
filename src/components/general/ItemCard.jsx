@@ -1,4 +1,3 @@
-import heart2 from "../../assets/icons/heart2.svg";
 import eye from "../../assets/icons/eye.svg";
 import deleteIcon from "../../assets/icons/delete.svg";
 import { Form, Link } from "react-router-dom";
@@ -9,11 +8,9 @@ import appContext from "./context/app-context";
 import authContext from "./context/auth-context";
 
 export const ItemCard = (props) => {
-  const { setCartItemsCounter, setWishlistItemsCounter } =
-    useContext(appContext);
+  const { setCartItemsCounter } = useContext(appContext);
   const { user } = useContext(authContext);
-  const [hideAddToCart, setHideAddToCart] = useState(false);
-  const [hideAddToWishlist, setHideAddToWishlist] = useState(false);
+  const [hideAddToCart] = useState(false);
 
   const {
     cardImage,
@@ -27,6 +24,9 @@ export const ItemCard = (props) => {
     deleteItem,
     viewItem,
     ratingValue,
+    isInCart,
+    isInWishlist,
+    label,
   } = props;
 
   const addToCartHandler = async () => {
@@ -38,20 +38,23 @@ export const ItemCard = (props) => {
     });
     const { productItems } = await getUserItems(user.uid, "cart");
     setCartItemsCounter(productItems.length);
-    setHideAddToCart(true);
+    // setHideAddToCart(true);
   };
 
-  const addToWishlistHandler = async () => {
-    await addToUserDB(user.uid, "wishlist", {
-      cardImage,
-      heading,
-      currentPrice,
-      oldPrice: oldPrice || 0,
-    });
-    const { productItems } = await getUserItems(user.uid, "wishlist");
-    setWishlistItemsCounter(productItems.length);
-    setHideAddToWishlist(true);
-  };
+  // const addToWishlistHandler = async () => {
+  // await updateProductStatus(label, heading, "isInWishlist", true);
+  // await addToUserDB(user.uid, "wishlist", {
+  //   cardImage,
+  //   heading,
+  //   currentPrice,
+  //   oldPrice: oldPrice || 0,
+  //   label,
+  // });
+  // const { productItems } = await getUserItems(user.uid, "wishlist");
+  // setWishlistItemsCounter(productItems.length);
+  // // setHideAddToWishlist(!isInWishlist);
+  // // console.log(productItems);
+  // };
 
   return (
     <div className="w-[270px] bg-white">
@@ -70,7 +73,7 @@ export const ItemCard = (props) => {
         <div className="absolute right-3 top-3 flex flex-col gap-2">
           {(deleteItem && (
             <Form
-              action={`${heading}/destroy`}
+              action={`${label}/${heading}/destroy`}
               method="post"
               onSubmit={(event) => {
                 if (
@@ -96,13 +99,33 @@ export const ItemCard = (props) => {
               </Link>
             )) || (
               <>
-                <button
-                  onClick={addToWishlistHandler}
-                  className="size-[34px] rounded-full bg-white p-2 active:bg-[#DB4444]"
-                  hidden={hideAddToWishlist}
+                <Form
+                  action={`${label}/${heading}/add-to-wishlist`}
+                  method="post"
                 >
-                  <img src={heart2} alt="love item" />
-                </button>
+                  <button
+                    type="submit"
+                    // onClick={addToWishlistHandler}
+                    className="size-[34px] rounded-full bg-white p-2 active:bg-[#DB4444]"
+                    disabled={isInWishlist}
+                  >
+                    <svg
+                      width="18"
+                      height="16"
+                      viewBox="0 0 18 16"
+                      fill={`${isInWishlist ? "#DB4444" : "none"}`}
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M5 1C2.7912 1 1 2.73964 1 4.88594C1 6.61852 1.7 10.7305 8.5904 14.8873C8.71383 14.961 8.85552 15 9 15C9.14448 15 9.28617 14.961 9.4096 14.8873C16.3 10.7305 17 6.61852 17 4.88594C17 2.73964 15.2088 1 13 1C10.7912 1 9 3.35511 9 3.35511C9 3.35511 7.2088 1 5 1Z"
+                        stroke="black"
+                        strokeWidth={`${isInWishlist ? "0.2" : "1.5"}`}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </Form>
                 <Link to={`../product/${props.heading}`}>
                   <button className=" size-[34px] rounded-full bg-white p-[6px] active:bg-[#DB4444]">
                     <img src={eye} alt="love item" />

@@ -20,7 +20,7 @@ export const LayoutPage = () => {
         <MyProvider>
           <Header q={q} />
           <div
-            className={`" mb-[140px] flex w-full justify-center px-5 ${navigation.state === "loading" ? "opacity-40 transition-opacity duration-200 ease-in-out" : ""}`}
+            className={`relative mb-[140px] flex  w-full justify-center  px-5  ${navigation.state === "loading" ? " transition-opacity duration-200 ease-in-out before:absolute before:left-0 before:top-0 before:z-10 before:size-full before:bg-white before:opacity-50" : ""}`}
           >
             <Outlet />
           </div>

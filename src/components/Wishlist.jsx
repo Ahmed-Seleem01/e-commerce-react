@@ -75,7 +75,8 @@ export const Wishlist = () => {
         </div>
         <div className="flex flex-col flex-wrap gap-4 md:flex-row md:max-lg:flex-wrap">
           {products.map((product) => {
-            const { cardImage, heading, currentPrice, oldPrice } = product;
+            const { cardImage, heading, currentPrice, oldPrice, label } =
+              product;
             return (
               <div key={heading}>
                 <ItemCard
@@ -83,6 +84,7 @@ export const Wishlist = () => {
                   heading={heading}
                   currentPrice={currentPrice}
                   oldPrice={oldPrice}
+                  label={label}
                   deleteItem
                 />
               </div>

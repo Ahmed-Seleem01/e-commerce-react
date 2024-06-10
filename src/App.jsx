@@ -11,6 +11,7 @@ import { load as loadLayout } from "./pages/LayoutPage";
 import { action as destroyAction } from "./pages/destroy";
 import { action as destroyCartAction } from "./pages/destroy-cart";
 import { action as updateAmountAction } from "./pages/update-amount";
+import { action as wishlistAction } from "./pages/add-to-wishlist";
 
 import {
   Account,
@@ -44,6 +45,11 @@ const router = createBrowserRouter([
             loader: loadFlash,
           },
           {
+            path: ":label/:heading/add-to-wishlist",
+            element: <add-to-wishlist />,
+            action: wishlistAction,
+          },
+          {
             path: "contact",
             element: <Contact />,
           },
@@ -66,7 +72,7 @@ const router = createBrowserRouter([
             children: [],
           },
           {
-            path: "wishlist/:heading/destroy",
+            path: "wishlist/:label/:heading/destroy",
             element: <destroy />,
             action: destroyAction,
           },

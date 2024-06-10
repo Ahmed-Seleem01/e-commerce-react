@@ -25,6 +25,9 @@ export const FlashSales = (props) => {
             discount={card.discount}
             rating={card.rating}
             ratingValue={card.ratingValue}
+            isInCart={card.isInCart}
+            isInWishlist={card.isInWishlist}
+            label="flashSales"
           />
         ))}
       </div>
