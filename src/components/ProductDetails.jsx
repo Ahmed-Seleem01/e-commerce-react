@@ -241,6 +241,8 @@ export const ProductDetails = () => {
               discount="40"
               rating="88"
               ratingValue={gamepadProduct[0].ratingValue}
+              isInCart={gamepadProduct[0].isInCart}
+              isInWishlist={gamepadProduct[0].isInWishlist}
             />
             <ItemCard
               cardImage={keyboardProduct[0].mainImage}
@@ -250,6 +252,8 @@ export const ProductDetails = () => {
               discount="35"
               rating="75"
               ratingValue={5}
+              isInCart={keyboardProduct[0].isInCart}
+              isInWishlist={keyboardProduct[0].isInWishlist}
             />
             <ItemCard
               cardImage={lcdProduct[0].mainImage}
@@ -259,6 +263,8 @@ export const ProductDetails = () => {
               discount="30"
               rating="99"
               ratingValue={5}
+              isInCart={lcdProduct[0].isInCart}
+              isInWishlist={lcdProduct[0].isInWishlist}
             />
             <ItemCard
               cardImage={coolerProduct[0].mainImage}
@@ -267,6 +273,8 @@ export const ProductDetails = () => {
               oldPrice="170"
               rating="65"
               ratingValue={5}
+              isInCart={coolerProduct[0].isInCart}
+              isInWishlist={coolerProduct[0].isInWishlist}
             />
           </div>
         </div>
