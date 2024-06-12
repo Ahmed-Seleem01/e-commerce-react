@@ -16,6 +16,8 @@ import appContext from "../general/context/app-context";
 export async function load({ request }) {
   const user = await getUserUID();
   const productsItems = await getUserItems(user, "wishlist");
+  const cartProductsItems = await getUserItems(user, "cart");
+
   const flashSales = await getCardItems("home", "flashSales");
   const bestSelling = await getCardItems("home", "bestSelling");
   const exploreProducts = await getCardItems("home", "exploreProducts");
@@ -29,6 +31,7 @@ export async function load({ request }) {
     exploreProducts,
     searchProducts,
     productsItems,
+    cartProductsItems,
     q,
   };
 }
@@ -40,14 +43,19 @@ export const Home = () => {
     exploreProducts,
     searchProducts,
     productsItems,
+    cartProductsItems,
     q,
   } = useLoaderData();
   const { productItems: wishlistItems } = productsItems;
-  const { setWishlistItemsCounter } = useContext(appContext);
+  const { productItems: cartItems } = cartProductsItems;
+
+  const { setWishlistItemsCounter, setCartItemsCounter } =
+    useContext(appContext);
 
   useEffect(() => {
     setWishlistItemsCounter(wishlistItems.length);
-  }, [wishlistItems.length]);
+    setCartItemsCounter(cartItems.length);
+  }, [wishlistItems.length, cartItems.length]);
 
   const scrollToTop = () => {
     window.scrollTo({

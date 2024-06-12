@@ -12,6 +12,7 @@ import { action as destroyAction } from "./pages/destroy";
 import { action as destroyCartAction } from "./pages/destroy-cart";
 import { action as updateAmountAction } from "./pages/update-amount";
 import { action as wishlistAction } from "./pages/add-to-wishlist";
+import { action as cartAction } from "./pages/add-to-cart";
 
 import {
   Account,
@@ -50,6 +51,11 @@ const router = createBrowserRouter([
             action: wishlistAction,
           },
           {
+            path: ":label/:heading/add-to-cart",
+            element: <add-to-cart />,
+            action: cartAction,
+          },
+          {
             path: "contact",
             element: <Contact />,
           },
@@ -83,7 +89,7 @@ const router = createBrowserRouter([
             loader: loadCart,
           },
           {
-            path: ":heading/destroy-cart",
+            path: ":label/:heading/destroy-cart",
             element: <destroy-cart />,
             action: destroyCartAction,
           },

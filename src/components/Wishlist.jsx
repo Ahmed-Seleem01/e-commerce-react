@@ -57,7 +57,7 @@ export const Wishlist = () => {
             {t("description.wishlist.Wishlist")} ({products.length})
           </label>
           <Form
-            action={`Move All To Bag/destroy`}
+            action={`label/Move All To Bag/destroy`}
             method="post"
             onSubmit={(event) => {
               if (!confirm("Please confirm you want to move them to cart.")) {
@@ -75,8 +75,14 @@ export const Wishlist = () => {
         </div>
         <div className="flex flex-col flex-wrap gap-4 md:flex-row md:max-lg:flex-wrap">
           {products.map((product) => {
-            const { cardImage, heading, currentPrice, oldPrice, label } =
-              product;
+            const {
+              cardImage,
+              heading,
+              currentPrice,
+              oldPrice,
+              label,
+              isInCart,
+            } = product;
             return (
               <div key={heading}>
                 <ItemCard
@@ -85,6 +91,7 @@ export const Wishlist = () => {
                   currentPrice={currentPrice}
                   oldPrice={oldPrice}
                   label={label}
+                  isInCart={isInCart}
                   deleteItem
                 />
               </div>

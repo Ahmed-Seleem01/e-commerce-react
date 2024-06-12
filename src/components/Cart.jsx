@@ -61,6 +61,7 @@ export const Cart = () => {
             amount,
             heading,
             productId,
+            label,
           } = product;
 
           return (
@@ -71,7 +72,7 @@ export const Cart = () => {
             >
               <li className="relative flex flex-col items-center gap-5 justify-self-start  text-sm md:flex-row md:text-base">
                 <Form
-                  action={`/${heading}/destroy-cart`}
+                  action={`/${label}/${heading}/destroy-cart`}
                   method="post"
                   onSubmit={(event) => {
                     if (

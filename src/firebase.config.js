@@ -137,6 +137,7 @@ export const updateProductStatus = async ( docId, productName, section, status )
       cards: products.cards.map (product => {
         if(product.heading === productName){
           product[section] = status;
+          console.log(product)
         }
         return product;
       })

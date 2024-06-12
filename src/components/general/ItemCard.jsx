@@ -29,17 +29,17 @@ export const ItemCard = (props) => {
     label,
   } = props;
 
-  const addToCartHandler = async () => {
-    await addToUserDB(user.uid, "cart", {
-      cardImage,
-      heading,
-      currentPrice,
-      amount: 1,
-    });
-    const { productItems } = await getUserItems(user.uid, "cart");
-    setCartItemsCounter(productItems.length);
-    // setHideAddToCart(true);
-  };
+  // const addToCartHandler = async () => {
+  //   await addToUserDB(user.uid, "cart", {
+  //     cardImage,
+  //     heading,
+  //     currentPrice,
+  //     amount: 1,
+  //   });
+  //   const { productItems } = await getUserItems(user.uid, "cart");
+  //   setCartItemsCounter(productItems.length);
+  //   // setHideAddToCart(true);
+  // };
 
   // const addToWishlistHandler = async () => {
   // await updateProductStatus(label, heading, "isInWishlist", true);
@@ -134,13 +134,19 @@ export const ItemCard = (props) => {
               </>
             )}
         </div>
-        <button
-          onClick={addToCartHandler}
-          className=" absolute bottom-0  w-[99%] translate-y-10 overflow-hidden bg-black  py-1 text-base font-medium text-white transition-transform  active:invert group-hover:z-10 group-hover:translate-y-0"
-          hidden={hideAddToCart}
+        <Form
+          className=" absolute bottom-0  w-[99%] translate-y-10 overflow-hidden bg-black text-base font-medium text-white transition-transform  active:invert group-hover:z-10 group-hover:translate-y-0"
+          action={`/${label}/${heading}/add-to-cart`}
+          method="post"
         >
-          Add to cart
-        </button>
+          <button
+            type="submit"
+            className={`size-full py-1 ${isInCart ? "bg-green-400" : ""}`}
+            disabled={isInCart}
+          >
+            {!isInCart ? "Add to cart" : "Already added to cart"}
+          </button>
+        </Form>
       </div>
 
       <div className="relative z-20 flex w-full flex-col gap-2 bg-white pt-4 text-base font-medium">
