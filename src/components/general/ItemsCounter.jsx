@@ -1,16 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { Form } from "react-router-dom";
 
 export const ItemsCounter = ({ amount, price, productHeading }) => {
-  const [count, setCount] = useState(Number(amount));
+  const count = Number(amount);
   const subTotal = useRef(price);
-
-  // const incrementHandler = () => {
-  //   setCount((pre) => Number((pre += 1)));
-  // };
-  // const decrementHandler = () => {
-  //   if (count > 1) setCount((pre) => Number((pre -= 1)));
-  // };
 
   subTotal.current = price * count;
 
@@ -22,20 +15,23 @@ export const ItemsCounter = ({ amount, price, productHeading }) => {
             {count < 10 && "0"}
             {count}
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col items-center justify-center gap-2 ">
             <Form
-              action={`/${productHeading}/${Number(count + 1)}/update-amount`}
+              className="flex h-2"
+              action={`/${productHeading}/${count + 1}/update-amount`}
               method="post"
-              onSubmit={() => {}}
             >
-              <button className=" rotate-180">⌄</button>
+              <button className="size-2 rotate-45 border-l-2 border-t-2 border-gray-700"></button>
             </Form>
             <Form
-              action={`/${productHeading}/${Number(count - 1)}/update-amount`}
+              className="flex h-2"
+              action={`/${productHeading}/${count - 1}/update-amount`}
               method="post"
-              onSubmit={() => {}}
             >
-              <button>⌄</button>
+              <button
+                disabled={count < 2}
+                className="size-2 rotate-45 border-b-2 border-r-2 border-gray-700"
+              ></button>
             </Form>
           </div>
         </div>
