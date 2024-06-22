@@ -123,6 +123,9 @@ export const Wishlist = () => {
             rating={laptopProduct[0].rating}
             viewItem
             ratingValue={laptopProduct[0].ratingValue}
+            isInCart={laptopProduct[0].isInCart}
+            isInWishlist={laptopProduct[0].isInWishlist}
+            label={laptopProduct[0].label}
           />
           <ItemCard
             cardImage={lcdProduct[0].mainImage}
@@ -131,6 +134,9 @@ export const Wishlist = () => {
             rating={lcdProduct[0].rating}
             viewItem
             ratingValue={lcdProduct[0].ratingValue}
+            isInCart={lcdProduct[0].isInCart}
+            isInWishlist={lcdProduct[0].isInWishlist}
+            label={lcdProduct[0].label}
           />
           <ItemCard
             cardImage={gamepadProduct[0].mainImage}
@@ -140,6 +146,9 @@ export const Wishlist = () => {
             newItem
             viewItem
             ratingValue={gamepadProduct[0].ratingValue}
+            isInCart={gamepadProduct[0].isInCart}
+            isInWishlist={gamepadProduct[0].isInWishlist}
+            label={gamepadProduct[0].label}
           />
           <ItemCard
             cardImage={keyboardProduct[0].mainImage}
@@ -148,6 +157,9 @@ export const Wishlist = () => {
             rating={keyboardProduct[0].rating}
             viewItem
             ratingValue={keyboardProduct[0].ratingValue}
+            isInCart={keyboardProduct[0].isInCart}
+            isInWishlist={keyboardProduct[0].isInWishlist}
+            label={keyboardProduct[0].label}
           />
         </div>
       </div>

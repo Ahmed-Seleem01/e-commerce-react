@@ -173,7 +173,7 @@ return product
 //   const docSnapshot = await getDoc(docRef);
 //   if (docSnapshot.exists()) {
 //    const modified = docSnapshot.data().cards.map((card)=>{
-//       return({...card, isInCart: false, isInWishlist: false})
+//       return({...card, label:documentId})
 //    });
 //    setDoc(docRef,{cards: modified},{ merge: true })
 
@@ -183,7 +183,7 @@ return product
 
 // }
 
-// getCardItems2("home", "exploreProducts")
+// getCardItems2("home", "bestSelling")
 
 
 

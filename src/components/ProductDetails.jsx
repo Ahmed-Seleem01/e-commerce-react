@@ -5,7 +5,12 @@ import heart2 from "../assets/icons/heart2.svg";
 import carBlack from "../assets/icons/icon-delivery-car-black.svg";
 import returnIcon from "../assets/icons/Icon-return.svg";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import { addToUserDB, auth, getProduct } from "../firebase.config";
+import {
+  addToUserDB,
+  auth,
+  getProduct,
+  updateProductStatus,
+} from "../firebase.config";
 import { useState } from "react";
 import { StarRating } from "./general";
 import { PathDisplay } from "./general";
@@ -30,6 +35,7 @@ export async function load({ params }) {
 export const ProductDetails = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+
   const {
     product,
     coolerProduct,
@@ -37,6 +43,7 @@ export const ProductDetails = () => {
     gamepadProduct,
     keyboardProduct,
   } = useLoaderData();
+
   const {
     subImages,
     mainImage,
@@ -48,17 +55,20 @@ export const ProductDetails = () => {
     rating,
     ratingValue,
     oldPrice,
+    label,
   } = product[0];
 
   const [count, setCount] = useState(1);
-
+  console.log(label);
   const addToCartHandler = async () => {
     await addToUserDB(auth.currentUser.uid, "cart", {
       cardImage: mainImage,
       heading,
       currentPrice,
       amount: count,
+      label,
     });
+    await updateProductStatus(label, heading, "isInCart", true);
     navigate("../../account/cart");
   };
 
@@ -68,7 +78,10 @@ export const ProductDetails = () => {
       heading,
       currentPrice,
       oldPrice,
+      label,
     });
+    await updateProductStatus(label, heading, "isInWishlist", true);
+
     navigate("../../wishlist");
   };
 
@@ -243,6 +256,7 @@ export const ProductDetails = () => {
               ratingValue={gamepadProduct[0].ratingValue}
               isInCart={gamepadProduct[0].isInCart}
               isInWishlist={gamepadProduct[0].isInWishlist}
+              label={gamepadProduct[0].label}
             />
             <ItemCard
               cardImage={keyboardProduct[0].mainImage}
@@ -254,6 +268,7 @@ export const ProductDetails = () => {
               ratingValue={5}
               isInCart={keyboardProduct[0].isInCart}
               isInWishlist={keyboardProduct[0].isInWishlist}
+              label={keyboardProduct[0].label}
             />
             <ItemCard
               cardImage={lcdProduct[0].mainImage}
@@ -265,6 +280,7 @@ export const ProductDetails = () => {
               ratingValue={5}
               isInCart={lcdProduct[0].isInCart}
               isInWishlist={lcdProduct[0].isInWishlist}
+              label={lcdProduct[0].label}
             />
             <ItemCard
               cardImage={coolerProduct[0].mainImage}
@@ -275,6 +291,7 @@ export const ProductDetails = () => {
               ratingValue={5}
               isInCart={coolerProduct[0].isInCart}
               isInWishlist={coolerProduct[0].isInWishlist}
+              label={coolerProduct[0].label}
             />
           </div>
         </div>

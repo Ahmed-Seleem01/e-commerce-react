@@ -4,7 +4,6 @@ import cancelIcon from "../assets/icons/icon-cancel-small.svg";
 import { getUserItems } from "../firebase.config";
 import { ItemsCounter } from "./general";
 import { useContext, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { PathDisplay } from "./general";
 import appContext from "./general/context/app-context";
 import { useTranslation } from "react-i18next";
@@ -54,7 +53,6 @@ export const Cart = () => {
           <li className="justify-self-end">{t("description.cart.Subtotal")}</li>
         </ul>
         {products.map((product) => {
-          product.productId = uuidv4();
           const {
             cardImage: image,
             currentPrice: price,
@@ -76,7 +74,7 @@ export const Cart = () => {
                   method="post"
                   onSubmit={(event) => {
                     if (
-                      !confirm("Please confirm you want to delete this record.")
+                      !confirm("Please confirm you want to delete this item.")
                     ) {
                       event.preventDefault();
                     }

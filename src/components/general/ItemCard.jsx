@@ -135,7 +135,7 @@ export const ItemCard = (props) => {
             )}
         </div>
         <Form
-          className=" absolute bottom-0  w-[99%] translate-y-10 overflow-hidden bg-black text-base font-medium text-white transition-transform  active:invert group-hover:z-10 group-hover:translate-y-0"
+          className={`${isInCart ? "translate-y-0" : ""} absolute bottom-0  w-[99%] translate-y-10 overflow-hidden bg-black text-base font-medium text-white transition-transform  active:invert group-hover:z-10 group-hover:translate-y-0`}
           action={`/${label}/${heading}/add-to-cart`}
           method="post"
         >
