@@ -15,8 +15,12 @@ import appContext from "../general/context/app-context";
 
 export async function load({ request }) {
   const user = await getUserUID();
-  const productsItems = await getUserItems(user, "wishlist");
-  const cartProductsItems = await getUserItems(user, "cart");
+  const productsItems = user
+    ? await getUserItems(user, "wishlist")
+    : { productItems: [] };
+  const cartProductsItems = user
+    ? await getUserItems(user, "cart")
+    : { productItems: [] };
 
   const flashSales = await getCardItems("home", "flashSales");
   const bestSelling = await getCardItems("home", "bestSelling");
