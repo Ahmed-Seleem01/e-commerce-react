@@ -5,7 +5,7 @@ import { ItemCard } from "../general";
 export const FlashSales = (props) => {
   const { t } = useTranslation();
 
-  const { cards } = props;
+  const { cards, wishlistItems, cartItems } = props;
   return (
     <div className="flex flex-col gap-10 md:w-[105%]  md:pr-10">
       <GeneralHeader
@@ -25,8 +25,12 @@ export const FlashSales = (props) => {
             discount={card.discount}
             rating={card.rating}
             ratingValue={card.ratingValue}
-            isInCart={card.isInCart}
-            isInWishlist={card.isInWishlist}
+            isInCart={cartItems.some(
+              (item) => item.productId === card.productId,
+            )}
+            isInWishlist={wishlistItems.some(
+              (item) => item.productId === card.productId,
+            )}
             label="flashSales"
           />
         ))}

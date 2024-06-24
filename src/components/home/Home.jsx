@@ -70,11 +70,23 @@ export const Home = () => {
   return !q ? (
     <div className="mb-8  flex w-[100%] flex-col gap-[140px]">
       <OpenningSection />
-      <FlashSales cards={flashSales.cards} />
+      <FlashSales
+        cards={flashSales.cards}
+        wishlistItems={wishlistItems}
+        cartItems={cartItems}
+      />
       <Category />
-      <BestSelling cards={bestSelling.cards} />
+      <BestSelling
+        cards={bestSelling.cards}
+        wishlistItems={wishlistItems}
+        cartItems={cartItems}
+      />
       <Ad />
-      <ExploreProducts cards={exploreProducts.cards} />
+      <ExploreProducts
+        cards={exploreProducts.cards}
+        wishlistItems={wishlistItems}
+        cartItems={cartItems}
+      />
       <NewArrival />
       <button
         onClick={scrollToTop}

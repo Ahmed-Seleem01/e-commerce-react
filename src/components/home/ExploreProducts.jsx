@@ -2,8 +2,9 @@ import { useTranslation } from "react-i18next";
 import { GeneralHeader } from "../general";
 import { ItemCard } from "../general";
 
-export const ExploreProducts = ({ cards }) => {
+export const ExploreProducts = (props) => {
   const { t } = useTranslation();
+  const { cards, wishlistItems, cartItems } = props;
 
   return (
     <div className="flex flex-col gap-[60px]">
@@ -24,8 +25,12 @@ export const ExploreProducts = ({ cards }) => {
             newItem={card.new ? true : false}
             colors={card.colors ? card.colors : ""}
             ratingValue={card.ratingValue}
-            isInCart={card.isInCart}
-            isInWishlist={card.isInWishlist}
+            isInCart={cartItems.some(
+              (item) => item.productId === card.productId,
+            )}
+            isInWishlist={wishlistItems.some(
+              (item) => item.productId === card.productId,
+            )}
             label="exploreProducts"
           />
         ))}
