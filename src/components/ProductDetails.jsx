@@ -9,14 +9,24 @@ import {
   addToUserDB,
   auth,
   getProduct,
+  getUserItems,
   updateProductStatus,
 } from "../firebase.config";
 import { useState } from "react";
 import { StarRating } from "./general";
 import { PathDisplay } from "./general";
 import { useTranslation } from "react-i18next";
+import getUserUID from "./general/userAuth";
 
 export async function load({ params }) {
+  const user = await getUserUID();
+  const productsItems = user
+    ? await getUserItems(user, "wishlist")
+    : { productItems: [] };
+  const cartProductsItems = user
+    ? await getUserItems(user, "cart")
+    : { productItems: [] };
+
   const product = await getProduct(params.productName);
   const coolerProduct = await getProduct("RGB liquid CPU Cooler");
   const lcdProduct = await getProduct("IPS LCD Gaming Monitor");
@@ -29,6 +39,8 @@ export async function load({ params }) {
     lcdProduct,
     gamepadProduct,
     keyboardProduct,
+    productsItems,
+    cartProductsItems,
   };
 }
 
@@ -42,7 +54,12 @@ export const ProductDetails = () => {
     lcdProduct,
     gamepadProduct,
     keyboardProduct,
+    productsItems,
+    cartProductsItems,
   } = useLoaderData();
+
+  const { productItems: wishlistItems } = productsItems;
+  const { productItems: cartItems } = cartProductsItems;
 
   const {
     subImages,
@@ -68,7 +85,7 @@ export const ProductDetails = () => {
       amount: count,
       label,
     });
-    await updateProductStatus(label, heading, "isInCart", true);
+    // await updateProductStatus(label, heading, "isInCart", true);
     navigate("../../account/cart");
   };
 
@@ -80,7 +97,7 @@ export const ProductDetails = () => {
       oldPrice,
       label,
     });
-    await updateProductStatus(label, heading, "isInWishlist", true);
+    // await updateProductStatus(label, heading, "isInWishlist", true);
 
     navigate("../../wishlist");
   };
@@ -254,8 +271,12 @@ export const ProductDetails = () => {
               discount="40"
               rating="88"
               ratingValue={gamepadProduct[0].ratingValue}
-              isInCart={gamepadProduct[0].isInCart}
-              isInWishlist={gamepadProduct[0].isInWishlist}
+              isInCart={cartItems.some(
+                (item) => item.productId === gamepadProduct[0].productId,
+              )}
+              isInWishlist={wishlistItems.some(
+                (item) => item.productId === gamepadProduct[0].productId,
+              )}
               label={gamepadProduct[0].label}
             />
             <ItemCard
@@ -266,8 +287,12 @@ export const ProductDetails = () => {
               discount="35"
               rating="75"
               ratingValue={5}
-              isInCart={keyboardProduct[0].isInCart}
-              isInWishlist={keyboardProduct[0].isInWishlist}
+              isInCart={cartItems.some(
+                (item) => item.productId === keyboardProduct[0].productId,
+              )}
+              isInWishlist={wishlistItems.some(
+                (item) => item.productId === keyboardProduct[0].productId,
+              )}
               label={keyboardProduct[0].label}
             />
             <ItemCard
@@ -278,8 +303,12 @@ export const ProductDetails = () => {
               discount="30"
               rating="99"
               ratingValue={5}
-              isInCart={lcdProduct[0].isInCart}
-              isInWishlist={lcdProduct[0].isInWishlist}
+              isInCart={cartItems.some(
+                (item) => item.productId === lcdProduct[0].productId,
+              )}
+              isInWishlist={wishlistItems.some(
+                (item) => item.productId === lcdProduct[0].productId,
+              )}
               label={lcdProduct[0].label}
             />
             <ItemCard
@@ -289,8 +318,12 @@ export const ProductDetails = () => {
               oldPrice="170"
               rating="65"
               ratingValue={5}
-              isInCart={coolerProduct[0].isInCart}
-              isInWishlist={coolerProduct[0].isInWishlist}
+              isInCart={cartItems.some(
+                (item) => item.productId === coolerProduct[0].productId,
+              )}
+              isInWishlist={wishlistItems.some(
+                (item) => item.productId === coolerProduct[0].productId,
+              )}
               label={coolerProduct[0].label}
             />
           </div>
