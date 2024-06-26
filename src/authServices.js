@@ -5,7 +5,7 @@ import { auth } from "./firebase.config";
 
 export const signUpAndSignInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
-    await signInWithPopup(auth, provider).then((result) => {
+    signInWithPopup(auth, provider).then((result) => {
         // The signed-in user info.
         const user = result.user;
         
@@ -13,6 +13,7 @@ export const signUpAndSignInWithGoogle = async () => {
         createUserWithEmailAndPassword(auth, user.email, 'randomPassword')
           .then(() => {
             console.log('User created successfully');
+            window.location.href = "/";
           })
           .catch((error) => {
             console.error('Error creating user:', error.message);

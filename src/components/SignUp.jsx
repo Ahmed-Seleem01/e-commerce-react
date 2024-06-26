@@ -24,7 +24,6 @@ export const SignUP = () => {
   const signUpWithGoogleHandler = async (e) => {
     e.preventDefault();
     await signUpAndSignInWithGoogle();
-    redirectToHomePage();
   };
 
   const signUpWithEmailAndPasswordHandler = (e) => {
