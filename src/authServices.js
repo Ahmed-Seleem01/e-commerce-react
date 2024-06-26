@@ -1,13 +1,11 @@
 import { GoogleAuthProvider, createUserWithEmailAndPassword, 
     getRedirectResult, 
-    signInWithEmailAndPassword, signInWithRedirect, signOut } from "firebase/auth";
+    signInWithEmailAndPassword, signInWithPopup, signInWithRedirect, signOut } from "firebase/auth";
 import { auth } from "./firebase.config";
 
 export const signUpAndSignInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
-    await signInWithRedirect(auth, provider)
-
-    getRedirectResult(auth).then((result) => {
+    await signInWithPopup(auth, provider).then((result) => {
         // The signed-in user info.
         const user = result.user;
         
@@ -33,7 +31,7 @@ export const signUpWithEmailAndPassword = ( email, password ) => {
 
 export const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
-  return signInWithRedirect(auth, provider)
+  return signInWithPopup(auth, provider)
 };
 
 export const loginWithEmailAndPassword = (email, password) => {
