@@ -22,6 +22,8 @@ export async function load({ request }) {
     ? await getUserItems(user, "cart")
     : { productItems: [] };
 
+  console.log(productsItems);
+
   const flashSales = await getCardItems("home", "flashSales");
   const bestSelling = await getCardItems("home", "bestSelling");
   const exploreProducts = await getCardItems("home", "exploreProducts");

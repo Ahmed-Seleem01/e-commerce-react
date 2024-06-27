@@ -66,8 +66,8 @@ export const getUserItems = async (userId, docId)=>{
   if (docSnapshot.exists()) {
     return docSnapshot.data()
   } else {
-    console.log('No such document!');
-  }
+    return({ productItems: [] })
+    }
 }
 
 export const removeFromUserDB = async(userId, docId )=> {

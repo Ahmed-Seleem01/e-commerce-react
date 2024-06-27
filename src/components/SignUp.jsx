@@ -1,7 +1,8 @@
 import sideImage from "../assets/images/Side Image.png";
 import googleIcon from "../assets/icons/Icon-Google.svg";
 import {
-  signUpAndSignInWithGoogle,
+  signInWithGoogle,
+  // signUpAndSignInWithGoogle,
   signUpWithEmailAndPassword,
 } from "../authServices";
 import { useRef, useState } from "react";
@@ -23,7 +24,8 @@ export const SignUP = () => {
 
   const signUpWithGoogleHandler = async (e) => {
     e.preventDefault();
-    await signUpAndSignInWithGoogle();
+    await signInWithGoogle();
+    redirectToHomePage();
   };
 
   const signUpWithEmailAndPasswordHandler = (e) => {
